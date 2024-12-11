@@ -1,11 +1,63 @@
 [
     {
+        "label": "os",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "os",
+        "description": "os",
+        "detail": "os",
+        "documentation": {}
+    },
+    {
+        "label": "stempeg",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "stempeg",
+        "description": "stempeg",
+        "detail": "stempeg",
+        "documentation": {}
+    },
+    {
+        "label": "numpy",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "numpy",
+        "description": "numpy",
+        "detail": "numpy",
+        "documentation": {}
+    },
+    {
         "label": "torch",
         "kind": 6,
         "isExtraImport": true,
         "importPath": "torch",
         "description": "torch",
         "detail": "torch",
+        "documentation": {}
+    },
+    {
+        "label": "Dataset",
+        "importPath": "torch.utils.data",
+        "description": "torch.utils.data",
+        "isExtraImport": true,
+        "detail": "torch.utils.data",
+        "documentation": {}
+    },
+    {
+        "label": "DataLoader",
+        "importPath": "torch.utils.data",
+        "description": "torch.utils.data",
+        "isExtraImport": true,
+        "detail": "torch.utils.data",
+        "documentation": {}
+    },
+    {
+        "label": "librosa",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "librosa",
+        "description": "librosa",
+        "detail": "librosa",
         "documentation": {}
     },
     {
@@ -35,7 +87,23 @@
         "documentation": {}
     },
     {
+        "label": "UNet",
+        "importPath": "Vocal_Isolation.Model.model",
+        "description": "Vocal_Isolation.Model.model",
+        "isExtraImport": true,
+        "detail": "Vocal_Isolation.Model.model",
+        "documentation": {}
+    },
+    {
         "label": "MUSDB18Dataset",
+        "importPath": "Vocal_Isolation.Data.dataset",
+        "description": "Vocal_Isolation.Data.dataset",
+        "isExtraImport": true,
+        "detail": "Vocal_Isolation.Data.dataset",
+        "documentation": {}
+    },
+    {
+        "label": "MUSDB18StemDataset",
         "importPath": "Vocal_Isolation.Data.dataset",
         "description": "Vocal_Isolation.Data.dataset",
         "isExtraImport": true,
@@ -61,12 +129,21 @@
         "documentation": {}
     },
     {
-        "label": "numpy",
+        "label": "torch.optim",
         "kind": 6,
         "isExtraImport": true,
-        "importPath": "numpy",
-        "description": "numpy",
-        "detail": "numpy",
+        "importPath": "torch.optim",
+        "description": "torch.optim",
+        "detail": "torch.optim",
+        "documentation": {}
+    },
+    {
+        "label": "MUSDB18StemDataset",
+        "kind": 6,
+        "importPath": "Vocal_Isolation.Data.dataset",
+        "description": "Vocal_Isolation.Data.dataset",
+        "peekOfCode": "class MUSDB18StemDataset(Dataset):\n    def __init__(self,root_dir,subset='train',sr=44100,n_fft=2048,hop_length=512):\n        self.root_dir = os.path.join(root_dir,subset) #Path to train/test folder\n        self.sr = sr #sampling rate\n        self.n_fft= n_fft #Number of FFT components\n        self.hop_length = hop_length #Hop length for STFT\n        self.file_paths = [os.path.join(self.root_dir,file) #Collect all `.mp4` files in the folder.\n                           for file in os.listdir(self.root_dir)\n                           if file.endswith('.mp4')]\n    def __len__(self):",
+        "detail": "Vocal_Isolation.Data.dataset",
         "documentation": {}
     },
     {
@@ -193,6 +270,15 @@
         "description": "Vocal_Isolation.ONNX.Test_Converted_ONNX",
         "peekOfCode": "result = session.run([output_name],{input_name: input_data})\nprint(\"ONNX Inference Result\",np.array(result).shape)",
         "detail": "Vocal_Isolation.ONNX.Test_Converted_ONNX",
+        "documentation": {}
+    },
+    {
+        "label": "train",
+        "kind": 2,
+        "importPath": "Vocal_Isolation.train",
+        "description": "Vocal_Isolation.train",
+        "peekOfCode": "def train():\n    #Device that is used in training, PRIOR: GPU if not available using CPU\n    device = torch.device(\"cuda\" if torch.cuda.is_available() else \"cpu\")\n    print(f\"Device {device}\")\n    #HyperParameters\n    batch_size = 16\n    learning_rate = 1e-4\n    epochs = 50\n    root_dir = r'C:\\mappe1\\musdb18'\n    #Dataset and DataLoader",
+        "detail": "Vocal_Isolation.train",
         "documentation": {}
     }
 ]
