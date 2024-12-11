@@ -1,0 +1,3 @@
+hva er en Konvolusjonsblokk?
+
+hva er en bottleneck block? 

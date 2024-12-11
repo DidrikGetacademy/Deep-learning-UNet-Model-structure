@@ -1,0 +1,198 @@
+[
+    {
+        "label": "torch",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "torch",
+        "description": "torch",
+        "detail": "torch",
+        "documentation": {}
+    },
+    {
+        "label": "torch.nn",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "torch.nn",
+        "description": "torch.nn",
+        "detail": "torch.nn",
+        "documentation": {}
+    },
+    {
+        "label": "torch.nn.functional",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "torch.nn.functional",
+        "description": "torch.nn.functional",
+        "detail": "torch.nn.functional",
+        "documentation": {}
+    },
+    {
+        "label": "UNet",
+        "importPath": "Vocal_Isolation.Model.model",
+        "description": "Vocal_Isolation.Model.model",
+        "isExtraImport": true,
+        "detail": "Vocal_Isolation.Model.model",
+        "documentation": {}
+    },
+    {
+        "label": "MUSDB18Dataset",
+        "importPath": "Vocal_Isolation.Data.dataset",
+        "description": "Vocal_Isolation.Data.dataset",
+        "isExtraImport": true,
+        "detail": "Vocal_Isolation.Data.dataset",
+        "documentation": {}
+    },
+    {
+        "label": "matplotlib.pyplot",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "matplotlib.pyplot",
+        "description": "matplotlib.pyplot",
+        "detail": "matplotlib.pyplot",
+        "documentation": {}
+    },
+    {
+        "label": "onnxruntime",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "onnxruntime",
+        "description": "onnxruntime",
+        "detail": "onnxruntime",
+        "documentation": {}
+    },
+    {
+        "label": "numpy",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "numpy",
+        "description": "numpy",
+        "detail": "numpy",
+        "documentation": {}
+    },
+    {
+        "label": "UNet",
+        "kind": 6,
+        "importPath": "Vocal_Isolation.Model.model",
+        "description": "Vocal_Isolation.Model.model",
+        "peekOfCode": "class UNet(nn.Module): \n    def __init__(self,in_channels=1,out_channels=1,features=[64,128,256,512]): \n        super(UNet,self).__init__() \n        #initalize a empty list for encoder-layers\n        self.encoder = nn.ModuleList() \n        #foreach element in features-list exsample 64,128,256,512\n        #updates in_channels for next layer\n        for feature in features:\n            #adds the block to encoder\n            self.encoder.append(self.conv_block(in_channels,feature)) #calls conv_block method to make a konvolusjonsblokk",
+        "detail": "Vocal_Isolation.Model.model",
+        "documentation": {}
+    },
+    {
+        "label": "root_dir",
+        "kind": 5,
+        "importPath": "Vocal_Isolation.ONNX.Convert_to_ONNX",
+        "description": "Vocal_Isolation.ONNX.Convert_to_ONNX",
+        "peekOfCode": "root_dir = r\"C:\\Users\\didri\\Downloads\\musdb18\"\ndataset = MUSDB18Dataset(root_dir=root_dir,subset=\"train\")\n# Convert tensor to NumPy for visualization\n# Get one sample from the dataset\nmixture_tensor, vocals_tensor = dataset[0]\nmixture_np = mixture_tensor.squeeze().numpy()\nplt.imshow(mixture_np, aspect=\"auto\", origin=\"lower\")\nplt.title(\"Mixture Spectrogram\")\nplt.colorbar()\nplt.show()",
+        "detail": "Vocal_Isolation.ONNX.Convert_to_ONNX",
+        "documentation": {}
+    },
+    {
+        "label": "dataset",
+        "kind": 5,
+        "importPath": "Vocal_Isolation.ONNX.Convert_to_ONNX",
+        "description": "Vocal_Isolation.ONNX.Convert_to_ONNX",
+        "peekOfCode": "dataset = MUSDB18Dataset(root_dir=root_dir,subset=\"train\")\n# Convert tensor to NumPy for visualization\n# Get one sample from the dataset\nmixture_tensor, vocals_tensor = dataset[0]\nmixture_np = mixture_tensor.squeeze().numpy()\nplt.imshow(mixture_np, aspect=\"auto\", origin=\"lower\")\nplt.title(\"Mixture Spectrogram\")\nplt.colorbar()\nplt.show()\nprint(f\"Shape of mixture tensor: {mixture_tensor.shape}\")",
+        "detail": "Vocal_Isolation.ONNX.Convert_to_ONNX",
+        "documentation": {}
+    },
+    {
+        "label": "mixture_np",
+        "kind": 5,
+        "importPath": "Vocal_Isolation.ONNX.Convert_to_ONNX",
+        "description": "Vocal_Isolation.ONNX.Convert_to_ONNX",
+        "peekOfCode": "mixture_np = mixture_tensor.squeeze().numpy()\nplt.imshow(mixture_np, aspect=\"auto\", origin=\"lower\")\nplt.title(\"Mixture Spectrogram\")\nplt.colorbar()\nplt.show()\nprint(f\"Shape of mixture tensor: {mixture_tensor.shape}\")\nprint(f\"Shape of vocals tensor: {vocals_tensor.shape}\")\n# Reshape the tensor for batch dimension\ninput_tensor = mixture_tensor.unsqueeze(0)\n#Initialize the model",
+        "detail": "Vocal_Isolation.ONNX.Convert_to_ONNX",
+        "documentation": {}
+    },
+    {
+        "label": "input_tensor",
+        "kind": 5,
+        "importPath": "Vocal_Isolation.ONNX.Convert_to_ONNX",
+        "description": "Vocal_Isolation.ONNX.Convert_to_ONNX",
+        "peekOfCode": "input_tensor = mixture_tensor.unsqueeze(0)\n#Initialize the model\nmodel = UNet(in_channels=1,out_channels=1)\nmodel.load_state_dict(torch.load(\"vocal_isolation_unet.pth\"))\nmodel.eval()\n#Save to ONNX\nonnx_path = \"Vocal_Isolation_UNet.onnx\"\ntorch.onnx.export(\n    model,\n    input_tensor,",
+        "detail": "Vocal_Isolation.ONNX.Convert_to_ONNX",
+        "documentation": {}
+    },
+    {
+        "label": "model",
+        "kind": 5,
+        "importPath": "Vocal_Isolation.ONNX.Convert_to_ONNX",
+        "description": "Vocal_Isolation.ONNX.Convert_to_ONNX",
+        "peekOfCode": "model = UNet(in_channels=1,out_channels=1)\nmodel.load_state_dict(torch.load(\"vocal_isolation_unet.pth\"))\nmodel.eval()\n#Save to ONNX\nonnx_path = \"Vocal_Isolation_UNet.onnx\"\ntorch.onnx.export(\n    model,\n    input_tensor,\n    onnx_path,\n    export_params=True,",
+        "detail": "Vocal_Isolation.ONNX.Convert_to_ONNX",
+        "documentation": {}
+    },
+    {
+        "label": "onnx_path",
+        "kind": 5,
+        "importPath": "Vocal_Isolation.ONNX.Convert_to_ONNX",
+        "description": "Vocal_Isolation.ONNX.Convert_to_ONNX",
+        "peekOfCode": "onnx_path = \"Vocal_Isolation_UNet.onnx\"\ntorch.onnx.export(\n    model,\n    input_tensor,\n    onnx_path,\n    export_params=True,\n    opset_version=11,\n    do_constant_folding=True,\n    input_name=[\"input\"],\n    output_names=[\"output\"],",
+        "detail": "Vocal_Isolation.ONNX.Convert_to_ONNX",
+        "documentation": {}
+    },
+    {
+        "label": "onnx_model_path",
+        "kind": 5,
+        "importPath": "Vocal_Isolation.ONNX.Test_Converted_ONNX",
+        "description": "Vocal_Isolation.ONNX.Test_Converted_ONNX",
+        "peekOfCode": "onnx_model_path = \"Vocal_Isolation_UNet.onnx\"\nsession = ort.InferenceSession(onnx_model_path)\n#Prepare input for onnx\ninput_name = session.get_inputs()[0].name\noutput_name = session.get_outputs()[0].name \ninput_tensor = torch.randn(1,1,256,256)# Replace with real data or correct dimensions\ninput_data = input_tensor.cpu().numpy()\nresult = session.run([output_name],{input_name: input_data})\nprint(\"ONNX Inference Result\",np.array(result).shape)",
+        "detail": "Vocal_Isolation.ONNX.Test_Converted_ONNX",
+        "documentation": {}
+    },
+    {
+        "label": "session",
+        "kind": 5,
+        "importPath": "Vocal_Isolation.ONNX.Test_Converted_ONNX",
+        "description": "Vocal_Isolation.ONNX.Test_Converted_ONNX",
+        "peekOfCode": "session = ort.InferenceSession(onnx_model_path)\n#Prepare input for onnx\ninput_name = session.get_inputs()[0].name\noutput_name = session.get_outputs()[0].name \ninput_tensor = torch.randn(1,1,256,256)# Replace with real data or correct dimensions\ninput_data = input_tensor.cpu().numpy()\nresult = session.run([output_name],{input_name: input_data})\nprint(\"ONNX Inference Result\",np.array(result).shape)",
+        "detail": "Vocal_Isolation.ONNX.Test_Converted_ONNX",
+        "documentation": {}
+    },
+    {
+        "label": "input_name",
+        "kind": 5,
+        "importPath": "Vocal_Isolation.ONNX.Test_Converted_ONNX",
+        "description": "Vocal_Isolation.ONNX.Test_Converted_ONNX",
+        "peekOfCode": "input_name = session.get_inputs()[0].name\noutput_name = session.get_outputs()[0].name \ninput_tensor = torch.randn(1,1,256,256)# Replace with real data or correct dimensions\ninput_data = input_tensor.cpu().numpy()\nresult = session.run([output_name],{input_name: input_data})\nprint(\"ONNX Inference Result\",np.array(result).shape)",
+        "detail": "Vocal_Isolation.ONNX.Test_Converted_ONNX",
+        "documentation": {}
+    },
+    {
+        "label": "output_name",
+        "kind": 5,
+        "importPath": "Vocal_Isolation.ONNX.Test_Converted_ONNX",
+        "description": "Vocal_Isolation.ONNX.Test_Converted_ONNX",
+        "peekOfCode": "output_name = session.get_outputs()[0].name \ninput_tensor = torch.randn(1,1,256,256)# Replace with real data or correct dimensions\ninput_data = input_tensor.cpu().numpy()\nresult = session.run([output_name],{input_name: input_data})\nprint(\"ONNX Inference Result\",np.array(result).shape)",
+        "detail": "Vocal_Isolation.ONNX.Test_Converted_ONNX",
+        "documentation": {}
+    },
+    {
+        "label": "input_tensor",
+        "kind": 5,
+        "importPath": "Vocal_Isolation.ONNX.Test_Converted_ONNX",
+        "description": "Vocal_Isolation.ONNX.Test_Converted_ONNX",
+        "peekOfCode": "input_tensor = torch.randn(1,1,256,256)# Replace with real data or correct dimensions\ninput_data = input_tensor.cpu().numpy()\nresult = session.run([output_name],{input_name: input_data})\nprint(\"ONNX Inference Result\",np.array(result).shape)",
+        "detail": "Vocal_Isolation.ONNX.Test_Converted_ONNX",
+        "documentation": {}
+    },
+    {
+        "label": "input_data",
+        "kind": 5,
+        "importPath": "Vocal_Isolation.ONNX.Test_Converted_ONNX",
+        "description": "Vocal_Isolation.ONNX.Test_Converted_ONNX",
+        "peekOfCode": "input_data = input_tensor.cpu().numpy()\nresult = session.run([output_name],{input_name: input_data})\nprint(\"ONNX Inference Result\",np.array(result).shape)",
+        "detail": "Vocal_Isolation.ONNX.Test_Converted_ONNX",
+        "documentation": {}
+    },
+    {
+        "label": "result",
+        "kind": 5,
+        "importPath": "Vocal_Isolation.ONNX.Test_Converted_ONNX",
+        "description": "Vocal_Isolation.ONNX.Test_Converted_ONNX",
+        "peekOfCode": "result = session.run([output_name],{input_name: input_data})\nprint(\"ONNX Inference Result\",np.array(result).shape)",
+        "detail": "Vocal_Isolation.ONNX.Test_Converted_ONNX",
+        "documentation": {}
+    }
+]
