@@ -1,12 +1,104 @@
-###MODEL#####
+##############################################################MODEL################################################################
+U-NET is a nueral network model with 2 main parts: 
+(Encoder) => "DOWN-sampling => catches global functions by reducing the size of input-data
+(Decoder) => "UP-sampling => Restores details and generates an output => (isolated vocals)
+____________________________________________________________________________________________________________________________________________
+NB => "U-NET model also has skip connections => Combines information from encoder part and decoder part too save global and local details.
+
+
+
+"""""""""""""(the __init__ represent how the model is build.)"""""""""""
+(in channels) => amount of channels in the input => currently 1 because we work with monochannel sound
+(out_channels) => amount of channels in output => currently 1 because output is a spectral representation
+(features) => a list of amount features => functionmap in each layer
 
 
 
 
-####DATASET###
+
+
+""""""""""What is a convolution block""""""""""""""
+A konvolusjonblock is a combination of (multiple operations) in a (nuearl-network) that is used to (proccess data) useally data like images or in this project spectralrepresentations.
+
+[lets understand convolutionblock step by step]
+
+What does a convolution block? => the goal with a convolution block is too teach and extract features from input data SUTCH as (AUDIO => PATTERNS in the spectrum such as frequencies or rhythmic components) OR (IMAGES => edges,textures objects, or higher level features.)
+
+how does a convolution block achieve it's goal? => it achives this by utilizing multiple layers of mathematical operations.
 
 
 
 
 
-####TRAIN#####
+
+
+
+"""""""""""""(Function CONV_BLOCK)"""""""""""""
+A mathematical operation that runs over data => like a pitchure or a spectrum, in this project its a spectrum,  with a filter (kernel) => The Filter/Kernel gets/retrieve specific patterns in the data like => textures, shapes, frequencies
+
+-Convolution layer (nn.conv2d)-
+(in_channels) => "Amount of inputdata"
+(out_channels) =>"Amount of functionmaps that is made (exsample: 64, 128, etc)"
+(kernel_size=3) =>" the size of the filter in this case 3x3"
+(padding) =>"makes sure that the output dimension cannot be reduced => the same padding"
+----------------------------------------------------------------------------------------------
+ THE RESULT of this convolution layer is => [Retrieve basic functions from the data]
+
+
+
+-Convolution layer (nn.BatchNorm2d)-
+(out_channels) => "Amount of functionmaps that is made (exsample: 64, 128, etc)"
+-----------------------------------------------------------------------------------------------
+THE RESULT of this convolution layer is => normalizing output from the convolutionlayer too have a average at 0 and standard devation at 1 => this will stabilize training and make the model teach quicker and more robust.
+
+
+
+-Convolution layer (nn.ReLU)-
+what is nn.ReLU? => rectified linear Unit (ReLU) activation function that introduce none linear by setting all negative values too 0 and keep the positive values
+(inplace = true) => applies the following transformation to its input f(x)=max(0,x) => if the input value is (NEGATIVE), it gets replaced with 0, if the input value is (POSITIVE) it leaves unchanged.
+-----------------------------------------------------------------------------------------------
+THE RESULT of this convolution layer is =>  this makes sure that the (MODEL) can learn more (COMPLEX) relation in the data
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+###############################################################DATASET###########################################################
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+###############################################################TRAIN################################################################
