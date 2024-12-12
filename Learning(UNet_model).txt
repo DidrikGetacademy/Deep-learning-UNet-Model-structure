@@ -120,21 +120,57 @@ THE RESULT of this => The convolution block makes it possible too teach from loc
 
 
 
+"""""""""""""""""""FUNCTION forward""""""""""""""""""""""""""""
+This is the main function that represent the big part of the UNet-model 
+  input(x) ----> Encoder -----> Bottleneck ----> Decoder
+skip_connections = [] a list that  Stores the meanwhile result output from each encoder-block! This will later be used in the decoder part to make skip connections, connection between (encoder) & (decoder)
+
+
+---Understand the function code by code--
+
+for enc in self.encoder:
+    x = enc(x)  # Passerer input gjennom en encoder-blokk.
+    skip_connections.append(x)  # Lagrer output til skip_connections.
+    x = F.max_pool2d(x, kernel_size=2, stride=2)  # Downsampling.
+-----------------------------------------------------------------------------------------------
+NB::: Input x goes threw each encoder block 1 after 1, the OUTPUT from each block gets added too the skip connection list, Then the data gets down-sampled by halfing the height and the width by help from (F.max_pool12d) THIS makes the model look at det data in lower resolution
+why do we do this? => Encoder part retrieve functions and comprimise data too less dimensions  => RESULTS in easier management for the model too analze the global structur in the data.
+x = self.bottleneck(x) :::: after the encoder part of the function the data gets sent into the bottleneck. 
+skip_connections = skip_connections[::-1]  ::::: By reversing the list in skipconnections we get the correct order too match the up-sampling
 
 
 
 
 
+for idx in range(0, len(self.decoder), 2):
+    x = self.decoder[idx](x)  # Oppsampling.
+    skip_connection = skip_connections[idx // 2]  # Henter skip connection.
+-----------------------------------------------------------------------------------------------
+The data is getting upscaled too a higher resolution by the self.decoder[idx] its the ConvTranspose2d that double the dimensions
+the skipconnections retrieve the correct skipconnection from the encoder part too add details from the original input
+
+
+
+
+if x.shape != skip_connection.shape:
+    x = F.interpolate(x, size=skip_connection.shape[2:])  # Tilpass dimensjoner.
+-----------------------------------------------------------------------------------------------
+It can happend that small details in different dimensions between the (upsampling) and the skip connection because of (rounding error) in the (down-sampling)
+F.interpolate assure that the data adapt dimensions in the skip connection so they can be combined.
 
 
 
 
 
+x = torch.cat((skip_connection, x), dim=1)  # Kombinerer skip connection og oppsamplet data.
+x = self.decoder[idx + 1](x)  # Passerer gjennom en konvolusjonsblokk.
+-----------------------------------------------------------------------------------------------
+skipconnection (detailed information from encoder) & upsampled global data information from (bottlneck) gets added together at  channel (dim=1)
+The data is further processed through a convolution block to refine the features.
 
 
 
 
-
-
-
-
+return self.final_conv(x)  # Output-lag.
+-----------------------------------------------------------------------------------------------
+After the data has gone threw the entire model structure, it gets sent too the (self.final_conv) a 1x1 konvolution that reduces amount of channels too the desired output, like vocals because we want the model too be able too get vocals out of music, so in this case its  (1 channel is spectrum of the vocal)

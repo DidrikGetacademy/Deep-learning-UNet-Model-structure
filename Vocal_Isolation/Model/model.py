@@ -46,15 +46,17 @@ class UNet(nn.Module):
         
         
         
+        
     def conv_block(self,in_channels,out_channels):
         return nn.Sequential(
-            nn.Conv2d(in_channels,out_channels,kernel_size=3,padding=1),
-            nn.BatchNorm2d(out_channels),
-            nn.ReLU(inplace=True),
+            nn.Conv2d(in_channels,out_channels,kernel_size=3,padding=1), #Retrieve basic functions from the data.
+            nn.BatchNorm2d(out_channels),#Stabilize traing by normalizing output too have a average at 0 and standard devation at 1
+            nn.ReLU(inplace=True), #Sets all negative values too 0 so the model can learn more complex relation in data.
             nn.Conv2d(out_channels,out_channels,kernel_size=3,padding=1),
             nn.BatchNorm2d(out_channels),
             nn.ReLU(inplace=True)      
             )        
+    
     
     
     
@@ -68,6 +70,7 @@ class UNet(nn.Module):
         x = self.bottleneck(x) # pass through the bottleneck 
         
         skip_connections = skip_connections[::-1] #Reveres the skip connection.
+        
         for idx in range(0,len(self.decoder),2):
             x = self.decoder[idx](x) #Upsampling
             skip_connection = skip_connections[idx//2]
