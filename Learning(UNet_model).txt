@@ -174,3 +174,48 @@ The data is further processed through a convolution block to refine the features
 return self.final_conv(x)  # Output-lag.
 -----------------------------------------------------------------------------------------------
 After the data has gone threw the entire model structure, it gets sent too the (self.final_conv) a 1x1 konvolution that reduces amount of channels too the desired output, like vocals because we want the model too be able too get vocals out of music, so in this case its  (1 channel is spectrum of the vocal)
+
+
+
+
+#######################MODEL STRUCTURE SUMMARY######################
+1. Encoder (downsampling)
+*Extracts features while reducing the spatial dimensions of the data
+*Utilizes the convolution blocks and max-pooling to progressivly compress the input into lower-resolution, high-feature representations
+
+
+2.Bottlneck
+*acts as a bridge between the encoder and decoder
+*learns high level globa features from the compressed data
+*Doubles the feature maps to increase model capacity for complex patterns
+
+
+3.Decoder (upsampling)
+*Gradually restores spatial dimensions using transposed convolutions
+*Combines global features from bottleneck with local details from encoder via (skip connnections)
+*Refines the data trhough additional convolutional block to produce high resolution output.
+
+
+4. skip connections
+*Link the encoder and decoder layers to preserve local details lost during downsampling
+*Combine fine grained information from the encoder with the broader context captured in the bottleneck
+
+5. final convolution
+* a 1x1 convolution that reduces the feature maps to the desired number of output channels in this case (1 channel vocals)
+
+
+
+
+
+#######################KEY FEATURES OF THE MODEL######################
+CONVOLUTION BLOCKS ---> extract features though multiple layers of convoltuon, normalizations and non linear activations
+
+SKIP CONNECTIONS ---> Preserve details and improve the reconstruction of the output
+
+
+EFFICIENT DOWNSAMPLING AND UPSAMPLING ---> max-pooling and transposed convolutions ensure efficient compression and restoration of data
+
+FLEXIBLE OUTPUT ---> The model can be adapted for different tasks by chaning the input and output configuration
+
+
+NB::: This architecture makes U-Net particuraly well-suited for task requiring precise output reconstruction, such as vocal isolation or image segmentation.
