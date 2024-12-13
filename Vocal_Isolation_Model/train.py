@@ -16,7 +16,7 @@ def train(load_model_path=None):
     #HyperParameters
     batch_size = 2 #Adjust if memory is an issue
     learning_rate = 1e-4
-    epochs = 3
+    epochs = 16
     root_dir = r'C:\mappe1\musdb18'
     
     
@@ -28,9 +28,9 @@ def train(load_model_path=None):
         n_fft=1024, #Redce FFT size to save memory
         hop_length=256, #Smaller hop length will result in better time resolution
         max_length=10000,
-        max_files=50 #Max amount of songs retrived from the dataset folder.
+        max_files=100 #Max amount of songs retrived from the dataset folder.
         )
-    dataloader = DataLoader(dataset,batch_size=batch_size,shuffle=True,num_workers=4, pin_memory=True)
+    dataloader = DataLoader(dataset,batch_size=batch_size,shuffle=True,num_workers=8, pin_memory=True)
     
     
     
@@ -41,9 +41,9 @@ def train(load_model_path=None):
         n_fft=1024, #Redce FFT size to save memory
         hop_length=256, #Smaller hop length will result in better time resolution
         max_length=10000,
-        max_files=20 #Max amount of songs retrived from the dataset folder.
+        max_files=50 #Max amount of songs retrived from the dataset folder.
         )
-    val_loader = DataLoader(val_dataset, batch_size=batch_size, shuffle=False, num_workers=4, pin_memory=True)
+    val_loader = DataLoader(val_dataset, batch_size=batch_size, shuffle=False, num_workers=8, pin_memory=True)
     
     
     
@@ -54,7 +54,8 @@ def train(load_model_path=None):
         print(f"Loaded model from {load_model_path}")
         
     criterion = nn.MSELoss()
-    optimizer = optim.Adam(model.parameters(),lr=learning_rate)
+    optimizer = optim.Adam(model.parameters(),lr=learning_rate,weight_decay=1e-5)
+    scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(optimizer, 'min', patience=2, factor=0.5)
     
     
     #Training loop
@@ -107,7 +108,7 @@ def train(load_model_path=None):
                 
         print(f"Epoch [{epoch + 1}/{epochs}], Validation Loss: {val_loss / len(val_loader):.4f}")
         
-        
+        scheduler.step(val_loss / len(val_loader))
         
         #Checkpoint saving
         Checkpoint_dir = r"C:\Users\didri\Desktop\AI AudioEnchancer\UNet_Model\CheckPoints"

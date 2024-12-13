@@ -121,6 +121,31 @@
         "documentation": {}
     },
     {
+        "label": "soundfile",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "soundfile",
+        "description": "soundfile",
+        "detail": "soundfile",
+        "documentation": {}
+    },
+    {
+        "label": "UNet",
+        "importPath": "Model.model",
+        "description": "Model.model",
+        "isExtraImport": true,
+        "detail": "Model.model",
+        "documentation": {}
+    },
+    {
+        "label": "UNet",
+        "importPath": "Model.model",
+        "description": "Model.model",
+        "isExtraImport": true,
+        "detail": "Model.model",
+        "documentation": {}
+    },
+    {
         "label": "torch.optim",
         "kind": 6,
         "isExtraImport": true,
@@ -135,14 +160,6 @@
         "description": "Data.dataset",
         "isExtraImport": true,
         "detail": "Data.dataset",
-        "documentation": {}
-    },
-    {
-        "label": "UNet",
-        "importPath": "Model.model",
-        "description": "Model.model",
-        "isExtraImport": true,
-        "detail": "Model.model",
         "documentation": {}
     },
     {
@@ -290,11 +307,38 @@
         "documentation": {}
     },
     {
+        "label": "load_audio",
+        "kind": 2,
+        "importPath": "Vocal_Isolation_Model.Evaluation",
+        "description": "Vocal_Isolation_Model.Evaluation",
+        "peekOfCode": "def load_audio(file_path,sr=44100,n_fft=1024,hop_length=256):\n    audio, _ = librosa.load(file_path, sr=sr, mono=True)\n    audio /= np.max(np.abs(audio)) #Normalize to [-1, 1]\n    stft = librosa.stft(audio, n_fft=n_fft, hop_length=hop_length)\n    magnitude = np.abs(stft)\n    return magnitude, stft\n#Reconstructs a audiofile from magnitude and phase with help by a invers STFT.\ndef reconstruct_audio(magnitude, phase, sr=44100, n_fft=1024, hop_length=256):\n    stft = magnitude * np.exp(1j * phase) #Combines magnitude with phase\n    audio = librosa.istft(stft, hop_length=hop_length)",
+        "detail": "Vocal_Isolation_Model.Evaluation",
+        "documentation": {}
+    },
+    {
+        "label": "reconstruct_audio",
+        "kind": 2,
+        "importPath": "Vocal_Isolation_Model.Evaluation",
+        "description": "Vocal_Isolation_Model.Evaluation",
+        "peekOfCode": "def reconstruct_audio(magnitude, phase, sr=44100, n_fft=1024, hop_length=256):\n    stft = magnitude * np.exp(1j * phase) #Combines magnitude with phase\n    audio = librosa.istft(stft, hop_length=hop_length)\n    return audio\n#Evaluates the model on a audiofile and stores the seperated vocals.\ndef evaluate_model(model_path,audio_file, output_file, sr=44100, n_fft=1024, hop_length=256):\n    #LOAD THE MODEL\n    device = torch.device(\"cuda\" if torch.cuda.is_available() else \"cpu\")\n    model = UNet(in_channels=1, out_channels=1).to(device)\n    model.load_state_dict(torch.load(model_path, map_location=device,weights_only=True))",
+        "detail": "Vocal_Isolation_Model.Evaluation",
+        "documentation": {}
+    },
+    {
+        "label": "evaluate_model",
+        "kind": 2,
+        "importPath": "Vocal_Isolation_Model.Evaluation",
+        "description": "Vocal_Isolation_Model.Evaluation",
+        "peekOfCode": "def evaluate_model(model_path,audio_file, output_file, sr=44100, n_fft=1024, hop_length=256):\n    #LOAD THE MODEL\n    device = torch.device(\"cuda\" if torch.cuda.is_available() else \"cpu\")\n    model = UNet(in_channels=1, out_channels=1).to(device)\n    model.load_state_dict(torch.load(model_path, map_location=device,weights_only=True))\n    model.eval()\n    #LOAD IN & PROCESS INPUT AUDIOFILE\n    input_magnitude, input_stft = load_audio(audio_file, sr ,n_fft, hop_length)\n    input_phase = np.angle(input_stft) #Phase for reconstruction later\n    input_tensor = torch.tensor(input_magnitude, dtype=torch.float32).unsqueeze(0).unsqueeze(0).to(device)",
+        "detail": "Vocal_Isolation_Model.Evaluation",
+        "documentation": {}
+    },
+    {
         "label": "train",
         "kind": 2,
         "importPath": "Vocal_Isolation_Model.train",
         "description": "Vocal_Isolation_Model.train",
-        "peekOfCode": "def train(load_model_path=None):\n    device = torch.device(\"cuda\" if torch.cuda.is_available() else \"cpu\")\n    print(f\"Device {device}\")\n    #HyperParameters\n    batch_size = 2 #Adjust if memory is an issue\n    learning_rate = 1e-4\n    epochs = 3\n    root_dir = r'C:\\mappe1\\musdb18'\n    #Dataset and DataLoader\n    dataset = MUSDB18StemDataset(",
+        "peekOfCode": "def train(load_model_path=None):\n    device = torch.device(\"cuda\" if torch.cuda.is_available() else \"cpu\")\n    print(f\"Device {device}\")\n    #HyperParameters\n    batch_size = 2 #Adjust if memory is an issue\n    learning_rate = 1e-4\n    epochs = 16\n    root_dir = r'C:\\mappe1\\musdb18'\n    #Dataset and DataLoader\n    dataset = MUSDB18StemDataset(",
         "detail": "Vocal_Isolation_Model.train",
         "documentation": {}
     },
