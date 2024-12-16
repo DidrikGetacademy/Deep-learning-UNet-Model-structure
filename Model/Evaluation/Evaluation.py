@@ -64,7 +64,7 @@ def evaluate_model(model_path, audio_file, output_file, sr=44100, n_fft=1024, ho
 # Bruk skriptet
 if __name__ == "__main__":
     model_path = r"C:\Users\didri\Desktop\AI AudioEnchancer\UNet_Model\unet_vocal_isolation.pth"
-    input_audio_file = r"C:\Users\didri\Desktop\AI AudioEnchancer\WAV_files\Mixed_Audio\withinstrument.WAV"
-    output_audio_file = r"C:\Users\didri\Desktop\AI AudioEnchancer\WAV_files\Generated_by_model2.WAV"
+    input_audio_file = r"C:\Users\didri\Desktop\AI AudioEnchancer\Model\Data\WAV_files_for_model\Capcut_mixed\withsound(1).WAV"
+    output_audio_file = r"C:\Users\didri\Desktop\AI AudioEnchancer\Model\Data\WAV_files_for_model\Generated_by_model"
 
     evaluate_model(model_path, input_audio_file, output_audio_file)

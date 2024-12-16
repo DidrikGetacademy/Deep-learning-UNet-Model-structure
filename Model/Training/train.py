@@ -16,8 +16,8 @@ def train(load_model_path=None):
     
     #HyperParameters
     batch_size = 4
-    learning_rate = 1e-5
-    epochs = 5
+    learning_rate = 1e-4
+    epochs = 20
     root_dir = r'C:\mappe1\musdb18'
     
     
@@ -29,9 +29,9 @@ def train(load_model_path=None):
         n_fft=1024, #Redce FFT size to save memory
         hop_length=256, #Smaller hop length will result in better time resolution
         max_length=10000,
-        max_files=150 #Max amount of songs retrived from the dataset folder.
+        max_files=100 #Max amount of songs retrived from the dataset folder.
         )
-    dataloader = DataLoader(dataset,batch_size=batch_size,shuffle=True,num_workers=6, pin_memory=True)
+    dataloader = DataLoader(dataset,batch_size=batch_size,shuffle=True,num_workers=4, pin_memory=True)
     
     
     
@@ -42,9 +42,9 @@ def train(load_model_path=None):
         n_fft=1024, #Redce FFT size to save memory
         hop_length=256, #Smaller hop length will result in better time resolution
         max_length=10000,
-        max_files=75 #Max amount of songs retrived from the dataset folder.
+        max_files=50 #Max amount of songs retrived from the dataset folder.
         )
-    val_loader = DataLoader(val_dataset, batch_size=batch_size, shuffle=False, num_workers=8, pin_memory=True)
+    val_loader = DataLoader(val_dataset, batch_size=batch_size, shuffle=False, num_workers=4, pin_memory=True)
     
     
     
@@ -83,15 +83,17 @@ def train(load_model_path=None):
             
             
             #monitor GPU memory
-            if device == "cuda":
-                gpu_memory_used = torch.cuda.memory_allocated() / 1024 ** 2 #Memory used in MB
-                print(f"GPU memory Used: {gpu_memory_used:.2f} MB")
-                
-                if gpu_memory_used > 10000:
-                    print("GPU memory usage is high. clearing cache...")
-                    torch.cuda.empty_cache()
-                    print(f"GPU memory Used: {gpu_memory_used:.2f} MB")
-                    
+        if device == "cuda":
+              gpu_memory_used = torch.cuda.memory_allocated(device) / 1024 ** 2  # Allocated memory in MB
+              gpu_memory_reserved = torch.cuda.memory_reserved(device) / 1024 ** 2  # Reserved memory in MB
+              print(f"GPU memory allocated: {gpu_memory_used:.2f} MB, reserved: {gpu_memory_reserved:.2f} MB")
+
+        if gpu_memory_reserved > 10000:  # Set your threshold here (e.g., 10 GB)
+              print("High GPU memory usage detected. Clearing cache...")
+              torch.cuda.empty_cache()
+              gpu_memory_reserved_after = torch.cuda.memory_reserved(device) / 1024 ** 2
+              print(f"GPU memory reserved after clearing cache: {gpu_memory_reserved_after:.2f} MB")
+
             
             
         print(f"Epoch [{epoch + 1}/{epochs}], Loss: {running_loss / len(dataloader):.4f}")
@@ -120,7 +122,7 @@ def train(load_model_path=None):
 
 
     #Save Final Model
-    final_model_path = r"C:\Users\didri\Desktop\AI AudioEnchancer\UNet_Model\unet_vocal_isolation.pth"
+    final_model_path = r"C:\Users\didri\Desktop\AI AudioEnchancer\UNet_Model\PreTrained_model\unet_vocal_isolation_2.pth"
     torch.save(model.state_dict(), final_model_path)
     print("Training complete. Model saved.")
     
@@ -143,4 +145,4 @@ def test(model,test_loader,device):
         print("Testing complete.")
 
 if __name__ == "__main__":
-    train(load_model_path=r"C:\Users\didri\Desktop\AI AudioEnchancer\UNet_Model\unet_vocal_isolation.pth") #Passing saved model path if resuming training
+    train(load_model_path=r"C:\Users\didri\Desktop\AI AudioEnchancer\UNet_Model\PreTrained_model\unet_vocal_isolation.pth") 

@@ -4,7 +4,12 @@ import soundfile as sf
 import numpy as np
 import matplotlib.pyplot as plt
 from sklearn.metrics import mean_squared_error
-from Vocal_Isolation_Model.Model.model import UNet
+import os
+import sys
+project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), "../.."))
+sys.path.insert(0, project_root)  # Use insert(0) to prioritize this path
+from Model.Model.model import UNet
+
 
 def load_audio(file_path, sr=44100, n_fft=1024, hop_length=256):
     audio, _ = librosa.load(file_path, sr=sr, mono=True)
@@ -21,7 +26,7 @@ def reconstruct_audio(magnitude, phase, sr=44100, n_fft=1024, hop_length=256):
 def evaluate_and_compare(model_path, input_audio, capcut_audio, output_audio, sr=44100, n_fft=1024, hop_length=256):
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     model = UNet(in_channels=1, out_channels=1).to(device)
-    model.load_state_dict(torch.load(model_path, map_location=device))
+    model.load_state_dict(torch.load(model_path, map_location=device,weights_only=True))
     model.eval()
     
     input_magnitude, input_stft = load_audio(input_audio, sr, n_fft, hop_length)
@@ -61,8 +66,8 @@ def evaluate_and_compare(model_path, input_audio, capcut_audio, output_audio, sr
 
 if __name__ == "__main__":
     model_path = r"C:\Users\didri\Desktop\AI AudioEnchancer\UNet_Model\unet_vocal_isolation.pth"
-    input_audio_file = r"C:\Users\didri\Desktop\AI AudioEnchancer\WAV_files\Mixed_Audio\withinstrument.WAV"
-    capcut_audio = r"C:\Users\didri\Desktop\AI AudioEnchancer\WAV_files\Isolated_audio\withoutinstrument.WAV"
-    output_audio_file = r"C:\Users\didri\Desktop\AI AudioEnchancer\WAV_files\Isolated_Vocals_by_model3.WAV"
+    input_audio_file = r"C:\Users\didri\Desktop\AI AudioEnchancer\Model\Data\WAV_files_for_model\Capcut_mixed\withsound(1).WAV"
+    capcut_audio = r"C:\Users\didri\Desktop\AI AudioEnchancer\Model\Data\WAV_files_for_model\Capcut_isolated\Only_vocals(1).WAV"
+    output_audio_file = r"C:\Users\didri\Desktop\AI AudioEnchancer\Model\Data\WAV_files_for_model\Generated_by_model.wav"
     
     evaluate_and_compare(model_path, input_audio_file, capcut_audio, output_audio_file)
