@@ -61,11 +61,53 @@
         "documentation": {}
     },
     {
-        "label": "UNet",
-        "importPath": "model",
-        "description": "model",
+        "label": "soundfile",
+        "kind": 6,
         "isExtraImport": true,
-        "detail": "model",
+        "importPath": "soundfile",
+        "description": "soundfile",
+        "detail": "soundfile",
+        "documentation": {}
+    },
+    {
+        "label": "matplotlib.pyplot",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "matplotlib.pyplot",
+        "description": "matplotlib.pyplot",
+        "detail": "matplotlib.pyplot",
+        "documentation": {}
+    },
+    {
+        "label": "UNet",
+        "importPath": "Model",
+        "description": "Model",
+        "isExtraImport": true,
+        "detail": "Model",
+        "documentation": {}
+    },
+    {
+        "label": "mean_squared_error",
+        "importPath": "sklearn.metrics",
+        "description": "sklearn.metrics",
+        "isExtraImport": true,
+        "detail": "sklearn.metrics",
+        "documentation": {}
+    },
+    {
+        "label": "UNet",
+        "importPath": "Vocal_Isolation_Model.Model.model",
+        "description": "Vocal_Isolation_Model.Model.model",
+        "isExtraImport": true,
+        "detail": "Vocal_Isolation_Model.Model.model",
+        "documentation": {}
+    },
+    {
+        "label": "UNet",
+        "importPath": "Vocal_Isolation_Model.Model.model",
+        "description": "Vocal_Isolation_Model.Model.model",
+        "isExtraImport": true,
+        "detail": "Vocal_Isolation_Model.Model.model",
         "documentation": {}
     },
     {
@@ -87,28 +129,44 @@
         "documentation": {}
     },
     {
-        "label": "UNet",
-        "importPath": "Vocal_Isolation_Model.Model.model",
-        "description": "Vocal_Isolation_Model.Model.model",
-        "isExtraImport": true,
-        "detail": "Vocal_Isolation_Model.Model.model",
-        "documentation": {}
-    },
-    {
-        "label": "MUSDB18Dataset",
-        "importPath": "Vocal_Isolation_Model.Data.dataset",
-        "description": "Vocal_Isolation_Model.Data.dataset",
-        "isExtraImport": true,
-        "detail": "Vocal_Isolation_Model.Data.dataset",
-        "documentation": {}
-    },
-    {
-        "label": "matplotlib.pyplot",
+        "label": "sys",
         "kind": 6,
         "isExtraImport": true,
-        "importPath": "matplotlib.pyplot",
-        "description": "matplotlib.pyplot",
-        "detail": "matplotlib.pyplot",
+        "importPath": "sys",
+        "description": "sys",
+        "detail": "sys",
+        "documentation": {}
+    },
+    {
+        "label": "MUSDB18StemDataset",
+        "importPath": "Model.Data.dataset",
+        "description": "Model.Data.dataset",
+        "isExtraImport": true,
+        "detail": "Model.Data.dataset",
+        "documentation": {}
+    },
+    {
+        "label": "MUSDB18StemDataset",
+        "importPath": "Model.Data.dataset",
+        "description": "Model.Data.dataset",
+        "isExtraImport": true,
+        "detail": "Model.Data.dataset",
+        "documentation": {}
+    },
+    {
+        "label": "UNet",
+        "importPath": "Model.Model.model",
+        "description": "Model.Model.model",
+        "isExtraImport": true,
+        "detail": "Model.Model.model",
+        "documentation": {}
+    },
+    {
+        "label": "UNet",
+        "importPath": "Model.Model.model",
+        "description": "Model.Model.model",
+        "isExtraImport": true,
+        "detail": "Model.Model.model",
         "documentation": {}
     },
     {
@@ -118,31 +176,6 @@
         "importPath": "onnxruntime",
         "description": "onnxruntime",
         "detail": "onnxruntime",
-        "documentation": {}
-    },
-    {
-        "label": "soundfile",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "soundfile",
-        "description": "soundfile",
-        "detail": "soundfile",
-        "documentation": {}
-    },
-    {
-        "label": "UNet",
-        "importPath": "Model.model",
-        "description": "Model.model",
-        "isExtraImport": true,
-        "detail": "Model.model",
-        "documentation": {}
-    },
-    {
-        "label": "UNet",
-        "importPath": "Model.model",
-        "description": "Model.model",
-        "isExtraImport": true,
-        "detail": "Model.model",
         "documentation": {}
     },
     {
@@ -156,199 +189,236 @@
     },
     {
         "label": "MUSDB18StemDataset",
-        "importPath": "Data.dataset",
-        "description": "Data.dataset",
-        "isExtraImport": true,
-        "detail": "Data.dataset",
-        "documentation": {}
-    },
-    {
-        "label": "MUSDB18StemDataset",
         "kind": 6,
-        "importPath": "Vocal_Isolation_Model.Data.dataset",
-        "description": "Vocal_Isolation_Model.Data.dataset",
+        "importPath": "Model.Data.dataset",
+        "description": "Model.Data.dataset",
         "peekOfCode": "class MUSDB18StemDataset(Dataset):\n    def __init__(self,root_dir,subset='train',sr=44100,n_fft=1024,hop_length=256,max_length=10000, max_files=None):\n        self.root_dir = os.path.join(root_dir,subset) #Path to train/test folder\n        self.sr = sr #sampling rate\n        self.n_fft= n_fft #Number of FFT components\n        self.hop_length = hop_length #Hop length for STFT\n        self.max_length = max_length #fixed length for all spectrograms\n        self.file_paths = [\n            os.path.join(self.root_dir,file) #Collect all `.mp4` files in the folder.\n                           for file in os.listdir(self.root_dir)",
-        "detail": "Vocal_Isolation_Model.Data.dataset",
-        "documentation": {}
-    },
-    {
-        "label": "create_and_save_model",
-        "kind": 2,
-        "importPath": "Vocal_Isolation_Model.Model.create_model",
-        "description": "Vocal_Isolation_Model.Model.create_model",
-        "peekOfCode": "def create_and_save_model(input_shape, in_channels=1, out_channels=1, save_path=\"unet_vocal_isolation.pth\"):\n    \"\"\"\n    Creates a U-Net model, validates it with a random tensor, and saves it.\n    Args:\n        input_shape (tuple): Shape of the input tensor (batch_size, channels, height, width).\n        in_channels (int): Number of input channels for the U-Net model.\n        out_channels (int): Number of output channels for the U-Net model.\n        save_path (str): Path to save the model state dictionary.\n    \"\"\"\n    # Select the device (GPU if available, else CPU)",
-        "detail": "Vocal_Isolation_Model.Model.create_model",
-        "documentation": {}
-    },
-    {
-        "label": "UNet",
-        "kind": 6,
-        "importPath": "Vocal_Isolation_Model.Model.model",
-        "description": "Vocal_Isolation_Model.Model.model",
-        "peekOfCode": "class UNet(nn.Module): \n    def __init__(self, in_channels=1, out_channels=1, features=[16, 32, 64, 128]): \n        super(UNet, self).__init__()\n        # encoder\n        self.encoder = nn.ModuleList()\n        for feature in features:\n            self.encoder.append(self.conv_block(in_channels, feature))\n            in_channels = feature\n        # bottleneck\n        self.bottleneck = self.conv_block(features[-1], features[-1] * 2)",
-        "detail": "Vocal_Isolation_Model.Model.model",
-        "documentation": {}
-    },
-    {
-        "label": "root_dir",
-        "kind": 5,
-        "importPath": "Vocal_Isolation_Model.ONNX.Convert_to_ONNX",
-        "description": "Vocal_Isolation_Model.ONNX.Convert_to_ONNX",
-        "peekOfCode": "root_dir = r\"C:\\Users\\didri\\Downloads\\musdb18\"\ndataset = MUSDB18Dataset(root_dir=root_dir,subset=\"train\")\n# Convert tensor to NumPy for visualization\n# Get one sample from the dataset\nmixture_tensor, vocals_tensor = dataset[0]\nmixture_np = mixture_tensor.squeeze().numpy()\nplt.imshow(mixture_np, aspect=\"auto\", origin=\"lower\")\nplt.title(\"Mixture Spectrogram\")\nplt.colorbar()\nplt.show()",
-        "detail": "Vocal_Isolation_Model.ONNX.Convert_to_ONNX",
-        "documentation": {}
-    },
-    {
-        "label": "dataset",
-        "kind": 5,
-        "importPath": "Vocal_Isolation_Model.ONNX.Convert_to_ONNX",
-        "description": "Vocal_Isolation_Model.ONNX.Convert_to_ONNX",
-        "peekOfCode": "dataset = MUSDB18Dataset(root_dir=root_dir,subset=\"train\")\n# Convert tensor to NumPy for visualization\n# Get one sample from the dataset\nmixture_tensor, vocals_tensor = dataset[0]\nmixture_np = mixture_tensor.squeeze().numpy()\nplt.imshow(mixture_np, aspect=\"auto\", origin=\"lower\")\nplt.title(\"Mixture Spectrogram\")\nplt.colorbar()\nplt.show()\nprint(f\"Shape of mixture tensor: {mixture_tensor.shape}\")",
-        "detail": "Vocal_Isolation_Model.ONNX.Convert_to_ONNX",
-        "documentation": {}
-    },
-    {
-        "label": "mixture_np",
-        "kind": 5,
-        "importPath": "Vocal_Isolation_Model.ONNX.Convert_to_ONNX",
-        "description": "Vocal_Isolation_Model.ONNX.Convert_to_ONNX",
-        "peekOfCode": "mixture_np = mixture_tensor.squeeze().numpy()\nplt.imshow(mixture_np, aspect=\"auto\", origin=\"lower\")\nplt.title(\"Mixture Spectrogram\")\nplt.colorbar()\nplt.show()\nprint(f\"Shape of mixture tensor: {mixture_tensor.shape}\")\nprint(f\"Shape of vocals tensor: {vocals_tensor.shape}\")\n# Reshape the tensor for batch dimension\ninput_tensor = mixture_tensor.unsqueeze(0)\n#Initialize the model",
-        "detail": "Vocal_Isolation_Model.ONNX.Convert_to_ONNX",
-        "documentation": {}
-    },
-    {
-        "label": "input_tensor",
-        "kind": 5,
-        "importPath": "Vocal_Isolation_Model.ONNX.Convert_to_ONNX",
-        "description": "Vocal_Isolation_Model.ONNX.Convert_to_ONNX",
-        "peekOfCode": "input_tensor = mixture_tensor.unsqueeze(0)\n#Initialize the model\nmodel = UNet(in_channels=1,out_channels=1)\nmodel.load_state_dict(torch.load(\"vocal_isolation_unet.pth\"))\nmodel.eval()\n#Save to ONNX\nonnx_path = \"Vocal_Isolation_UNet.onnx\"\ntorch.onnx.export(\n    model,\n    input_tensor,",
-        "detail": "Vocal_Isolation_Model.ONNX.Convert_to_ONNX",
-        "documentation": {}
-    },
-    {
-        "label": "model",
-        "kind": 5,
-        "importPath": "Vocal_Isolation_Model.ONNX.Convert_to_ONNX",
-        "description": "Vocal_Isolation_Model.ONNX.Convert_to_ONNX",
-        "peekOfCode": "model = UNet(in_channels=1,out_channels=1)\nmodel.load_state_dict(torch.load(\"vocal_isolation_unet.pth\"))\nmodel.eval()\n#Save to ONNX\nonnx_path = \"Vocal_Isolation_UNet.onnx\"\ntorch.onnx.export(\n    model,\n    input_tensor,\n    onnx_path,\n    export_params=True,",
-        "detail": "Vocal_Isolation_Model.ONNX.Convert_to_ONNX",
-        "documentation": {}
-    },
-    {
-        "label": "onnx_path",
-        "kind": 5,
-        "importPath": "Vocal_Isolation_Model.ONNX.Convert_to_ONNX",
-        "description": "Vocal_Isolation_Model.ONNX.Convert_to_ONNX",
-        "peekOfCode": "onnx_path = \"Vocal_Isolation_UNet.onnx\"\ntorch.onnx.export(\n    model,\n    input_tensor,\n    onnx_path,\n    export_params=True,\n    opset_version=11,\n    do_constant_folding=True,\n    input_name=[\"input\"],\n    output_names=[\"output\"],",
-        "detail": "Vocal_Isolation_Model.ONNX.Convert_to_ONNX",
-        "documentation": {}
-    },
-    {
-        "label": "onnx_model_path",
-        "kind": 5,
-        "importPath": "Vocal_Isolation_Model.ONNX.Test_Converted_ONNX",
-        "description": "Vocal_Isolation_Model.ONNX.Test_Converted_ONNX",
-        "peekOfCode": "onnx_model_path = \"Vocal_Isolation_UNet.onnx\"\nsession = ort.InferenceSession(onnx_model_path)\n#Prepare input for onnx\ninput_name = session.get_inputs()[0].name\noutput_name = session.get_outputs()[0].name \ninput_tensor = torch.randn(1,1,256,256)# Replace with real data or correct dimensions\ninput_data = input_tensor.cpu().numpy()\nresult = session.run([output_name],{input_name: input_data})\nprint(\"ONNX Inference Result\",np.array(result).shape)",
-        "detail": "Vocal_Isolation_Model.ONNX.Test_Converted_ONNX",
-        "documentation": {}
-    },
-    {
-        "label": "session",
-        "kind": 5,
-        "importPath": "Vocal_Isolation_Model.ONNX.Test_Converted_ONNX",
-        "description": "Vocal_Isolation_Model.ONNX.Test_Converted_ONNX",
-        "peekOfCode": "session = ort.InferenceSession(onnx_model_path)\n#Prepare input for onnx\ninput_name = session.get_inputs()[0].name\noutput_name = session.get_outputs()[0].name \ninput_tensor = torch.randn(1,1,256,256)# Replace with real data or correct dimensions\ninput_data = input_tensor.cpu().numpy()\nresult = session.run([output_name],{input_name: input_data})\nprint(\"ONNX Inference Result\",np.array(result).shape)",
-        "detail": "Vocal_Isolation_Model.ONNX.Test_Converted_ONNX",
-        "documentation": {}
-    },
-    {
-        "label": "input_name",
-        "kind": 5,
-        "importPath": "Vocal_Isolation_Model.ONNX.Test_Converted_ONNX",
-        "description": "Vocal_Isolation_Model.ONNX.Test_Converted_ONNX",
-        "peekOfCode": "input_name = session.get_inputs()[0].name\noutput_name = session.get_outputs()[0].name \ninput_tensor = torch.randn(1,1,256,256)# Replace with real data or correct dimensions\ninput_data = input_tensor.cpu().numpy()\nresult = session.run([output_name],{input_name: input_data})\nprint(\"ONNX Inference Result\",np.array(result).shape)",
-        "detail": "Vocal_Isolation_Model.ONNX.Test_Converted_ONNX",
-        "documentation": {}
-    },
-    {
-        "label": "output_name",
-        "kind": 5,
-        "importPath": "Vocal_Isolation_Model.ONNX.Test_Converted_ONNX",
-        "description": "Vocal_Isolation_Model.ONNX.Test_Converted_ONNX",
-        "peekOfCode": "output_name = session.get_outputs()[0].name \ninput_tensor = torch.randn(1,1,256,256)# Replace with real data or correct dimensions\ninput_data = input_tensor.cpu().numpy()\nresult = session.run([output_name],{input_name: input_data})\nprint(\"ONNX Inference Result\",np.array(result).shape)",
-        "detail": "Vocal_Isolation_Model.ONNX.Test_Converted_ONNX",
-        "documentation": {}
-    },
-    {
-        "label": "input_tensor",
-        "kind": 5,
-        "importPath": "Vocal_Isolation_Model.ONNX.Test_Converted_ONNX",
-        "description": "Vocal_Isolation_Model.ONNX.Test_Converted_ONNX",
-        "peekOfCode": "input_tensor = torch.randn(1,1,256,256)# Replace with real data or correct dimensions\ninput_data = input_tensor.cpu().numpy()\nresult = session.run([output_name],{input_name: input_data})\nprint(\"ONNX Inference Result\",np.array(result).shape)",
-        "detail": "Vocal_Isolation_Model.ONNX.Test_Converted_ONNX",
-        "documentation": {}
-    },
-    {
-        "label": "input_data",
-        "kind": 5,
-        "importPath": "Vocal_Isolation_Model.ONNX.Test_Converted_ONNX",
-        "description": "Vocal_Isolation_Model.ONNX.Test_Converted_ONNX",
-        "peekOfCode": "input_data = input_tensor.cpu().numpy()\nresult = session.run([output_name],{input_name: input_data})\nprint(\"ONNX Inference Result\",np.array(result).shape)",
-        "detail": "Vocal_Isolation_Model.ONNX.Test_Converted_ONNX",
-        "documentation": {}
-    },
-    {
-        "label": "result",
-        "kind": 5,
-        "importPath": "Vocal_Isolation_Model.ONNX.Test_Converted_ONNX",
-        "description": "Vocal_Isolation_Model.ONNX.Test_Converted_ONNX",
-        "peekOfCode": "result = session.run([output_name],{input_name: input_data})\nprint(\"ONNX Inference Result\",np.array(result).shape)",
-        "detail": "Vocal_Isolation_Model.ONNX.Test_Converted_ONNX",
+        "detail": "Model.Data.dataset",
         "documentation": {}
     },
     {
         "label": "load_audio",
         "kind": 2,
-        "importPath": "Vocal_Isolation_Model.Evaluation",
-        "description": "Vocal_Isolation_Model.Evaluation",
-        "peekOfCode": "def load_audio(file_path,sr=44100,n_fft=1024,hop_length=256):\n    audio, _ = librosa.load(file_path, sr=sr, mono=True)\n    audio /= np.max(np.abs(audio)) #Normalize to [-1, 1]\n    stft = librosa.stft(audio, n_fft=n_fft, hop_length=hop_length)\n    magnitude = np.abs(stft)\n    return magnitude, stft\n#Reconstructs a audiofile from magnitude and phase with help by a invers STFT.\ndef reconstruct_audio(magnitude, phase, sr=44100, n_fft=1024, hop_length=256):\n    stft = magnitude * np.exp(1j * phase) #Combines magnitude with phase\n    audio = librosa.istft(stft, hop_length=hop_length)",
-        "detail": "Vocal_Isolation_Model.Evaluation",
+        "importPath": "Model.Evaluation.Evaluation",
+        "description": "Model.Evaluation.Evaluation",
+        "peekOfCode": "def load_audio(file_path, sr=44100, n_fft=1024, hop_length=256):\n    audio, _ = librosa.load(file_path, sr=sr, mono=True)\n    audio /= np.max(np.abs(audio))  # Normaliser til [-1, 1]\n    stft = librosa.stft(audio, n_fft=n_fft, hop_length=hop_length)\n    magnitude = np.abs(stft)\n    return magnitude, stft\ndef reconstruct_audio(magnitude, phase, sr=44100, n_fft=1024, hop_length=256):\n    stft = magnitude * np.exp(1j * phase)  # Kombiner magnitude med fase\n    audio = librosa.istft(stft, hop_length=hop_length)\n    return audio",
+        "detail": "Model.Evaluation.Evaluation",
         "documentation": {}
     },
     {
         "label": "reconstruct_audio",
         "kind": 2,
-        "importPath": "Vocal_Isolation_Model.Evaluation",
-        "description": "Vocal_Isolation_Model.Evaluation",
-        "peekOfCode": "def reconstruct_audio(magnitude, phase, sr=44100, n_fft=1024, hop_length=256):\n    stft = magnitude * np.exp(1j * phase) #Combines magnitude with phase\n    audio = librosa.istft(stft, hop_length=hop_length)\n    return audio\n#Evaluates the model on a audiofile and stores the seperated vocals.\ndef evaluate_model(model_path,audio_file, output_file, sr=44100, n_fft=1024, hop_length=256):\n    #LOAD THE MODEL\n    device = torch.device(\"cuda\" if torch.cuda.is_available() else \"cpu\")\n    model = UNet(in_channels=1, out_channels=1).to(device)\n    model.load_state_dict(torch.load(model_path, map_location=device,weights_only=True))",
-        "detail": "Vocal_Isolation_Model.Evaluation",
+        "importPath": "Model.Evaluation.Evaluation",
+        "description": "Model.Evaluation.Evaluation",
+        "peekOfCode": "def reconstruct_audio(magnitude, phase, sr=44100, n_fft=1024, hop_length=256):\n    stft = magnitude * np.exp(1j * phase)  # Kombiner magnitude med fase\n    audio = librosa.istft(stft, hop_length=hop_length)\n    return audio\ndef evaluate_model(model_path, audio_file, output_file, sr=44100, n_fft=1024, hop_length=256):\n    # Last inn modellen\n    device = torch.device(\"cuda\" if torch.cuda.is_available() else \"cpu\")\n    model = UNet(in_channels=1, out_channels=1).to(device)\n    model.load_state_dict(torch.load(model_path, map_location=device, weights_only=True))\n    model.eval()",
+        "detail": "Model.Evaluation.Evaluation",
         "documentation": {}
     },
     {
         "label": "evaluate_model",
         "kind": 2,
-        "importPath": "Vocal_Isolation_Model.Evaluation",
-        "description": "Vocal_Isolation_Model.Evaluation",
-        "peekOfCode": "def evaluate_model(model_path,audio_file, output_file, sr=44100, n_fft=1024, hop_length=256):\n    #LOAD THE MODEL\n    device = torch.device(\"cuda\" if torch.cuda.is_available() else \"cpu\")\n    model = UNet(in_channels=1, out_channels=1).to(device)\n    model.load_state_dict(torch.load(model_path, map_location=device,weights_only=True))\n    model.eval()\n    #LOAD IN & PROCESS INPUT AUDIOFILE\n    input_magnitude, input_stft = load_audio(audio_file, sr ,n_fft, hop_length)\n    input_phase = np.angle(input_stft) #Phase for reconstruction later\n    input_tensor = torch.tensor(input_magnitude, dtype=torch.float32).unsqueeze(0).unsqueeze(0).to(device)",
-        "detail": "Vocal_Isolation_Model.Evaluation",
+        "importPath": "Model.Evaluation.Evaluation",
+        "description": "Model.Evaluation.Evaluation",
+        "peekOfCode": "def evaluate_model(model_path, audio_file, output_file, sr=44100, n_fft=1024, hop_length=256):\n    # Last inn modellen\n    device = torch.device(\"cuda\" if torch.cuda.is_available() else \"cpu\")\n    model = UNet(in_channels=1, out_channels=1).to(device)\n    model.load_state_dict(torch.load(model_path, map_location=device, weights_only=True))\n    model.eval()\n    # Last inn og prosesser input lydfil\n    input_magnitude, input_stft = load_audio(audio_file, sr, n_fft, hop_length)\n    input_phase = np.angle(input_stft)  # Fasen for å rekonstruere senere\n    input_tensor = torch.tensor(input_magnitude, dtype=torch.float32).unsqueeze(0).unsqueeze(0).to(device)",
+        "detail": "Model.Evaluation.Evaluation",
+        "documentation": {}
+    },
+    {
+        "label": "load_audio",
+        "kind": 2,
+        "importPath": "Model.Evaluation.Evaluation_with_capcut",
+        "description": "Model.Evaluation.Evaluation_with_capcut",
+        "peekOfCode": "def load_audio(file_path, sr=44100, n_fft=1024, hop_length=256):\n    audio, _ = librosa.load(file_path, sr=sr, mono=True)\n    audio /= np.max(np.abs(audio))  # Normalize to [-1, 1]\n    stft = librosa.stft(audio, n_fft=n_fft, hop_length=hop_length)\n    magnitude = np.abs(stft)\n    return magnitude, stft\ndef reconstruct_audio(magnitude, phase, sr=44100, n_fft=1024, hop_length=256):\n    stft = magnitude * np.exp(1j * phase)  # Combine magnitude with phase\n    audio = librosa.istft(stft, hop_length=hop_length)\n    return audio",
+        "detail": "Model.Evaluation.Evaluation_with_capcut",
+        "documentation": {}
+    },
+    {
+        "label": "reconstruct_audio",
+        "kind": 2,
+        "importPath": "Model.Evaluation.Evaluation_with_capcut",
+        "description": "Model.Evaluation.Evaluation_with_capcut",
+        "peekOfCode": "def reconstruct_audio(magnitude, phase, sr=44100, n_fft=1024, hop_length=256):\n    stft = magnitude * np.exp(1j * phase)  # Combine magnitude with phase\n    audio = librosa.istft(stft, hop_length=hop_length)\n    return audio\ndef evaluate_and_compare(model_path, input_audio, capcut_audio, output_audio, sr=44100, n_fft=1024, hop_length=256):\n    device = torch.device(\"cuda\" if torch.cuda.is_available() else \"cpu\")\n    model = UNet(in_channels=1, out_channels=1).to(device)\n    model.load_state_dict(torch.load(model_path, map_location=device))\n    model.eval()\n    input_magnitude, input_stft = load_audio(input_audio, sr, n_fft, hop_length)",
+        "detail": "Model.Evaluation.Evaluation_with_capcut",
+        "documentation": {}
+    },
+    {
+        "label": "evaluate_and_compare",
+        "kind": 2,
+        "importPath": "Model.Evaluation.Evaluation_with_capcut",
+        "description": "Model.Evaluation.Evaluation_with_capcut",
+        "peekOfCode": "def evaluate_and_compare(model_path, input_audio, capcut_audio, output_audio, sr=44100, n_fft=1024, hop_length=256):\n    device = torch.device(\"cuda\" if torch.cuda.is_available() else \"cpu\")\n    model = UNet(in_channels=1, out_channels=1).to(device)\n    model.load_state_dict(torch.load(model_path, map_location=device))\n    model.eval()\n    input_magnitude, input_stft = load_audio(input_audio, sr, n_fft, hop_length)\n    input_phase = np.angle(input_stft)\n    input_tensor = torch.tensor(input_magnitude, dtype=torch.float32).unsqueeze(0).unsqueeze(0).to(device)\n    with torch.no_grad():\n        output_tensor = model(input_tensor)",
+        "detail": "Model.Evaluation.Evaluation_with_capcut",
+        "documentation": {}
+    },
+    {
+        "label": "create_and_save_model",
+        "kind": 2,
+        "importPath": "Model.Model.create_model",
+        "description": "Model.Model.create_model",
+        "peekOfCode": "def create_and_save_model(input_shape, in_channels=1, out_channels=1, save_path=\"unet_vocal_isolation.pth\"):\n    \"\"\"\n    Creates a U-Net model, validates it with a random tensor, and saves it.\n    Args:\n        input_shape (tuple): Shape of the input tensor (batch_size, channels, height, width).\n        in_channels (int): Number of input channels for the U-Net model.\n        out_channels (int): Number of output channels for the U-Net model.\n        save_path (str): Path to save the model state dictionary.\n    \"\"\"\n    # Select the device (GPU if available, else CPU)",
+        "detail": "Model.Model.create_model",
+        "documentation": {}
+    },
+    {
+        "label": "UNet",
+        "kind": 6,
+        "importPath": "Model.Model.model",
+        "description": "Model.Model.model",
+        "peekOfCode": "class UNet(nn.Module): \n    def __init__(self, in_channels=1, out_channels=1, features=[16, 32, 64, 128]): \n        super(UNet, self).__init__()\n        # encoder\n        self.encoder = nn.ModuleList()\n        for feature in features:\n            self.encoder.append(self.conv_block(in_channels, feature))\n            in_channels = feature\n        # bottleneck\n        self.bottleneck = self.conv_block(features[-1], features[-1] * 2)",
+        "detail": "Model.Model.model",
+        "documentation": {}
+    },
+    {
+        "label": "project_root",
+        "kind": 5,
+        "importPath": "Model.ONNX.Convert_to_ONNX",
+        "description": "Model.ONNX.Convert_to_ONNX",
+        "peekOfCode": "project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), \"../..\"))\nsys.path.insert(0, project_root)  # Use insert(0) to prioritize this path\nfrom Model.Data.dataset import MUSDB18StemDataset\nfrom Model.Model.model import UNet\nimport matplotlib.pyplot as plt\n# Load the dataset\nroot_dir = r\"C:\\mappe1\\musdb18\"\ndataset = MUSDB18StemDataset(root_dir=root_dir,subset=\"train\")\n# Convert tensor to NumPy for visualization\n# Get one sample from the dataset",
+        "detail": "Model.ONNX.Convert_to_ONNX",
+        "documentation": {}
+    },
+    {
+        "label": "root_dir",
+        "kind": 5,
+        "importPath": "Model.ONNX.Convert_to_ONNX",
+        "description": "Model.ONNX.Convert_to_ONNX",
+        "peekOfCode": "root_dir = r\"C:\\mappe1\\musdb18\"\ndataset = MUSDB18StemDataset(root_dir=root_dir,subset=\"train\")\n# Convert tensor to NumPy for visualization\n# Get one sample from the dataset\nmixture_tensor, vocals_tensor = dataset[0]\nmixture_np = mixture_tensor.squeeze().numpy()\nplt.imshow(mixture_np, aspect=\"auto\", origin=\"lower\")\nplt.title(\"Mixture Spectrogram\")\nplt.colorbar()\nplt.show()",
+        "detail": "Model.ONNX.Convert_to_ONNX",
+        "documentation": {}
+    },
+    {
+        "label": "dataset",
+        "kind": 5,
+        "importPath": "Model.ONNX.Convert_to_ONNX",
+        "description": "Model.ONNX.Convert_to_ONNX",
+        "peekOfCode": "dataset = MUSDB18StemDataset(root_dir=root_dir,subset=\"train\")\n# Convert tensor to NumPy for visualization\n# Get one sample from the dataset\nmixture_tensor, vocals_tensor = dataset[0]\nmixture_np = mixture_tensor.squeeze().numpy()\nplt.imshow(mixture_np, aspect=\"auto\", origin=\"lower\")\nplt.title(\"Mixture Spectrogram\")\nplt.colorbar()\nplt.show()\nprint(f\"Shape of mixture tensor: {mixture_tensor.shape}\")",
+        "detail": "Model.ONNX.Convert_to_ONNX",
+        "documentation": {}
+    },
+    {
+        "label": "mixture_np",
+        "kind": 5,
+        "importPath": "Model.ONNX.Convert_to_ONNX",
+        "description": "Model.ONNX.Convert_to_ONNX",
+        "peekOfCode": "mixture_np = mixture_tensor.squeeze().numpy()\nplt.imshow(mixture_np, aspect=\"auto\", origin=\"lower\")\nplt.title(\"Mixture Spectrogram\")\nplt.colorbar()\nplt.show()\nprint(f\"Shape of mixture tensor: {mixture_tensor.shape}\")\nprint(f\"Shape of vocals tensor: {vocals_tensor.shape}\")\n# Reshape the tensor for batch dimension\ninput_tensor = mixture_tensor.unsqueeze(0)\n#Initialize the model",
+        "detail": "Model.ONNX.Convert_to_ONNX",
+        "documentation": {}
+    },
+    {
+        "label": "input_tensor",
+        "kind": 5,
+        "importPath": "Model.ONNX.Convert_to_ONNX",
+        "description": "Model.ONNX.Convert_to_ONNX",
+        "peekOfCode": "input_tensor = mixture_tensor.unsqueeze(0)\n#Initialize the model\nmodel = UNet(in_channels=1,out_channels=1)\nmodel.load_state_dict(torch.load(r\"C:\\Users\\didri\\Desktop\\AI AudioEnchancer\\UNet_Model\\unet_vocal_isolation.pth\",weights_only=True))\nmodel.eval()\n#Save to ONNX\nonnx_path = r\"C:\\Users\\didri\\Desktop\\AI AudioEnchancer\\Model\\ONNX\\ONNX_Model_files\\Vocal_Isolation_UNet.onnx\"\ntorch.onnx.export(\n    model,\n    input_tensor,",
+        "detail": "Model.ONNX.Convert_to_ONNX",
+        "documentation": {}
+    },
+    {
+        "label": "model",
+        "kind": 5,
+        "importPath": "Model.ONNX.Convert_to_ONNX",
+        "description": "Model.ONNX.Convert_to_ONNX",
+        "peekOfCode": "model = UNet(in_channels=1,out_channels=1)\nmodel.load_state_dict(torch.load(r\"C:\\Users\\didri\\Desktop\\AI AudioEnchancer\\UNet_Model\\unet_vocal_isolation.pth\",weights_only=True))\nmodel.eval()\n#Save to ONNX\nonnx_path = r\"C:\\Users\\didri\\Desktop\\AI AudioEnchancer\\Model\\ONNX\\ONNX_Model_files\\Vocal_Isolation_UNet.onnx\"\ntorch.onnx.export(\n    model,\n    input_tensor,\n    onnx_path,\n    export_params=True,",
+        "detail": "Model.ONNX.Convert_to_ONNX",
+        "documentation": {}
+    },
+    {
+        "label": "onnx_path",
+        "kind": 5,
+        "importPath": "Model.ONNX.Convert_to_ONNX",
+        "description": "Model.ONNX.Convert_to_ONNX",
+        "peekOfCode": "onnx_path = r\"C:\\Users\\didri\\Desktop\\AI AudioEnchancer\\Model\\ONNX\\ONNX_Model_files\\Vocal_Isolation_UNet.onnx\"\ntorch.onnx.export(\n    model,\n    input_tensor,\n    onnx_path,\n    export_params=True,\n    opset_version=11,\n    do_constant_folding=True,\n    input_names=[\"input\"], \n    output_names=[\"output\"],",
+        "detail": "Model.ONNX.Convert_to_ONNX",
+        "documentation": {}
+    },
+    {
+        "label": "onnx_model_path",
+        "kind": 5,
+        "importPath": "Model.ONNX.Test_Converted_ONNX",
+        "description": "Model.ONNX.Test_Converted_ONNX",
+        "peekOfCode": "onnx_model_path = \"Vocal_Isolation_UNet.onnx\"\nsession = ort.InferenceSession(onnx_model_path)\n#Prepare input for onnx\ninput_name = session.get_inputs()[0].name\noutput_name = session.get_outputs()[0].name \ninput_tensor = torch.randn(1,1,256,256)\ninput_data = input_tensor.cpu().numpy()\nresult = session.run([output_name],{input_name: input_data})\nprint(\"ONNX Inference Result\",np.array(result).shape)",
+        "detail": "Model.ONNX.Test_Converted_ONNX",
+        "documentation": {}
+    },
+    {
+        "label": "session",
+        "kind": 5,
+        "importPath": "Model.ONNX.Test_Converted_ONNX",
+        "description": "Model.ONNX.Test_Converted_ONNX",
+        "peekOfCode": "session = ort.InferenceSession(onnx_model_path)\n#Prepare input for onnx\ninput_name = session.get_inputs()[0].name\noutput_name = session.get_outputs()[0].name \ninput_tensor = torch.randn(1,1,256,256)\ninput_data = input_tensor.cpu().numpy()\nresult = session.run([output_name],{input_name: input_data})\nprint(\"ONNX Inference Result\",np.array(result).shape)",
+        "detail": "Model.ONNX.Test_Converted_ONNX",
+        "documentation": {}
+    },
+    {
+        "label": "input_name",
+        "kind": 5,
+        "importPath": "Model.ONNX.Test_Converted_ONNX",
+        "description": "Model.ONNX.Test_Converted_ONNX",
+        "peekOfCode": "input_name = session.get_inputs()[0].name\noutput_name = session.get_outputs()[0].name \ninput_tensor = torch.randn(1,1,256,256)\ninput_data = input_tensor.cpu().numpy()\nresult = session.run([output_name],{input_name: input_data})\nprint(\"ONNX Inference Result\",np.array(result).shape)",
+        "detail": "Model.ONNX.Test_Converted_ONNX",
+        "documentation": {}
+    },
+    {
+        "label": "output_name",
+        "kind": 5,
+        "importPath": "Model.ONNX.Test_Converted_ONNX",
+        "description": "Model.ONNX.Test_Converted_ONNX",
+        "peekOfCode": "output_name = session.get_outputs()[0].name \ninput_tensor = torch.randn(1,1,256,256)\ninput_data = input_tensor.cpu().numpy()\nresult = session.run([output_name],{input_name: input_data})\nprint(\"ONNX Inference Result\",np.array(result).shape)",
+        "detail": "Model.ONNX.Test_Converted_ONNX",
+        "documentation": {}
+    },
+    {
+        "label": "input_tensor",
+        "kind": 5,
+        "importPath": "Model.ONNX.Test_Converted_ONNX",
+        "description": "Model.ONNX.Test_Converted_ONNX",
+        "peekOfCode": "input_tensor = torch.randn(1,1,256,256)\ninput_data = input_tensor.cpu().numpy()\nresult = session.run([output_name],{input_name: input_data})\nprint(\"ONNX Inference Result\",np.array(result).shape)",
+        "detail": "Model.ONNX.Test_Converted_ONNX",
+        "documentation": {}
+    },
+    {
+        "label": "input_data",
+        "kind": 5,
+        "importPath": "Model.ONNX.Test_Converted_ONNX",
+        "description": "Model.ONNX.Test_Converted_ONNX",
+        "peekOfCode": "input_data = input_tensor.cpu().numpy()\nresult = session.run([output_name],{input_name: input_data})\nprint(\"ONNX Inference Result\",np.array(result).shape)",
+        "detail": "Model.ONNX.Test_Converted_ONNX",
+        "documentation": {}
+    },
+    {
+        "label": "result",
+        "kind": 5,
+        "importPath": "Model.ONNX.Test_Converted_ONNX",
+        "description": "Model.ONNX.Test_Converted_ONNX",
+        "peekOfCode": "result = session.run([output_name],{input_name: input_data})\nprint(\"ONNX Inference Result\",np.array(result).shape)",
+        "detail": "Model.ONNX.Test_Converted_ONNX",
         "documentation": {}
     },
     {
         "label": "train",
         "kind": 2,
-        "importPath": "Vocal_Isolation_Model.train",
-        "description": "Vocal_Isolation_Model.train",
-        "peekOfCode": "def train(load_model_path=None):\n    device = torch.device(\"cuda\" if torch.cuda.is_available() else \"cpu\")\n    print(f\"Device {device}\")\n    #HyperParameters\n    batch_size = 2 #Adjust if memory is an issue\n    learning_rate = 1e-4\n    epochs = 16\n    root_dir = r'C:\\mappe1\\musdb18'\n    #Dataset and DataLoader\n    dataset = MUSDB18StemDataset(",
-        "detail": "Vocal_Isolation_Model.train",
+        "importPath": "Model.Training.train",
+        "description": "Model.Training.train",
+        "peekOfCode": "def train(load_model_path=None):\n    device = torch.device(\"cuda\" if torch.cuda.is_available() else \"cpu\")\n    print(f\"Device {device}\")\n    #HyperParameters\n    batch_size = 4\n    learning_rate = 1e-5\n    epochs = 5\n    root_dir = r'C:\\mappe1\\musdb18'\n    #Dataset and DataLoader\n    dataset = MUSDB18StemDataset(",
+        "detail": "Model.Training.train",
         "documentation": {}
     },
     {
         "label": "test",
         "kind": 2,
-        "importPath": "Vocal_Isolation_Model.train",
-        "description": "Vocal_Isolation_Model.train",
+        "importPath": "Model.Training.train",
+        "description": "Model.Training.train",
         "peekOfCode": "def test(model,test_loader,device):\n    print(\"Evaluating the model on the test set...\")\n    model.eval()\n    criterion = nn.MSELoss()\n    test_loss = 0.0\n    with torch.no_grad():\n        for inputs, targets in test_loader:\n            inputs,targets = inputs.to(device,non_blocking=True), targets.to(device,non_blocking=True)\n            outputs = model(inputs)\n            loss = criterion(outputs,targets)",
-        "detail": "Vocal_Isolation_Model.train",
+        "detail": "Model.Training.train",
+        "documentation": {}
+    },
+    {
+        "label": "project_root",
+        "kind": 5,
+        "importPath": "Model.Training.train",
+        "description": "Model.Training.train",
+        "peekOfCode": "project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), \"../..\"))\nsys.path.insert(0, project_root)  # Use insert(0) to prioritize this path\nfrom Model.Data.dataset import MUSDB18StemDataset \nfrom Model.Model.model import UNet\ndef train(load_model_path=None):\n    device = torch.device(\"cuda\" if torch.cuda.is_available() else \"cpu\")\n    print(f\"Device {device}\")\n    #HyperParameters\n    batch_size = 4\n    learning_rate = 1e-5",
+        "detail": "Model.Training.train",
         "documentation": {}
     }
 ]
