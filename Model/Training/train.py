@@ -4,6 +4,8 @@ import torch.nn as nn
 from torch.utils.data import DataLoader
 import os
 import sys
+os.environ["PYTORCH_CUDA_ALLOC_CONF"] = "expandable_segments:True"
+
 project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), "../.."))
 sys.path.insert(0, project_root)  # Use insert(0) to prioritize this path
 from Model.Data.dataset import MUSDB18StemDataset 
@@ -15,9 +17,9 @@ def train(load_model_path=None):
     
     
     #HyperParameters
-    batch_size = 4
+    batch_size = 2
     learning_rate = 1e-4
-    epochs = 20
+    epochs = 30
     root_dir = r'C:\mappe1\musdb18'
     
     
@@ -26,12 +28,12 @@ def train(load_model_path=None):
         root_dir=root_dir,
         subset='train',
         sr=44100,
-        n_fft=1024, #Redce FFT size to save memory
-        hop_length=256, #Smaller hop length will result in better time resolution
-        max_length=10000,
-        max_files=100 #Max amount of songs retrived from the dataset folder.
+        n_fft=2048, #Redce FFT size to save memory
+        hop_length=512, #Smaller hop length will result in better time resolution
+        max_length=512,
+        max_files=150 #Max amount of songs retrived from the dataset folder.
         )
-    dataloader = DataLoader(dataset,batch_size=batch_size,shuffle=True,num_workers=4, pin_memory=True)
+    dataloader = DataLoader(dataset,batch_size=batch_size,shuffle=True,num_workers=8, pin_memory=True)
     
     
     
@@ -39,12 +41,12 @@ def train(load_model_path=None):
         root_dir=root_dir,
         subset='test',
         sr=44100,
-        n_fft=1024, #Redce FFT size to save memory
-        hop_length=256, #Smaller hop length will result in better time resolution
-        max_length=10000,
-        max_files=50 #Max amount of songs retrived from the dataset folder.
+        n_fft=2048, #Redce FFT size to save memory
+        hop_length=512, #Smaller hop length will result in better time resolution
+        max_length=512,
+        max_files=100 #Max amount of songs retrived from the dataset folder.
         )
-    val_loader = DataLoader(val_dataset, batch_size=batch_size, shuffle=False, num_workers=4, pin_memory=True)
+    val_loader = DataLoader(val_dataset, batch_size=batch_size, shuffle=False, num_workers=8, pin_memory=True)
     
     
     
@@ -55,10 +57,10 @@ def train(load_model_path=None):
         print(f"Loaded model from {load_model_path}")
         
     criterion = nn.MSELoss()
-    optimizer = optim.Adam(model.parameters(),lr=learning_rate,weight_decay=1e-5)
+    optimizer = optim.Adam(model.parameters(),lr=learning_rate,weight_decay=1e-4)
     scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(optimizer, 'min', patience=2, factor=0.5)
     
-    
+
     #Training loop
     for epoch in range(epochs):
         model.train()
@@ -80,21 +82,8 @@ def train(load_model_path=None):
             
             
             running_loss += loss.item()
-            
-            
-            #monitor GPU memory
-        if device == "cuda":
-              gpu_memory_used = torch.cuda.memory_allocated(device) / 1024 ** 2  # Allocated memory in MB
-              gpu_memory_reserved = torch.cuda.memory_reserved(device) / 1024 ** 2  # Reserved memory in MB
-              print(f"GPU memory allocated: {gpu_memory_used:.2f} MB, reserved: {gpu_memory_reserved:.2f} MB")
-
-        if gpu_memory_reserved > 10000:  # Set your threshold here (e.g., 10 GB)
-              print("High GPU memory usage detected. Clearing cache...")
-              torch.cuda.empty_cache()
-              gpu_memory_reserved_after = torch.cuda.memory_reserved(device) / 1024 ** 2
-              print(f"GPU memory reserved after clearing cache: {gpu_memory_reserved_after:.2f} MB")
-
-            
+        
+      
             
         print(f"Epoch [{epoch + 1}/{epochs}], Loss: {running_loss / len(dataloader):.4f}")
         

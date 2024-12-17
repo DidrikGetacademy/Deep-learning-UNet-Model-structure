@@ -1,0 +1,121 @@
+First Training 
+
+Memory problems ended up with this values.
+
+Training details
+------------------------------------
+batch_size: 2
+learning_rate: 1e-4
+epochs: 30
+
+
+dataset: MUSDB18STEMdataset
+sr=44100
+n_fft=2048
+hop_length=512,
+max_length=512
+max_files=150
+dataloader: num_workers = 8
+
+val_dataset: MUSDB18STEMdataset
+sr=44100
+n_fft=2048
+hop_length=512
+max_length=512
+max_files=100
+dataloader: num_workers = 8
+
+
+
+
+
+
+
+Performance under training
+--------------------------------------
+Epoch information log/details & values
+
+Epoch [15/30], Loss: 3.1031
+Epoch [15/30], Validation Loss: 0.8299
+
+
+Epoch [16/30], Loss: 3.0893
+Epoch [16/30], Validation Loss: 0.7510
+
+Epoch [17/30], Loss: 3.1452
+Epoch [17/30], Validation Loss: 0.7854
+
+Epoch [18/30], Loss: 3.0986
+Epoch [18/30], Validation Loss: 0.8160
+
+Epoch [19/30], Loss: 2.9498
+Epoch [19/30], Validation Loss: 0.8632
+
+Epoch [20/30], Loss: 3.0741
+Epoch [20/30], Validation Loss: 0.8344
+
+Epoch [21/30], Loss: 2.9625
+Epoch [21/30], Validation Loss: 0.8590
+
+Epoch [22/30], Loss: 2.8781
+Epoch [22/30], Validation Loss: 0.8633
+
+Epoch [23/30], Loss: 3.0147
+Epoch [23/30], Validation Loss: 0.8770
+
+Epoch [24/30], Loss: 2.9042
+Epoch [24/30], Validation Loss: 0.8668
+
+
+Epoch [25/30], Loss: 2.8041
+Epoch [25/30], Validation Loss: 0.9065
+
+Epoch [26/30], Loss: 2.8859
+Epoch [26/30], Validation Loss: 0.8771
+
+
+Epoch [27/30], Loss: 2.7282
+Epoch [27/30], Validation Loss: 0.8916
+
+
+Epoch [28/30], Loss: 2.7891
+Epoch [28/30], Validation Loss: 0.8869
+
+Epoch [29/30], Loss: 2.8888
+Epoch [29/30], Validation Loss: 0.8905
+
+Epoch [30/30], Loss: 2.7794
+Epoch [30/30], Validation Loss: 0.8848
+
+
+Training complete. Model saved.
+Evaluating the model on the test set...
+Test Loss: 0.8848
+Testing complete.
+
+
+
+MODEL PERFORMANCE SUMMARY
+-------------------------------------------
+Training loss: Gradually decreases but fluctuates, a weak improvement at the end
+
+validation loss: improves early on 0.8299 -> 0.7510 but becomes unstable after epoch 17 and ends at 0.8848
+
+Testloss: matches the last validation loss witch indicated that the model is not overfitting but rather stagnation  in improvement
+
+
+
+
+PROBLEMS
+------------------
+1. Small batch size: 2  limits the models generalization and causes unstable gradient updates.
+
+2. learning_rate 1e-4 is realtive low & combined with small batch_size, slows the convergence, (learning) for the model.
+
+3.Memory constrains: n_fft=2048 and sr=44100 with long max_length=512 are computationaly demanding. 
+
+
+
+
+SOLUTION FOR 2_training.txt
+--------------------------

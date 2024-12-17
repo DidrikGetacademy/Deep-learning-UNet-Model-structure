@@ -1,6 +1,10 @@
 import torch
-from Vocal_Isolation_Model.Model.model import UNet
-
+import os
+import sys
+os.environ["PYTORCH_CUDA_ALLOC_CONF"] = "expandable_segments:True"
+project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), "../.."))
+sys.path.insert(0, project_root)  # Use insert(0) to prioritize this path
+from Model.Model.model import UNet
 def create_and_save_model(input_shape, in_channels=1, out_channels=1, save_path="unet_vocal_isolation.pth"):
     """
     Creates a U-Net model, validates it with a random tensor, and saves it.

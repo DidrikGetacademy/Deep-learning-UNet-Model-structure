@@ -129,10 +129,10 @@
     },
     {
         "label": "UNet",
-        "importPath": "Vocal_Isolation_Model.Model.model",
-        "description": "Vocal_Isolation_Model.Model.model",
+        "importPath": "Model.Model.model",
+        "description": "Model.Model.model",
         "isExtraImport": true,
-        "detail": "Vocal_Isolation_Model.Model.model",
+        "detail": "Model.Model.model",
         "documentation": {}
     },
     {
@@ -265,6 +265,24 @@
         "importPath": "Model.Model.create_model",
         "description": "Model.Model.create_model",
         "peekOfCode": "def create_and_save_model(input_shape, in_channels=1, out_channels=1, save_path=\"unet_vocal_isolation.pth\"):\n    \"\"\"\n    Creates a U-Net model, validates it with a random tensor, and saves it.\n    Args:\n        input_shape (tuple): Shape of the input tensor (batch_size, channels, height, width).\n        in_channels (int): Number of input channels for the U-Net model.\n        out_channels (int): Number of output channels for the U-Net model.\n        save_path (str): Path to save the model state dictionary.\n    \"\"\"\n    # Select the device (GPU if available, else CPU)",
+        "detail": "Model.Model.create_model",
+        "documentation": {}
+    },
+    {
+        "label": "os.environ[\"PYTORCH_CUDA_ALLOC_CONF\"]",
+        "kind": 5,
+        "importPath": "Model.Model.create_model",
+        "description": "Model.Model.create_model",
+        "peekOfCode": "os.environ[\"PYTORCH_CUDA_ALLOC_CONF\"] = \"expandable_segments:True\"\nproject_root = os.path.abspath(os.path.join(os.path.dirname(__file__), \"../..\"))\nsys.path.insert(0, project_root)  # Use insert(0) to prioritize this path\nfrom Model.Model.model import UNet\ndef create_and_save_model(input_shape, in_channels=1, out_channels=1, save_path=\"unet_vocal_isolation.pth\"):\n    \"\"\"\n    Creates a U-Net model, validates it with a random tensor, and saves it.\n    Args:\n        input_shape (tuple): Shape of the input tensor (batch_size, channels, height, width).\n        in_channels (int): Number of input channels for the U-Net model.",
+        "detail": "Model.Model.create_model",
+        "documentation": {}
+    },
+    {
+        "label": "project_root",
+        "kind": 5,
+        "importPath": "Model.Model.create_model",
+        "description": "Model.Model.create_model",
+        "peekOfCode": "project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), \"../..\"))\nsys.path.insert(0, project_root)  # Use insert(0) to prioritize this path\nfrom Model.Model.model import UNet\ndef create_and_save_model(input_shape, in_channels=1, out_channels=1, save_path=\"unet_vocal_isolation.pth\"):\n    \"\"\"\n    Creates a U-Net model, validates it with a random tensor, and saves it.\n    Args:\n        input_shape (tuple): Shape of the input tensor (batch_size, channels, height, width).\n        in_channels (int): Number of input channels for the U-Net model.\n        out_channels (int): Number of output channels for the U-Net model.",
         "detail": "Model.Model.create_model",
         "documentation": {}
     },
@@ -435,7 +453,7 @@
         "kind": 2,
         "importPath": "Model.Training.train",
         "description": "Model.Training.train",
-        "peekOfCode": "def train(load_model_path=None):\n    device = torch.device(\"cuda\" if torch.cuda.is_available() else \"cpu\")\n    print(f\"Device {device}\")\n    #HyperParameters\n    batch_size = 4\n    learning_rate = 1e-4\n    epochs = 20\n    root_dir = r'C:\\mappe1\\musdb18'\n    #Dataset and DataLoader\n    dataset = MUSDB18StemDataset(",
+        "peekOfCode": "def train(load_model_path=None):\n    device = torch.device(\"cuda\" if torch.cuda.is_available() else \"cpu\")\n    print(f\"Device {device}\")\n    #HyperParameters\n    batch_size = 2\n    learning_rate = 1e-4\n    epochs = 30\n    root_dir = r'C:\\mappe1\\musdb18'\n    #Dataset and DataLoader\n    dataset = MUSDB18StemDataset(",
         "detail": "Model.Training.train",
         "documentation": {}
     },
@@ -449,11 +467,20 @@
         "documentation": {}
     },
     {
+        "label": "os.environ[\"PYTORCH_CUDA_ALLOC_CONF\"]",
+        "kind": 5,
+        "importPath": "Model.Training.train",
+        "description": "Model.Training.train",
+        "peekOfCode": "os.environ[\"PYTORCH_CUDA_ALLOC_CONF\"] = \"expandable_segments:True\"\nproject_root = os.path.abspath(os.path.join(os.path.dirname(__file__), \"../..\"))\nsys.path.insert(0, project_root)  # Use insert(0) to prioritize this path\nfrom Model.Data.dataset import MUSDB18StemDataset \nfrom Model.Model.model import UNet\ndef train(load_model_path=None):\n    device = torch.device(\"cuda\" if torch.cuda.is_available() else \"cpu\")\n    print(f\"Device {device}\")\n    #HyperParameters\n    batch_size = 2",
+        "detail": "Model.Training.train",
+        "documentation": {}
+    },
+    {
         "label": "project_root",
         "kind": 5,
         "importPath": "Model.Training.train",
         "description": "Model.Training.train",
-        "peekOfCode": "project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), \"../..\"))\nsys.path.insert(0, project_root)  # Use insert(0) to prioritize this path\nfrom Model.Data.dataset import MUSDB18StemDataset \nfrom Model.Model.model import UNet\ndef train(load_model_path=None):\n    device = torch.device(\"cuda\" if torch.cuda.is_available() else \"cpu\")\n    print(f\"Device {device}\")\n    #HyperParameters\n    batch_size = 4\n    learning_rate = 1e-4",
+        "peekOfCode": "project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), \"../..\"))\nsys.path.insert(0, project_root)  # Use insert(0) to prioritize this path\nfrom Model.Data.dataset import MUSDB18StemDataset \nfrom Model.Model.model import UNet\ndef train(load_model_path=None):\n    device = torch.device(\"cuda\" if torch.cuda.is_available() else \"cpu\")\n    print(f\"Device {device}\")\n    #HyperParameters\n    batch_size = 2\n    learning_rate = 1e-4",
         "detail": "Model.Training.train",
         "documentation": {}
     }
