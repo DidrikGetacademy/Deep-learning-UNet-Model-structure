@@ -7,9 +7,10 @@ import sys
 os.environ["PYTORCH_CUDA_ALLOC_CONF"] = "expandable_segments:True"
 
 project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), "../.."))
-sys.path.insert(0, project_root)  # Use insert(0) to prioritize this path
+sys.path.insert(0, project_root)  
 from Model.Data.dataset import MUSDB18StemDataset 
 from Model.Model.model import UNet
+from Model.Fine_tuning.Fine_Tuned_model import fine_tune_model
 
 def train(load_model_path=None):
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
@@ -17,9 +18,9 @@ def train(load_model_path=None):
     
     
     #HyperParameters
-    batch_size = 2
-    learning_rate = 1e-4
-    epochs = 30
+    batch_size = 3
+    learning_rate = 1e-5
+    epochs = 25
     root_dir = r'C:\mappe1\musdb18'
     
     
@@ -28,12 +29,12 @@ def train(load_model_path=None):
         root_dir=root_dir,
         subset='train',
         sr=44100,
-        n_fft=2048, #Redce FFT size to save memory
-        hop_length=512, #Smaller hop length will result in better time resolution
-        max_length=512,
-        max_files=150 #Max amount of songs retrived from the dataset folder.
+        n_fft=2048, 
+        hop_length=512,
+        max_length=1000,
+        max_files=50,
         )
-    dataloader = DataLoader(dataset,batch_size=batch_size,shuffle=True,num_workers=8, pin_memory=True)
+    dataloader = DataLoader(dataset,batch_size=batch_size,shuffle=True,num_workers=4, pin_memory=True)
     
     
     
@@ -41,16 +42,16 @@ def train(load_model_path=None):
         root_dir=root_dir,
         subset='test',
         sr=44100,
-        n_fft=2048, #Redce FFT size to save memory
-        hop_length=512, #Smaller hop length will result in better time resolution
-        max_length=512,
-        max_files=100 #Max amount of songs retrived from the dataset folder.
+        n_fft=2048, 
+        hop_length=512, 
+        max_length=1000,
+        max_files=25 
         )
-    val_loader = DataLoader(val_dataset, batch_size=batch_size, shuffle=False, num_workers=8, pin_memory=True)
+    val_loader = DataLoader(val_dataset, batch_size=batch_size, shuffle=False, num_workers=4, pin_memory=True)
     
     
     
-    #Model, Loss, Optimizer
+
     model = UNet(in_channels=1, out_channels=1).to(device)
     if load_model_path:
         model.load_state_dict(torch.load(load_model_path,weights_only=True))
@@ -61,7 +62,7 @@ def train(load_model_path=None):
     scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(optimizer, 'min', patience=2, factor=0.5)
     
 
-    #Training loop
+
     for epoch in range(epochs):
         model.train()
         running_loss = 0.0
@@ -71,11 +72,10 @@ def train(load_model_path=None):
             
 
                 
-            #forward pass
+  
             outputs = model(inputs.to(device))
             loss = criterion(outputs,targets.to(device))
 
-            #Backward pass and optimization
             optimizer.zero_grad()
             loss.backward()
             optimizer.step()
@@ -88,7 +88,7 @@ def train(load_model_path=None):
         print(f"Epoch [{epoch + 1}/{epochs}], Loss: {running_loss / len(dataloader):.4f}")
         
         
-        #Validation after each epoch
+   
         model.eval()
         val_loss = 0.0
         with torch.no_grad():
@@ -109,13 +109,14 @@ def train(load_model_path=None):
         print(f"Checkpoint saved for epoch {epoch + 1} at {checkpoint_path}")
         
 
-
-    #Save Final Model
+    fine_tuned_model_path = r"C:\Users\didri\Desktop\AI AudioEnchancer\UNet_Model\PreTrained_model\fine_tuned_unet_vocal_isolation.pth"
     final_model_path = r"C:\Users\didri\Desktop\AI AudioEnchancer\UNet_Model\PreTrained_model\unet_vocal_isolation_2.pth"
     torch.save(model.state_dict(), final_model_path)
     print("Training complete. Model saved.")
-    
-    #Testing on the entire test set
+    print("starting fine tuning on model....")
+    fine_tune_model(final_model_path,fine_tuned_model_path,root_dir)
+    print("Fine tuning complete!")
+ 
     test(model, val_loader, device)
     
     
@@ -134,4 +135,4 @@ def test(model,test_loader,device):
         print("Testing complete.")
 
 if __name__ == "__main__":
-    train(load_model_path=r"C:\Users\didri\Desktop\AI AudioEnchancer\UNet_Model\PreTrained_model\unet_vocal_isolation.pth") 
+    train(load_model_path=r"C:\Users\didri\Desktop\AI AudioEnchancer\UNet_Model\PreTrained_model\unet_checkpoint_epoch30.pth") 

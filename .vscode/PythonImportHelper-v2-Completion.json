@@ -52,6 +52,14 @@
         "documentation": {}
     },
     {
+        "label": "DataLoader",
+        "importPath": "torch.utils.data",
+        "description": "torch.utils.data",
+        "isExtraImport": true,
+        "detail": "torch.utils.data",
+        "documentation": {}
+    },
+    {
         "label": "librosa",
         "kind": 6,
         "isExtraImport": true,
@@ -79,11 +87,12 @@
         "documentation": {}
     },
     {
-        "label": "UNet",
-        "importPath": "Model",
-        "description": "Model",
+        "label": "sys",
+        "kind": 6,
         "isExtraImport": true,
-        "detail": "Model",
+        "importPath": "sys",
+        "description": "sys",
+        "detail": "sys",
         "documentation": {}
     },
     {
@@ -95,44 +104,84 @@
         "documentation": {}
     },
     {
-        "label": "sys",
+        "label": "MUSDB18StemDataset",
+        "importPath": "Model.Data.dataset",
+        "description": "Model.Data.dataset",
+        "isExtraImport": true,
+        "detail": "Model.Data.dataset",
+        "documentation": {}
+    },
+    {
+        "label": "MUSDB18StemDataset",
+        "importPath": "Model.Data.dataset",
+        "description": "Model.Data.dataset",
+        "isExtraImport": true,
+        "detail": "Model.Data.dataset",
+        "documentation": {}
+    },
+    {
+        "label": "MUSDB18StemDataset",
+        "importPath": "Model.Data.dataset",
+        "description": "Model.Data.dataset",
+        "isExtraImport": true,
+        "detail": "Model.Data.dataset",
+        "documentation": {}
+    },
+    {
+        "label": "MUSDB18StemDataset",
+        "importPath": "Model.Data.dataset",
+        "description": "Model.Data.dataset",
+        "isExtraImport": true,
+        "detail": "Model.Data.dataset",
+        "documentation": {}
+    },
+    {
+        "label": "UNet",
+        "importPath": "Model.Model.model",
+        "description": "Model.Model.model",
+        "isExtraImport": true,
+        "detail": "Model.Model.model",
+        "documentation": {}
+    },
+    {
+        "label": "UNet",
+        "importPath": "Model.Model.model",
+        "description": "Model.Model.model",
+        "isExtraImport": true,
+        "detail": "Model.Model.model",
+        "documentation": {}
+    },
+    {
+        "label": "UNet",
+        "importPath": "Model.Model.model",
+        "description": "Model.Model.model",
+        "isExtraImport": true,
+        "detail": "Model.Model.model",
+        "documentation": {}
+    },
+    {
+        "label": "UNet",
+        "importPath": "Model.Model.model",
+        "description": "Model.Model.model",
+        "isExtraImport": true,
+        "detail": "Model.Model.model",
+        "documentation": {}
+    },
+    {
+        "label": "UNet",
+        "importPath": "Model.Model.model",
+        "description": "Model.Model.model",
+        "isExtraImport": true,
+        "detail": "Model.Model.model",
+        "documentation": {}
+    },
+    {
+        "label": "torch.optim",
         "kind": 6,
         "isExtraImport": true,
-        "importPath": "sys",
-        "description": "sys",
-        "detail": "sys",
-        "documentation": {}
-    },
-    {
-        "label": "UNet",
-        "importPath": "Model.Model.model",
-        "description": "Model.Model.model",
-        "isExtraImport": true,
-        "detail": "Model.Model.model",
-        "documentation": {}
-    },
-    {
-        "label": "UNet",
-        "importPath": "Model.Model.model",
-        "description": "Model.Model.model",
-        "isExtraImport": true,
-        "detail": "Model.Model.model",
-        "documentation": {}
-    },
-    {
-        "label": "UNet",
-        "importPath": "Model.Model.model",
-        "description": "Model.Model.model",
-        "isExtraImport": true,
-        "detail": "Model.Model.model",
-        "documentation": {}
-    },
-    {
-        "label": "UNet",
-        "importPath": "Model.Model.model",
-        "description": "Model.Model.model",
-        "isExtraImport": true,
-        "detail": "Model.Model.model",
+        "importPath": "torch.optim",
+        "description": "torch.optim",
+        "detail": "torch.optim",
         "documentation": {}
     },
     {
@@ -154,19 +203,20 @@
         "documentation": {}
     },
     {
-        "label": "MUSDB18StemDataset",
-        "importPath": "Model.Data.dataset",
-        "description": "Model.Data.dataset",
+        "label": "vgg16",
+        "importPath": "torchvision.models",
+        "description": "torchvision.models",
         "isExtraImport": true,
-        "detail": "Model.Data.dataset",
+        "detail": "torchvision.models",
         "documentation": {}
     },
     {
-        "label": "MUSDB18StemDataset",
-        "importPath": "Model.Data.dataset",
-        "description": "Model.Data.dataset",
+        "label": "torchaudio",
+        "kind": 6,
         "isExtraImport": true,
-        "detail": "Model.Data.dataset",
+        "importPath": "torchaudio",
+        "description": "torchaudio",
+        "detail": "torchaudio",
         "documentation": {}
     },
     {
@@ -179,12 +229,11 @@
         "documentation": {}
     },
     {
-        "label": "torch.optim",
-        "kind": 6,
+        "label": "fine_tune_model",
+        "importPath": "Model.Fine_tuning.Fine_Tuned_model",
+        "description": "Model.Fine_tuning.Fine_Tuned_model",
         "isExtraImport": true,
-        "importPath": "torch.optim",
-        "description": "torch.optim",
-        "detail": "torch.optim",
+        "detail": "Model.Fine_tuning.Fine_Tuned_model",
         "documentation": {}
     },
     {
@@ -210,7 +259,7 @@
         "kind": 2,
         "importPath": "Model.Evaluation.Evaluation",
         "description": "Model.Evaluation.Evaluation",
-        "peekOfCode": "def reconstruct_audio(magnitude, phase, sr=44100, n_fft=1024, hop_length=256):\n    stft = magnitude * np.exp(1j * phase)  # Kombiner magnitude med fase\n    audio = librosa.istft(stft, hop_length=hop_length)\n    return audio\ndef evaluate_model(model_path, audio_file, output_file, sr=44100, n_fft=1024, hop_length=256):\n    # Last inn modellen\n    device = torch.device(\"cuda\" if torch.cuda.is_available() else \"cpu\")\n    model = UNet(in_channels=1, out_channels=1).to(device)\n    model.load_state_dict(torch.load(model_path, map_location=device, weights_only=True))\n    model.eval()",
+        "peekOfCode": "def reconstruct_audio(magnitude, phase, sr=44100, n_fft=1024, hop_length=256):\n    stft = magnitude * np.exp(1j * phase)  # Kombiner magnitude med fase\n    audio = librosa.istft(stft, hop_length=hop_length)\n    return audio\ndef evaluate_model(model_path, audio_file, output_file,  capcut_audio=None, sr=44100, n_fft=1024, hop_length=256):\n    # Last inn modellen\n    device = torch.device(\"cuda\" if torch.cuda.is_available() else \"cpu\")\n    model = UNet(in_channels=1, out_channels=1).to(device)\n    model.load_state_dict(torch.load(model_path, map_location=device, weights_only=True))\n    model.eval()",
         "detail": "Model.Evaluation.Evaluation",
         "documentation": {}
     },
@@ -219,44 +268,62 @@
         "kind": 2,
         "importPath": "Model.Evaluation.Evaluation",
         "description": "Model.Evaluation.Evaluation",
-        "peekOfCode": "def evaluate_model(model_path, audio_file, output_file, sr=44100, n_fft=1024, hop_length=256):\n    # Last inn modellen\n    device = torch.device(\"cuda\" if torch.cuda.is_available() else \"cpu\")\n    model = UNet(in_channels=1, out_channels=1).to(device)\n    model.load_state_dict(torch.load(model_path, map_location=device, weights_only=True))\n    model.eval()\n    # Last inn og prosesser input lydfil\n    input_magnitude, input_stft = load_audio(audio_file, sr, n_fft, hop_length)\n    input_phase = np.angle(input_stft)  # Fasen for å rekonstruere senere\n    input_tensor = torch.tensor(input_magnitude, dtype=torch.float32).unsqueeze(0).unsqueeze(0).to(device)",
+        "peekOfCode": "def evaluate_model(model_path, audio_file, output_file,  capcut_audio=None, sr=44100, n_fft=1024, hop_length=256):\n    # Last inn modellen\n    device = torch.device(\"cuda\" if torch.cuda.is_available() else \"cpu\")\n    model = UNet(in_channels=1, out_channels=1).to(device)\n    model.load_state_dict(torch.load(model_path, map_location=device, weights_only=True))\n    model.eval()\n    # Last inn og prosesser input lydfil\n    input_magnitude, input_stft = load_audio(audio_file, sr, n_fft, hop_length)\n    input_phase = np.angle(input_stft)  # Fasen for å rekonstruere senere\n    input_tensor = torch.tensor(input_magnitude, dtype=torch.float32).unsqueeze(0).unsqueeze(0).to(device)",
         "detail": "Model.Evaluation.Evaluation",
         "documentation": {}
     },
     {
-        "label": "load_audio",
-        "kind": 2,
-        "importPath": "Model.Evaluation.Evaluation_with_capcut",
-        "description": "Model.Evaluation.Evaluation_with_capcut",
-        "peekOfCode": "def load_audio(file_path, sr=44100, n_fft=1024, hop_length=256):\n    audio, _ = librosa.load(file_path, sr=sr, mono=True)\n    audio /= np.max(np.abs(audio))  # Normalize to [-1, 1]\n    stft = librosa.stft(audio, n_fft=n_fft, hop_length=hop_length)\n    magnitude = np.abs(stft)\n    return magnitude, stft\ndef reconstruct_audio(magnitude, phase, sr=44100, n_fft=1024, hop_length=256):\n    stft = magnitude * np.exp(1j * phase)  # Combine magnitude with phase\n    audio = librosa.istft(stft, hop_length=hop_length)\n    return audio",
-        "detail": "Model.Evaluation.Evaluation_with_capcut",
-        "documentation": {}
-    },
-    {
-        "label": "reconstruct_audio",
-        "kind": 2,
-        "importPath": "Model.Evaluation.Evaluation_with_capcut",
-        "description": "Model.Evaluation.Evaluation_with_capcut",
-        "peekOfCode": "def reconstruct_audio(magnitude, phase, sr=44100, n_fft=1024, hop_length=256):\n    stft = magnitude * np.exp(1j * phase)  # Combine magnitude with phase\n    audio = librosa.istft(stft, hop_length=hop_length)\n    return audio\ndef evaluate_and_compare(model_path, input_audio, capcut_audio, output_audio, sr=44100, n_fft=1024, hop_length=256):\n    device = torch.device(\"cuda\" if torch.cuda.is_available() else \"cpu\")\n    model = UNet(in_channels=1, out_channels=1).to(device)\n    model.load_state_dict(torch.load(model_path, map_location=device,weights_only=True))\n    model.eval()\n    input_magnitude, input_stft = load_audio(input_audio, sr, n_fft, hop_length)",
-        "detail": "Model.Evaluation.Evaluation_with_capcut",
-        "documentation": {}
-    },
-    {
-        "label": "evaluate_and_compare",
-        "kind": 2,
-        "importPath": "Model.Evaluation.Evaluation_with_capcut",
-        "description": "Model.Evaluation.Evaluation_with_capcut",
-        "peekOfCode": "def evaluate_and_compare(model_path, input_audio, capcut_audio, output_audio, sr=44100, n_fft=1024, hop_length=256):\n    device = torch.device(\"cuda\" if torch.cuda.is_available() else \"cpu\")\n    model = UNet(in_channels=1, out_channels=1).to(device)\n    model.load_state_dict(torch.load(model_path, map_location=device,weights_only=True))\n    model.eval()\n    input_magnitude, input_stft = load_audio(input_audio, sr, n_fft, hop_length)\n    input_phase = np.angle(input_stft)\n    input_tensor = torch.tensor(input_magnitude, dtype=torch.float32).unsqueeze(0).unsqueeze(0).to(device)\n    with torch.no_grad():\n        output_tensor = model(input_tensor)",
-        "detail": "Model.Evaluation.Evaluation_with_capcut",
+        "label": "os.environ[\"PYTORCH_CUDA_ALLOC_CONF\"]",
+        "kind": 5,
+        "importPath": "Model.Evaluation.Evaluation",
+        "description": "Model.Evaluation.Evaluation",
+        "peekOfCode": "os.environ[\"PYTORCH_CUDA_ALLOC_CONF\"] = \"expandable_segments:True\"\nproject_root = os.path.abspath(os.path.join(os.path.dirname(__file__), \"../..\"))\nsys.path.insert(0, project_root)  \nfrom Model.Data.dataset import MUSDB18StemDataset \nfrom Model.Model.model import UNet\ndef load_audio(file_path, sr=44100, n_fft=1024, hop_length=256):\n    audio, _ = librosa.load(file_path, sr=sr, mono=True)\n    audio /= np.max(np.abs(audio))  # Normaliser til [-1, 1]\n    stft = librosa.stft(audio, n_fft=n_fft, hop_length=hop_length)\n    magnitude = np.abs(stft)",
+        "detail": "Model.Evaluation.Evaluation",
         "documentation": {}
     },
     {
         "label": "project_root",
         "kind": 5,
-        "importPath": "Model.Evaluation.Evaluation_with_capcut",
-        "description": "Model.Evaluation.Evaluation_with_capcut",
-        "peekOfCode": "project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), \"../..\"))\nsys.path.insert(0, project_root)  # Use insert(0) to prioritize this path\nfrom Model.Model.model import UNet\ndef load_audio(file_path, sr=44100, n_fft=1024, hop_length=256):\n    audio, _ = librosa.load(file_path, sr=sr, mono=True)\n    audio /= np.max(np.abs(audio))  # Normalize to [-1, 1]\n    stft = librosa.stft(audio, n_fft=n_fft, hop_length=hop_length)\n    magnitude = np.abs(stft)\n    return magnitude, stft\ndef reconstruct_audio(magnitude, phase, sr=44100, n_fft=1024, hop_length=256):",
-        "detail": "Model.Evaluation.Evaluation_with_capcut",
+        "importPath": "Model.Evaluation.Evaluation",
+        "description": "Model.Evaluation.Evaluation",
+        "peekOfCode": "project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), \"../..\"))\nsys.path.insert(0, project_root)  \nfrom Model.Data.dataset import MUSDB18StemDataset \nfrom Model.Model.model import UNet\ndef load_audio(file_path, sr=44100, n_fft=1024, hop_length=256):\n    audio, _ = librosa.load(file_path, sr=sr, mono=True)\n    audio /= np.max(np.abs(audio))  # Normaliser til [-1, 1]\n    stft = librosa.stft(audio, n_fft=n_fft, hop_length=hop_length)\n    magnitude = np.abs(stft)\n    return magnitude, stft",
+        "detail": "Model.Evaluation.Evaluation",
+        "documentation": {}
+    },
+    {
+        "label": "HybridLoss",
+        "kind": 6,
+        "importPath": "Model.Fine_tuning.Fine_Tuned_model",
+        "description": "Model.Fine_tuning.Fine_Tuned_model",
+        "peekOfCode": "class HybridLoss:\n    def __init__(self, device):\n        self.l1_loss = nn.L1Loss()\n        self.mse_loss = nn.MSELoss()\n        self.device = device\n        self.vgg = vgg16(pretrained=True).features[:5].to(device).eval()\n        for param in self.vgg.parameters():\n            param.requires_grad = False\n    def spectral_loss(self, output, target):\n        return torch.mean((output - target) ** 2)",
+        "detail": "Model.Fine_tuning.Fine_Tuned_model",
+        "documentation": {}
+    },
+    {
+        "label": "freeze_encoder",
+        "kind": 2,
+        "importPath": "Model.Fine_tuning.Fine_Tuned_model",
+        "description": "Model.Fine_tuning.Fine_Tuned_model",
+        "peekOfCode": "def freeze_encoder(model):\n    for layer in model.encoder:\n        for param in layer.parameters():\n            param.requires_grad = False\n    print(\"Encoder layers frozen for fine-tuning.\")\nclass HybridLoss:\n    def __init__(self, device):\n        self.l1_loss = nn.L1Loss()\n        self.mse_loss = nn.MSELoss()\n        self.device = device",
+        "detail": "Model.Fine_tuning.Fine_Tuned_model",
+        "documentation": {}
+    },
+    {
+        "label": "fine_tune_model",
+        "kind": 2,
+        "importPath": "Model.Fine_tuning.Fine_Tuned_model",
+        "description": "Model.Fine_tuning.Fine_Tuned_model",
+        "peekOfCode": "def fine_tune_model(pretrained_model_path, fine_tuned_model_path, root_dir, batch_size=2, learning_rate=1e-5, fine_tune_epochs=10):\n    device = torch.device(\"cuda\" if torch.cuda.is_available() else \"cpu\")\n    print(f\"Fine-tuning on device: {device}\")\n    print(\"Loading dataset...\")\n    dataset = MUSDB18StemDataset(\n        root_dir=root_dir, \n        subset='train', \n        sr=44100, \n        n_fft=2048, \n        hop_length=512,",
+        "detail": "Model.Fine_tuning.Fine_Tuned_model",
+        "documentation": {}
+    },
+    {
+        "label": "project_root",
+        "kind": 5,
+        "importPath": "Model.Fine_tuning.Fine_Tuned_model",
+        "description": "Model.Fine_tuning.Fine_Tuned_model",
+        "peekOfCode": "project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), \"../..\"))\nsys.path.insert(0, project_root)\nfrom Model.Data.dataset import MUSDB18StemDataset\nfrom Model.Model.model import UNet\ndef freeze_encoder(model):\n    for layer in model.encoder:\n        for param in layer.parameters():\n            param.requires_grad = False\n    print(\"Encoder layers frozen for fine-tuning.\")\nclass HybridLoss:",
+        "detail": "Model.Fine_tuning.Fine_Tuned_model",
         "documentation": {}
     },
     {
@@ -287,11 +354,29 @@
         "documentation": {}
     },
     {
+        "label": "AttentionBlock",
+        "kind": 6,
+        "importPath": "Model.Model.model",
+        "description": "Model.Model.model",
+        "peekOfCode": "class AttentionBlock(nn.module):\n    def __init__(self, in_channels, gating_channels, inter_channels):\n        super(AttentionBlock, self).__init__()\n        self.W_g = nn.Conv2d(gating_channels, inter_channels, kernel_size=1, stride=1, padding=0, bias=True)\n        self.W_x = nn.conv2d(in_channels, inter_channels, kernel_size=1, stride=1, padding=0, bias=True)\n        self.psi = nn.Conv2d(inter_channels, 1, kernel_size=1, stride=1, padding=0, bias=True)\n        self.relu = nn.relU(inplace=True)\n        self.sigmoid = nn.Sigmoid()\n    def forward(self,  x, g):\n        g1 = self.W_g(g)",
+        "detail": "Model.Model.model",
+        "documentation": {}
+    },
+    {
+        "label": "MultiScaleDecoderBlock",
+        "kind": 6,
+        "importPath": "Model.Model.model",
+        "description": "Model.Model.model",
+        "peekOfCode": "class MultiScaleDecoderBlock(nn.module):\n    def __init__(self, in_channels, out_channels):\nclass UNet(nn.Module): \n    def __init__(self, in_channels=1, out_channels=1, features=[16, 32, 64, 128]): \n        super(UNet, self).__init__()\n        self.encoder = nn.ModuleList()\n        for feature in features:\n            self.encoder.append(self.conv_block(in_channels, feature))\n            in_channels = feature\n        self.bottleneck = self.conv_block(features[-1], features[-1] * 2)",
+        "detail": "Model.Model.model",
+        "documentation": {}
+    },
+    {
         "label": "UNet",
         "kind": 6,
         "importPath": "Model.Model.model",
         "description": "Model.Model.model",
-        "peekOfCode": "class UNet(nn.Module): \n    def __init__(self, in_channels=1, out_channels=1, features=[16, 32, 64, 128]): \n        super(UNet, self).__init__()\n        # encoder\n        self.encoder = nn.ModuleList()\n        for feature in features:\n            self.encoder.append(self.conv_block(in_channels, feature))\n            in_channels = feature\n        # bottleneck\n        self.bottleneck = self.conv_block(features[-1], features[-1] * 2)",
+        "peekOfCode": "class UNet(nn.Module): \n    def __init__(self, in_channels=1, out_channels=1, features=[16, 32, 64, 128]): \n        super(UNet, self).__init__()\n        self.encoder = nn.ModuleList()\n        for feature in features:\n            self.encoder.append(self.conv_block(in_channels, feature))\n            in_channels = feature\n        self.bottleneck = self.conv_block(features[-1], features[-1] * 2)\n        self.decoder = nn.ModuleList()\n        reversed_features = list(reversed(features))",
         "detail": "Model.Model.model",
         "documentation": {}
     },
@@ -336,7 +421,7 @@
         "kind": 5,
         "importPath": "Model.ONNX.Convert_to_ONNX",
         "description": "Model.ONNX.Convert_to_ONNX",
-        "peekOfCode": "input_tensor = mixture_tensor.unsqueeze(0)\n#Initialize the model\nmodel = UNet(in_channels=1,out_channels=1)\nmodel.load_state_dict(torch.load(r\"C:\\Users\\didri\\Desktop\\AI AudioEnchancer\\UNet_Model\\unet_vocal_isolation.pth\",weights_only=True))\nmodel.eval()\n#Save to ONNX\nonnx_path = r\"C:\\Users\\didri\\Desktop\\AI AudioEnchancer\\Model\\ONNX\\ONNX_Model_files\\Vocal_Isolation_UNet.onnx\"\ntorch.onnx.export(\n    model,\n    input_tensor,",
+        "peekOfCode": "input_tensor = mixture_tensor.unsqueeze(0)\n#Initialize the model\nmodel = UNet(in_channels=1,out_channels=1)\nmodel.load_state_dict(torch.load(r\"C:\\Users\\didri\\Desktop\\AI AudioEnchancer\\UNet_Model\\CheckPoints\\unet_checkpoint_epoch30.pth\",weights_only=True))\nmodel.eval()\n#Save to ONNX\nonnx_path = r\"C:\\Users\\didri\\Desktop\\AI AudioEnchancer\\UNet_Model\\ONNX_model\\ONNX.onnx\"\ntorch.onnx.export(\n    model,\n    input_tensor,",
         "detail": "Model.ONNX.Convert_to_ONNX",
         "documentation": {}
     },
@@ -345,7 +430,7 @@
         "kind": 5,
         "importPath": "Model.ONNX.Convert_to_ONNX",
         "description": "Model.ONNX.Convert_to_ONNX",
-        "peekOfCode": "model = UNet(in_channels=1,out_channels=1)\nmodel.load_state_dict(torch.load(r\"C:\\Users\\didri\\Desktop\\AI AudioEnchancer\\UNet_Model\\unet_vocal_isolation.pth\",weights_only=True))\nmodel.eval()\n#Save to ONNX\nonnx_path = r\"C:\\Users\\didri\\Desktop\\AI AudioEnchancer\\Model\\ONNX\\ONNX_Model_files\\Vocal_Isolation_UNet.onnx\"\ntorch.onnx.export(\n    model,\n    input_tensor,\n    onnx_path,\n    export_params=True,",
+        "peekOfCode": "model = UNet(in_channels=1,out_channels=1)\nmodel.load_state_dict(torch.load(r\"C:\\Users\\didri\\Desktop\\AI AudioEnchancer\\UNet_Model\\CheckPoints\\unet_checkpoint_epoch30.pth\",weights_only=True))\nmodel.eval()\n#Save to ONNX\nonnx_path = r\"C:\\Users\\didri\\Desktop\\AI AudioEnchancer\\UNet_Model\\ONNX_model\\ONNX.onnx\"\ntorch.onnx.export(\n    model,\n    input_tensor,\n    onnx_path,\n    export_params=True,",
         "detail": "Model.ONNX.Convert_to_ONNX",
         "documentation": {}
     },
@@ -354,7 +439,7 @@
         "kind": 5,
         "importPath": "Model.ONNX.Convert_to_ONNX",
         "description": "Model.ONNX.Convert_to_ONNX",
-        "peekOfCode": "onnx_path = r\"C:\\Users\\didri\\Desktop\\AI AudioEnchancer\\Model\\ONNX\\ONNX_Model_files\\Vocal_Isolation_UNet.onnx\"\ntorch.onnx.export(\n    model,\n    input_tensor,\n    onnx_path,\n    export_params=True,\n    opset_version=11,\n    do_constant_folding=True,\n    input_names=[\"input\"], \n    output_names=[\"output\"],",
+        "peekOfCode": "onnx_path = r\"C:\\Users\\didri\\Desktop\\AI AudioEnchancer\\UNet_Model\\ONNX_model\\ONNX.onnx\"\ntorch.onnx.export(\n    model,\n    input_tensor,\n    onnx_path,\n    export_params=True,\n    opset_version=11,\n    do_constant_folding=True,\n    input_names=[\"input\"], \n    output_names=[\"output\"],",
         "detail": "Model.ONNX.Convert_to_ONNX",
         "documentation": {}
     },
@@ -363,7 +448,7 @@
         "kind": 5,
         "importPath": "Model.ONNX.Test_Converted_ONNX",
         "description": "Model.ONNX.Test_Converted_ONNX",
-        "peekOfCode": "onnx_model_path = \"Vocal_Isolation_UNet.onnx\"\nsession = ort.InferenceSession(onnx_model_path)\n#Returns information about the models input nodes\ninput_nodes = session.get_inputs()\nfor input in input_nodes:\n    print(f\"The models output NODES:  Name: {input.name} Shape:  {input.shape} Type: {input.type}\")\n#returns information about the models output nodes\noutput_nodes = session.get_outputs()\nfor output in output_nodes:\n    print(f\"The models output NODES:  Name: {output.name} Shape:  {output.shape} Type: {output.type}\")",
+        "peekOfCode": "onnx_model_path = r\"C:\\Users\\didri\\Desktop\\AI AudioEnchancer\\UNet_Model\\ONNX_model\\ONNX.onnx\"\nif not os.path.exists(onnx_model_path):\n    raise FileNotFoundError(f\"ONNX model not found at {onnx_model_path}\")\nsession = ort.InferenceSession(onnx_model_path)\nsession.set_providers(['CUDAExecutionProvider'])\n# Print information about the model's input nodes\nprint(\"\\n--- Model Input Nodes ---\")\ninput_nodes = session.get_inputs()\nfor input_node in input_nodes:\n    print(f\"Name: {input_node.name}, Shape: {input_node.shape}, Type: {input_node.type}\")",
         "detail": "Model.ONNX.Test_Converted_ONNX",
         "documentation": {}
     },
@@ -372,7 +457,7 @@
         "kind": 5,
         "importPath": "Model.ONNX.Test_Converted_ONNX",
         "description": "Model.ONNX.Test_Converted_ONNX",
-        "peekOfCode": "session = ort.InferenceSession(onnx_model_path)\n#Returns information about the models input nodes\ninput_nodes = session.get_inputs()\nfor input in input_nodes:\n    print(f\"The models output NODES:  Name: {input.name} Shape:  {input.shape} Type: {input.type}\")\n#returns information about the models output nodes\noutput_nodes = session.get_outputs()\nfor output in output_nodes:\n    print(f\"The models output NODES:  Name: {output.name} Shape:  {output.shape} Type: {output.type}\")\n#show us what providers that is supported, CUDA,CPU ETC",
+        "peekOfCode": "session = ort.InferenceSession(onnx_model_path)\nsession.set_providers(['CUDAExecutionProvider'])\n# Print information about the model's input nodes\nprint(\"\\n--- Model Input Nodes ---\")\ninput_nodes = session.get_inputs()\nfor input_node in input_nodes:\n    print(f\"Name: {input_node.name}, Shape: {input_node.shape}, Type: {input_node.type}\")\n# Print information about the model's output nodes\nprint(\"\\n--- Model Output Nodes ---\")\noutput_nodes = session.get_outputs()",
         "detail": "Model.ONNX.Test_Converted_ONNX",
         "documentation": {}
     },
@@ -381,7 +466,7 @@
         "kind": 5,
         "importPath": "Model.ONNX.Test_Converted_ONNX",
         "description": "Model.ONNX.Test_Converted_ONNX",
-        "peekOfCode": "input_nodes = session.get_inputs()\nfor input in input_nodes:\n    print(f\"The models output NODES:  Name: {input.name} Shape:  {input.shape} Type: {input.type}\")\n#returns information about the models output nodes\noutput_nodes = session.get_outputs()\nfor output in output_nodes:\n    print(f\"The models output NODES:  Name: {output.name} Shape:  {output.shape} Type: {output.type}\")\n#show us what providers that is supported, CUDA,CPU ETC\nprint(f\"Devices supported: {session.get_providers()}\")\n#session.set_providers(['CUDAExecutionProvider']) ",
+        "peekOfCode": "input_nodes = session.get_inputs()\nfor input_node in input_nodes:\n    print(f\"Name: {input_node.name}, Shape: {input_node.shape}, Type: {input_node.type}\")\n# Print information about the model's output nodes\nprint(\"\\n--- Model Output Nodes ---\")\noutput_nodes = session.get_outputs()\nfor output_node in output_nodes:\n    print(f\"Name: {output_node.name}, Shape: {output_node.shape}, Type: {output_node.type}\")\n# Show available execution providers\nprint(\"\\n--- Available Providers ---\")",
         "detail": "Model.ONNX.Test_Converted_ONNX",
         "documentation": {}
     },
@@ -390,7 +475,7 @@
         "kind": 5,
         "importPath": "Model.ONNX.Test_Converted_ONNX",
         "description": "Model.ONNX.Test_Converted_ONNX",
-        "peekOfCode": "output_nodes = session.get_outputs()\nfor output in output_nodes:\n    print(f\"The models output NODES:  Name: {output.name} Shape:  {output.shape} Type: {output.type}\")\n#show us what providers that is supported, CUDA,CPU ETC\nprint(f\"Devices supported: {session.get_providers()}\")\n#session.set_providers(['CUDAExecutionProvider']) \n# Print input and output names for debugging\ninput_name = session.get_inputs()[0].name\noutput_name = session.get_outputs()[0].name\nprint(f\"Input Name: {input_name}, Shape: {session.get_inputs()[0].shape}\")",
+        "peekOfCode": "output_nodes = session.get_outputs()\nfor output_node in output_nodes:\n    print(f\"Name: {output_node.name}, Shape: {output_node.shape}, Type: {output_node.type}\")\n# Show available execution providers\nprint(\"\\n--- Available Providers ---\")\nprint(f\"Devices supported: {session.get_providers()}\")\n# Uncomment to set CUDA provider if available\n#if 'CUDAExecutionProvider' in session.get_providers():\n#    session.set_providers(['CUDAExecutionProvider'])\n# Get input and output node names",
         "detail": "Model.ONNX.Test_Converted_ONNX",
         "documentation": {}
     },
@@ -399,7 +484,7 @@
         "kind": 5,
         "importPath": "Model.ONNX.Test_Converted_ONNX",
         "description": "Model.ONNX.Test_Converted_ONNX",
-        "peekOfCode": "input_name = session.get_inputs()[0].name\noutput_name = session.get_outputs()[0].name\nprint(f\"Input Name: {input_name}, Shape: {session.get_inputs()[0].shape}\")\nprint(f\"Output Name: {output_name}, Shape: {session.get_outputs()[0].shape}\")\n# Load an audio file and prepare a spectrogram\naudio_path = r\"\"\ny, sr = librosa.load(audio_path, sr=44100)\nspectrogram = np.abs(librosa.stft(y, n_fft=1024, hop_length=256))\nspectrogram = np.expand_dims(spectrogram, axis=(0, 1)).astype(np.float32)  # Add batch and channel dims\ntry:",
+        "peekOfCode": "input_name = session.get_inputs()[0].name\noutput_name = session.get_outputs()[0].name\nprint(f\"\\nInput Name: {input_name}, Shape: {session.get_inputs()[0].shape}\")\nprint(f\"Output Name: {output_name}, Shape: {session.get_outputs()[0].shape}\")\n# Load an audio file and dynamically compute its spectrogram\naudio_path = r\"C:\\Users\\didri\\Desktop\\AI AudioEnchancer\\Model\\Data\\WAV_files_for_model\\Capcut_mixed\\withsound(1).WAV\"\nif not os.path.exists(audio_path):\n    raise FileNotFoundError(f\"Audio file not found at {audio_path}\")\nprint(\"\\nLoading audio and generating spectrogram...\")\ny, sr = librosa.load(audio_path, sr=44100)  # Load audio at 44.1kHz",
         "detail": "Model.ONNX.Test_Converted_ONNX",
         "documentation": {}
     },
@@ -408,7 +493,7 @@
         "kind": 5,
         "importPath": "Model.ONNX.Test_Converted_ONNX",
         "description": "Model.ONNX.Test_Converted_ONNX",
-        "peekOfCode": "output_name = session.get_outputs()[0].name\nprint(f\"Input Name: {input_name}, Shape: {session.get_inputs()[0].shape}\")\nprint(f\"Output Name: {output_name}, Shape: {session.get_outputs()[0].shape}\")\n# Load an audio file and prepare a spectrogram\naudio_path = r\"\"\ny, sr = librosa.load(audio_path, sr=44100)\nspectrogram = np.abs(librosa.stft(y, n_fft=1024, hop_length=256))\nspectrogram = np.expand_dims(spectrogram, axis=(0, 1)).astype(np.float32)  # Add batch and channel dims\ntry:\n    result = session.run([output_name], {input_name: spectrogram})",
+        "peekOfCode": "output_name = session.get_outputs()[0].name\nprint(f\"\\nInput Name: {input_name}, Shape: {session.get_inputs()[0].shape}\")\nprint(f\"Output Name: {output_name}, Shape: {session.get_outputs()[0].shape}\")\n# Load an audio file and dynamically compute its spectrogram\naudio_path = r\"C:\\Users\\didri\\Desktop\\AI AudioEnchancer\\Model\\Data\\WAV_files_for_model\\Capcut_mixed\\withsound(1).WAV\"\nif not os.path.exists(audio_path):\n    raise FileNotFoundError(f\"Audio file not found at {audio_path}\")\nprint(\"\\nLoading audio and generating spectrogram...\")\ny, sr = librosa.load(audio_path, sr=44100)  # Load audio at 44.1kHz\nspectrogram = np.abs(librosa.stft(y, n_fft=2048, hop_length=512))",
         "detail": "Model.ONNX.Test_Converted_ONNX",
         "documentation": {}
     },
@@ -417,7 +502,7 @@
         "kind": 5,
         "importPath": "Model.ONNX.Test_Converted_ONNX",
         "description": "Model.ONNX.Test_Converted_ONNX",
-        "peekOfCode": "audio_path = r\"\"\ny, sr = librosa.load(audio_path, sr=44100)\nspectrogram = np.abs(librosa.stft(y, n_fft=1024, hop_length=256))\nspectrogram = np.expand_dims(spectrogram, axis=(0, 1)).astype(np.float32)  # Add batch and channel dims\ntry:\n    result = session.run([output_name], {input_name: spectrogram})\n    print(\"ONNX Inference Successful\")\nexcept Exception as e:\n    print(f\"Error during ONNX inference: {e}\")\n# Visualize the output",
+        "peekOfCode": "audio_path = r\"C:\\Users\\didri\\Desktop\\AI AudioEnchancer\\Model\\Data\\WAV_files_for_model\\Capcut_mixed\\withsound(1).WAV\"\nif not os.path.exists(audio_path):\n    raise FileNotFoundError(f\"Audio file not found at {audio_path}\")\nprint(\"\\nLoading audio and generating spectrogram...\")\ny, sr = librosa.load(audio_path, sr=44100)  # Load audio at 44.1kHz\nspectrogram = np.abs(librosa.stft(y, n_fft=2048, hop_length=512))\nprint(f\"Original Spectrogram Shape: {spectrogram.shape}\")\n# Prepare input tensor\nspectrogram = spectrogram.astype(np.float32)\nspectrogram = np.expand_dims(spectrogram, axis=(0, 1))  # Add batch and channel dimensions",
         "detail": "Model.ONNX.Test_Converted_ONNX",
         "documentation": {}
     },
@@ -426,7 +511,7 @@
         "kind": 5,
         "importPath": "Model.ONNX.Test_Converted_ONNX",
         "description": "Model.ONNX.Test_Converted_ONNX",
-        "peekOfCode": "spectrogram = np.abs(librosa.stft(y, n_fft=1024, hop_length=256))\nspectrogram = np.expand_dims(spectrogram, axis=(0, 1)).astype(np.float32)  # Add batch and channel dims\ntry:\n    result = session.run([output_name], {input_name: spectrogram})\n    print(\"ONNX Inference Successful\")\nexcept Exception as e:\n    print(f\"Error during ONNX inference: {e}\")\n# Visualize the output\noutput_spectrogram = np.squeeze(result[0])\nplt.imshow(output_spectrogram, aspect=\"auto\", origin=\"lower\")",
+        "peekOfCode": "spectrogram = np.abs(librosa.stft(y, n_fft=2048, hop_length=512))\nprint(f\"Original Spectrogram Shape: {spectrogram.shape}\")\n# Prepare input tensor\nspectrogram = spectrogram.astype(np.float32)\nspectrogram = np.expand_dims(spectrogram, axis=(0, 1))  # Add batch and channel dimensions\nprint(f\"Prepared Input Tensor Shape: {spectrogram.shape}\")\n# Run inference\ntry:\n    print(\"\\nRunning ONNX inference...\")\n    result = session.run([output_name], {input_name: spectrogram})",
         "detail": "Model.ONNX.Test_Converted_ONNX",
         "documentation": {}
     },
@@ -435,7 +520,16 @@
         "kind": 5,
         "importPath": "Model.ONNX.Test_Converted_ONNX",
         "description": "Model.ONNX.Test_Converted_ONNX",
-        "peekOfCode": "spectrogram = np.expand_dims(spectrogram, axis=(0, 1)).astype(np.float32)  # Add batch and channel dims\ntry:\n    result = session.run([output_name], {input_name: spectrogram})\n    print(\"ONNX Inference Successful\")\nexcept Exception as e:\n    print(f\"Error during ONNX inference: {e}\")\n# Visualize the output\noutput_spectrogram = np.squeeze(result[0])\nplt.imshow(output_spectrogram, aspect=\"auto\", origin=\"lower\")\nplt.title(\"Output Spectrogram\")",
+        "peekOfCode": "spectrogram = spectrogram.astype(np.float32)\nspectrogram = np.expand_dims(spectrogram, axis=(0, 1))  # Add batch and channel dimensions\nprint(f\"Prepared Input Tensor Shape: {spectrogram.shape}\")\n# Run inference\ntry:\n    print(\"\\nRunning ONNX inference...\")\n    result = session.run([output_name], {input_name: spectrogram})\n    print(\"ONNX Inference Successful\")\nexcept Exception as e:\n    print(f\"Error during ONNX inference: {e}\")",
+        "detail": "Model.ONNX.Test_Converted_ONNX",
+        "documentation": {}
+    },
+    {
+        "label": "spectrogram",
+        "kind": 5,
+        "importPath": "Model.ONNX.Test_Converted_ONNX",
+        "description": "Model.ONNX.Test_Converted_ONNX",
+        "peekOfCode": "spectrogram = np.expand_dims(spectrogram, axis=(0, 1))  # Add batch and channel dimensions\nprint(f\"Prepared Input Tensor Shape: {spectrogram.shape}\")\n# Run inference\ntry:\n    print(\"\\nRunning ONNX inference...\")\n    result = session.run([output_name], {input_name: spectrogram})\n    print(\"ONNX Inference Successful\")\nexcept Exception as e:\n    print(f\"Error during ONNX inference: {e}\")\n    raise",
         "detail": "Model.ONNX.Test_Converted_ONNX",
         "documentation": {}
     },
@@ -444,7 +538,7 @@
         "kind": 5,
         "importPath": "Model.ONNX.Test_Converted_ONNX",
         "description": "Model.ONNX.Test_Converted_ONNX",
-        "peekOfCode": "output_spectrogram = np.squeeze(result[0])\nplt.imshow(output_spectrogram, aspect=\"auto\", origin=\"lower\")\nplt.title(\"Output Spectrogram\")\nplt.colorbar()\nplt.show()",
+        "peekOfCode": "output_spectrogram = np.squeeze(result[0])  # Remove batch and channel dimensions\nprint(f\"Output Spectrogram Shape: {output_spectrogram.shape}\")\nplt.figure(figsize=(10, 5))\nplt.imshow(output_spectrogram, aspect=\"auto\", origin=\"lower\")\nplt.title(\"Vocal Isolation Output Spectrogram\")\nplt.colorbar()\nplt.xlabel(\"Time\")\nplt.ylabel(\"Frequency\")\nplt.show()",
         "detail": "Model.ONNX.Test_Converted_ONNX",
         "documentation": {}
     },
@@ -453,7 +547,7 @@
         "kind": 2,
         "importPath": "Model.Training.train",
         "description": "Model.Training.train",
-        "peekOfCode": "def train(load_model_path=None):\n    device = torch.device(\"cuda\" if torch.cuda.is_available() else \"cpu\")\n    print(f\"Device {device}\")\n    #HyperParameters\n    batch_size = 2\n    learning_rate = 1e-4\n    epochs = 30\n    root_dir = r'C:\\mappe1\\musdb18'\n    #Dataset and DataLoader\n    dataset = MUSDB18StemDataset(",
+        "peekOfCode": "def train(load_model_path=None):\n    device = torch.device(\"cuda\" if torch.cuda.is_available() else \"cpu\")\n    print(f\"Device {device}\")\n    #HyperParameters\n    batch_size = 3\n    learning_rate = 1e-5\n    epochs = 25\n    root_dir = r'C:\\mappe1\\musdb18'\n    #Dataset and DataLoader\n    dataset = MUSDB18StemDataset(",
         "detail": "Model.Training.train",
         "documentation": {}
     },
@@ -471,7 +565,7 @@
         "kind": 5,
         "importPath": "Model.Training.train",
         "description": "Model.Training.train",
-        "peekOfCode": "os.environ[\"PYTORCH_CUDA_ALLOC_CONF\"] = \"expandable_segments:True\"\nproject_root = os.path.abspath(os.path.join(os.path.dirname(__file__), \"../..\"))\nsys.path.insert(0, project_root)  # Use insert(0) to prioritize this path\nfrom Model.Data.dataset import MUSDB18StemDataset \nfrom Model.Model.model import UNet\ndef train(load_model_path=None):\n    device = torch.device(\"cuda\" if torch.cuda.is_available() else \"cpu\")\n    print(f\"Device {device}\")\n    #HyperParameters\n    batch_size = 2",
+        "peekOfCode": "os.environ[\"PYTORCH_CUDA_ALLOC_CONF\"] = \"expandable_segments:True\"\nproject_root = os.path.abspath(os.path.join(os.path.dirname(__file__), \"../..\"))\nsys.path.insert(0, project_root)  \nfrom Model.Data.dataset import MUSDB18StemDataset \nfrom Model.Model.model import UNet\nfrom Model.Fine_tuning.Fine_Tuned_model import fine_tune_model\ndef train(load_model_path=None):\n    device = torch.device(\"cuda\" if torch.cuda.is_available() else \"cpu\")\n    print(f\"Device {device}\")\n    #HyperParameters",
         "detail": "Model.Training.train",
         "documentation": {}
     },
@@ -480,7 +574,7 @@
         "kind": 5,
         "importPath": "Model.Training.train",
         "description": "Model.Training.train",
-        "peekOfCode": "project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), \"../..\"))\nsys.path.insert(0, project_root)  # Use insert(0) to prioritize this path\nfrom Model.Data.dataset import MUSDB18StemDataset \nfrom Model.Model.model import UNet\ndef train(load_model_path=None):\n    device = torch.device(\"cuda\" if torch.cuda.is_available() else \"cpu\")\n    print(f\"Device {device}\")\n    #HyperParameters\n    batch_size = 2\n    learning_rate = 1e-4",
+        "peekOfCode": "project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), \"../..\"))\nsys.path.insert(0, project_root)  \nfrom Model.Data.dataset import MUSDB18StemDataset \nfrom Model.Model.model import UNet\nfrom Model.Fine_tuning.Fine_Tuned_model import fine_tune_model\ndef train(load_model_path=None):\n    device = torch.device(\"cuda\" if torch.cuda.is_available() else \"cpu\")\n    print(f\"Device {device}\")\n    #HyperParameters\n    batch_size = 3",
         "detail": "Model.Training.train",
         "documentation": {}
     }

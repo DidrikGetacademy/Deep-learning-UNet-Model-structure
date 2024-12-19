@@ -119,3 +119,40 @@ PROBLEMS
 
 SOLUTION FOR 2_training.txt
 --------------------------
+
+
+
+
+
+Anbefalinger for Forbedring
+Øk batch-størrelsen: Hvis minnet tillater det, øk til 4-8 for mer stabile oppdateringer.
+Læringsrate: Bruk en scheduler (f.eks. ReduceLROnPlateau) som senker læringsraten når tapet flater ut.
+Gradientakkumulering: Simuler større batch-størrelser uten ekstra minnebruk.
+Regularisering: Innfør vektsvinn (weight decay) eller dropout for bedre generalisering.
+Data-augmentering: Bruk lydtransformasjoner som pitch-shift, tidsstrekking eller støyinjeksjon.
+Reduser kompleksitet:
+Senk n_fft til 1024 eller øk hop_length for mindre regnekrevende beregninger.
+Optimaliser modellarkitekturen for raskere prosessering.
+Ved å implementere gradientakkumulering og en læringsrate-scheduler, kan du stabilisere treningen og oppnå bedre resultater raskt.
+
+
+Generelle kategorier av læringsrater:
+Stor læringsrate:
+
+Eksempel: 1e-1 (0.1) eller høyere.
+Effekt: Modellen lærer raskt, men risikoen for ustabile oppdateringer og å "hoppe over" den optimale løsningen øker. Trenings- og valideringstap kan svinge mye.
+Liten læringsrate:
+
+Eksempel: 1e-4 (0.0001) eller lavere.
+Effekt: Modellen lærer sakte, men oppdateringene er mer stabile. Dette er bra for finjustering (fine-tuning), men det kan ta svært lang tid å nå en optimal løsning.
+Middels læringsrate (ofte brukt som standard):
+
+Eksempel: 1e-3 (0.001).
+Effekt: En god balanse mellom hastighet og stabilitet. Dette er et vanlig startpunkt for mange modeller.
+
+
+Hvordan velge riktig læringsrate?
+Start med 1e-3 for ny trening.
+Hvis tapet svinger mye → reduser læringsraten til 1e-4 eller mindre.
+Hvis treningen går for sakte eller stagnerer tidlig → øk læringsraten til f.eks. 5e-3 eller 1e-2.
+For best resultat kan du også bruke en læringsrate-scheduler, som justerer læringsraten automatisk basert på treningsforløpet.
