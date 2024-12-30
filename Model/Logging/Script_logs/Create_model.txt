@@ -1,0 +1,4 @@
+2024-12-30 00:02:47,477 - INFO - Using device: cuda
+2024-12-30 00:02:48,039 - INFO - Forward pass successful.
+2024-12-30 00:02:48,039 - INFO - Input shape: torch.Size([1, 1, 256, 512])
+2024-12-30 00:02:48,039 - INFO - Output shape: torch.Size([1, 1, 256, 512])

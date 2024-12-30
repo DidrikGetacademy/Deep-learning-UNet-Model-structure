@@ -1,0 +1,8 @@
+2024-12-30 18:43:42,861 - INFO - Fine-tuning on device: cuda
+2024-12-30 18:43:42,864 - INFO - Fine-tuning dataset created. #Files: 70, BatchSize: 2
+2024-12-30 18:43:42,966 - INFO - Pretrained model loaded from: C:\Users\didri\Desktop\LearnReflect VideoEnchancer\AI UNet-Architecture\UNet_Model\Final_model\Final_model2.pth
+2024-12-30 18:43:42,967 - INFO - Encoder layers frozen for fine-tuning.
+2024-12-30 18:43:42,967 - INFO - Model encoder frozen.
+2024-12-30 18:43:42,967 - INFO - Loading VGGish model...
+2024-12-30 18:43:44,289 - INFO - VGGish model loaded and set to eval mode.
+2024-12-30 18:43:44,290 - INFO - Starting fine-tuning -> epochs: 20, lr: 1e-05
