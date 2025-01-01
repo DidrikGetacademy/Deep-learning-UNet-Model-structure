@@ -110,11 +110,11 @@
         "documentation": {}
     },
     {
-        "label": "setup_logger",
-        "importPath": "Model.Logging.Logger",
-        "description": "Model.Logging.Logger",
+        "label": "ConcatDataset",
+        "importPath": "torch.utils.data",
+        "description": "torch.utils.data",
         "isExtraImport": true,
-        "detail": "Model.Logging.Logger",
+        "detail": "torch.utils.data",
         "documentation": {}
     },
     {
@@ -166,12 +166,102 @@
         "documentation": {}
     },
     {
-        "label": "soundfile",
+        "label": "setup_logger",
+        "importPath": "Model.Logging.Logger",
+        "description": "Model.Logging.Logger",
+        "isExtraImport": true,
+        "detail": "Model.Logging.Logger",
+        "documentation": {}
+    },
+    {
+        "label": "logging",
         "kind": 6,
         "isExtraImport": true,
-        "importPath": "soundfile",
-        "description": "soundfile",
-        "detail": "soundfile",
+        "importPath": "logging",
+        "description": "logging",
+        "detail": "logging",
+        "documentation": {}
+    },
+    {
+        "label": "UNet",
+        "importPath": "Model.Model.model",
+        "description": "Model.Model.model",
+        "isExtraImport": true,
+        "detail": "Model.Model.model",
+        "documentation": {}
+    },
+    {
+        "label": "UNet",
+        "importPath": "Model.Model.model",
+        "description": "Model.Model.model",
+        "isExtraImport": true,
+        "detail": "Model.Model.model",
+        "documentation": {}
+    },
+    {
+        "label": "UNet",
+        "importPath": "Model.Model.model",
+        "description": "Model.Model.model",
+        "isExtraImport": true,
+        "detail": "Model.Model.model",
+        "documentation": {}
+    },
+    {
+        "label": "UNet",
+        "importPath": "Model.Model.model",
+        "description": "Model.Model.model",
+        "isExtraImport": true,
+        "detail": "Model.Model.model",
+        "documentation": {}
+    },
+    {
+        "label": "torch.nn",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "torch.nn",
+        "description": "torch.nn",
+        "detail": "torch.nn",
+        "documentation": {}
+    },
+    {
+        "label": "torch.nn.functional",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "torch.nn.functional",
+        "description": "torch.nn.functional",
+        "detail": "torch.nn.functional",
+        "documentation": {}
+    },
+    {
+        "label": "MUSDB18StemDataset",
+        "importPath": "Model.Data.dataset",
+        "description": "Model.Data.dataset",
+        "isExtraImport": true,
+        "detail": "Model.Data.dataset",
+        "documentation": {}
+    },
+    {
+        "label": "MUSDB18StemDataset",
+        "importPath": "Model.Data.dataset",
+        "description": "Model.Data.dataset",
+        "isExtraImport": true,
+        "detail": "Model.Data.dataset",
+        "documentation": {}
+    },
+    {
+        "label": "VCTKSpectrogram",
+        "importPath": "Model.Data.dataset",
+        "description": "Model.Data.dataset",
+        "isExtraImport": true,
+        "detail": "Model.Data.dataset",
+        "documentation": {}
+    },
+    {
+        "label": "MUSDB18StemDataset",
+        "importPath": "Model.Data.dataset",
+        "description": "Model.Data.dataset",
+        "isExtraImport": true,
+        "detail": "Model.Data.dataset",
         "documentation": {}
     },
     {
@@ -184,12 +274,21 @@
         "documentation": {}
     },
     {
-        "label": "torch.nn",
+        "label": "onnxruntime",
         "kind": 6,
         "isExtraImport": true,
-        "importPath": "torch.nn",
-        "description": "torch.nn",
-        "detail": "torch.nn",
+        "importPath": "onnxruntime",
+        "description": "onnxruntime",
+        "detail": "onnxruntime",
+        "documentation": {}
+    },
+    {
+        "label": "soundfile",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "soundfile",
+        "description": "soundfile",
+        "detail": "soundfile",
         "documentation": {}
     },
     {
@@ -218,12 +317,28 @@
         "documentation": {}
     },
     {
-        "label": "torch.nn.functional",
+        "label": "csv",
         "kind": 6,
         "isExtraImport": true,
-        "importPath": "torch.nn.functional",
-        "description": "torch.nn.functional",
-        "detail": "torch.nn.functional",
+        "importPath": "csv",
+        "description": "csv",
+        "detail": "csv",
+        "documentation": {}
+    },
+    {
+        "label": "Parallel",
+        "importPath": "joblib",
+        "description": "joblib",
+        "isExtraImport": true,
+        "detail": "joblib",
+        "documentation": {}
+    },
+    {
+        "label": "delayed",
+        "importPath": "joblib",
+        "description": "joblib",
+        "isExtraImport": true,
+        "detail": "joblib",
         "documentation": {}
     },
     {
@@ -236,76 +351,44 @@
         "documentation": {}
     },
     {
-        "label": "MUSDB18StemDataset",
-        "importPath": "Model.Data.dataset",
-        "description": "Model.Data.dataset",
+        "label": "plot_loss_curves_FineTuning_script_",
+        "importPath": "Model.Training.Loss_Diagram_Values",
+        "description": "Model.Training.Loss_Diagram_Values",
         "isExtraImport": true,
-        "detail": "Model.Data.dataset",
+        "detail": "Model.Training.Loss_Diagram_Values",
         "documentation": {}
     },
     {
-        "label": "MUSDB18StemDataset",
-        "importPath": "Model.Data.dataset",
-        "description": "Model.Data.dataset",
+        "label": "plot_loss_curves_Training_script_epoches",
+        "importPath": "Model.Training.Loss_Diagram_Values",
+        "description": "Model.Training.Loss_Diagram_Values",
         "isExtraImport": true,
-        "detail": "Model.Data.dataset",
+        "detail": "Model.Training.Loss_Diagram_Values",
         "documentation": {}
     },
     {
-        "label": "MUSDB18StemDataset",
-        "importPath": "Model.Data.dataset",
-        "description": "Model.Data.dataset",
+        "label": "plot_loss_curves_Training_script_Batches",
+        "importPath": "Model.Training.Loss_Diagram_Values",
+        "description": "Model.Training.Loss_Diagram_Values",
         "isExtraImport": true,
-        "detail": "Model.Data.dataset",
+        "detail": "Model.Training.Loss_Diagram_Values",
         "documentation": {}
     },
     {
-        "label": "UNet",
-        "importPath": "Model.Model.model",
-        "description": "Model.Model.model",
+        "label": "plot_loss_curves_evaluation",
+        "importPath": "Model.Training.Loss_Diagram_Values",
+        "description": "Model.Training.Loss_Diagram_Values",
         "isExtraImport": true,
-        "detail": "Model.Model.model",
+        "detail": "Model.Training.Loss_Diagram_Values",
         "documentation": {}
     },
     {
-        "label": "UNet",
-        "importPath": "Model.Model.model",
-        "description": "Model.Model.model",
-        "isExtraImport": true,
-        "detail": "Model.Model.model",
-        "documentation": {}
-    },
-    {
-        "label": "UNet",
-        "importPath": "Model.Model.model",
-        "description": "Model.Model.model",
-        "isExtraImport": true,
-        "detail": "Model.Model.model",
-        "documentation": {}
-    },
-    {
-        "label": "UNet",
-        "importPath": "Model.Model.model",
-        "description": "Model.Model.model",
-        "isExtraImport": true,
-        "detail": "Model.Model.model",
-        "documentation": {}
-    },
-    {
-        "label": "UNet",
-        "importPath": "Model.Model.model",
-        "description": "Model.Model.model",
-        "isExtraImport": true,
-        "detail": "Model.Model.model",
-        "documentation": {}
-    },
-    {
-        "label": "logging",
+        "label": "multiprocessing",
         "kind": 6,
         "isExtraImport": true,
-        "importPath": "logging",
-        "description": "logging",
-        "detail": "logging",
+        "importPath": "multiprocessing",
+        "description": "multiprocessing",
+        "detail": "multiprocessing",
         "documentation": {}
     },
     {
@@ -318,15 +401,6 @@
         "documentation": {}
     },
     {
-        "label": "onnxruntime",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "onnxruntime",
-        "description": "onnxruntime",
-        "detail": "onnxruntime",
-        "documentation": {}
-    },
-    {
         "label": "gc",
         "kind": 6,
         "isExtraImport": true,
@@ -336,43 +410,35 @@
         "documentation": {}
     },
     {
-        "label": "evaluate_model",
-        "importPath": "Model.Evaluation.Evaluation",
-        "description": "Model.Evaluation.Evaluation",
+        "label": "load_dataset",
+        "importPath": "datasets",
+        "description": "datasets",
         "isExtraImport": true,
-        "detail": "Model.Evaluation.Evaluation",
+        "detail": "datasets",
+        "documentation": {}
+    },
+    {
+        "label": "evaluate_model",
+        "importPath": "Model.Training.Evaluation",
+        "description": "Model.Training.Evaluation",
+        "isExtraImport": true,
+        "detail": "Model.Training.Evaluation",
         "documentation": {}
     },
     {
         "label": "evaluate_model_with_sdr_sir_sar",
-        "importPath": "Model.Evaluation.Evaluation",
-        "description": "Model.Evaluation.Evaluation",
+        "importPath": "Model.Training.Evaluation",
+        "description": "Model.Training.Evaluation",
         "isExtraImport": true,
-        "detail": "Model.Evaluation.Evaluation",
+        "detail": "Model.Training.Evaluation",
         "documentation": {}
     },
     {
         "label": "fine_tune_model",
-        "importPath": "Model.Fine_tuning.Fine_Tuned_model",
-        "description": "Model.Fine_tuning.Fine_Tuned_model",
+        "importPath": "Model.Training.Fine_Tuned_model",
+        "description": "Model.Training.Fine_Tuned_model",
         "isExtraImport": true,
-        "detail": "Model.Fine_tuning.Fine_Tuned_model",
-        "documentation": {}
-    },
-    {
-        "label": "plot_loss_curves_Training_script_epoches",
-        "importPath": "Model.Logging.Loss_Diagram_Values",
-        "description": "Model.Logging.Loss_Diagram_Values",
-        "isExtraImport": true,
-        "detail": "Model.Logging.Loss_Diagram_Values",
-        "documentation": {}
-    },
-    {
-        "label": "plot_loss_curves_Training_script_Batches",
-        "importPath": "Model.Logging.Loss_Diagram_Values",
-        "description": "Model.Logging.Loss_Diagram_Values",
-        "isExtraImport": true,
-        "detail": "Model.Logging.Loss_Diagram_Values",
+        "detail": "Model.Training.Fine_Tuned_model",
         "documentation": {}
     },
     {
@@ -380,161 +446,35 @@
         "kind": 6,
         "importPath": "Model.Data.dataset",
         "description": "Model.Data.dataset",
-        "peekOfCode": "class MUSDB18StemDataset(Dataset):\n    def __init__(\n        self,\n        root_dir,\n        subset='train',\n        sr=44100,\n        n_fft=2048,\n        hop_length=512,\n        max_length=10000,\n        max_files=None",
+        "peekOfCode": "class MUSDB18StemDataset(Dataset):\n    def __init__(\n        self,\n        root_dir,\n        subset='train',\n        sr=44100,\n        n_fft=2048,\n        hop_length=1024,\n        max_length=176400,\n        max_files=100",
         "detail": "Model.Data.dataset",
         "documentation": {}
     },
     {
-        "label": "project_root",
-        "kind": 5,
-        "importPath": "Model.Data.dataset",
-        "description": "Model.Data.dataset",
-        "peekOfCode": "project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), \"../..\"))\nsys.path.insert(0, project_root)\nfrom Model.Logging.Logger import setup_logger\nDataset_logger = setup_logger('Dataset',r'C:\\Users\\didri\\Desktop\\LearnReflect VideoEnchancer\\AI UNet-Architecture\\Model\\Logging\\Script_logs\\Dataset_logg.txt')\nGeneral_logger = setup_logger('Dataset',r'C:\\Users\\didri\\Desktop\\LearnReflect VideoEnchancer\\AI UNet-Architecture\\Model\\Logging\\Script_logs\\General.txt')\nDataset_logger.info(\"Dataset logging started...\")\nclass MUSDB18StemDataset(Dataset):\n    def __init__(\n        self,\n        root_dir,",
-        "detail": "Model.Data.dataset",
-        "documentation": {}
-    },
-    {
-        "label": "Dataset_logger",
-        "kind": 5,
-        "importPath": "Model.Data.dataset",
-        "description": "Model.Data.dataset",
-        "peekOfCode": "Dataset_logger = setup_logger('Dataset',r'C:\\Users\\didri\\Desktop\\LearnReflect VideoEnchancer\\AI UNet-Architecture\\Model\\Logging\\Script_logs\\Dataset_logg.txt')\nGeneral_logger = setup_logger('Dataset',r'C:\\Users\\didri\\Desktop\\LearnReflect VideoEnchancer\\AI UNet-Architecture\\Model\\Logging\\Script_logs\\General.txt')\nDataset_logger.info(\"Dataset logging started...\")\nclass MUSDB18StemDataset(Dataset):\n    def __init__(\n        self,\n        root_dir,\n        subset='train',\n        sr=44100,\n        n_fft=2048,",
-        "detail": "Model.Data.dataset",
-        "documentation": {}
-    },
-    {
-        "label": "General_logger",
-        "kind": 5,
-        "importPath": "Model.Data.dataset",
-        "description": "Model.Data.dataset",
-        "peekOfCode": "General_logger = setup_logger('Dataset',r'C:\\Users\\didri\\Desktop\\LearnReflect VideoEnchancer\\AI UNet-Architecture\\Model\\Logging\\Script_logs\\General.txt')\nDataset_logger.info(\"Dataset logging started...\")\nclass MUSDB18StemDataset(Dataset):\n    def __init__(\n        self,\n        root_dir,\n        subset='train',\n        sr=44100,\n        n_fft=2048,\n        hop_length=512,",
-        "detail": "Model.Data.dataset",
-        "documentation": {}
-    },
-    {
-        "label": "compute_sdr_sir_sar",
-        "kind": 2,
-        "importPath": "Model.Evaluation.Evaluation",
-        "description": "Model.Evaluation.Evaluation",
-        "peekOfCode": "def compute_sdr_sir_sar(reference_audio, estimated_audio):\n    #Beregner SDR, SIR og SAR ved hjelp av mir_eval.separation.bss_eval_sources.\n    #reference_audio (np.ndarray): shape (samples,) eller (1, samples)\n    #estimated_audio (np.ndarray): shape (samples,) eller (1, samples)\n    if reference_audio.ndim == 1:\n        reference_audio = reference_audio[np.newaxis, :]\n    if estimated_audio.ndim == 1:\n        estimated_audio = estimated_audio[np.newaxis, :]\n    sdr, sir, sar, perm = bss_eval_sources(reference_audio, estimated_audio)\n    return sdr, sir, sar",
-        "detail": "Model.Evaluation.Evaluation",
-        "documentation": {}
-    },
-    {
-        "label": "load_audio",
-        "kind": 2,
-        "importPath": "Model.Evaluation.Evaluation",
-        "description": "Model.Evaluation.Evaluation",
-        "peekOfCode": "def load_audio(file_path, sr=44100, n_fft=2048, hop_length=512):\n    #Loads audio from file_path, normalizes it, returns magnitude + phase from STFT.\n    audio, _ = librosa.load(file_path, sr=sr, mono=True)\n    max_val = np.max(np.abs(audio)) + 1e-8\n    audio /= max_val\n    stft = librosa.stft(audio, n_fft=n_fft, hop_length=hop_length)\n    magnitude = np.abs(stft)\n    phase = np.angle(stft)\n    Evaluation_logger.info(f\"Loaded audio: shape={audio.shape}, max={audio.max():.4f}, min={audio.min():.4f}\")\n    General_logger.info(f\"Loaded audio: shape={audio.shape}, max={audio.max():.4f}, min={audio.min():.4f}\")",
-        "detail": "Model.Evaluation.Evaluation",
-        "documentation": {}
-    },
-    {
-        "label": "evaluate_model_with_sdr_sir_sar",
-        "kind": 2,
-        "importPath": "Model.Evaluation.Evaluation",
-        "description": "Model.Evaluation.Evaluation",
-        "peekOfCode": "def evaluate_model_with_sdr_sir_sar(\n    model,\n    val_loader,\n    device,\n    output_dir,\n    sr=44100,\n    n_fft=2048,\n    hop_length=512\n):\n    model.eval().to(device)",
-        "detail": "Model.Evaluation.Evaluation",
-        "documentation": {}
-    },
-    {
-        "label": "evaluate_model",
-        "kind": 2,
-        "importPath": "Model.Evaluation.Evaluation",
-        "description": "Model.Evaluation.Evaluation",
-        "peekOfCode": "def evaluate_model(model, val_loader, device, output_dir, sr=44100, n_fft=2048, hop_length=512):\n    #Klassisk MSE-baset evaluering.\n    model.eval().to(device)\n    os.makedirs(output_dir, exist_ok=True)\n    criterion = nn.MSELoss()\n    total_loss = 0.0\n    mse_values = []\n    num_batches = 0\n    with torch.no_grad():\n        for idx, (inputs, targets) in enumerate(val_loader, start=1):",
-        "detail": "Model.Evaluation.Evaluation",
-        "documentation": {}
-    },
-    {
-        "label": "project_root",
-        "kind": 5,
-        "importPath": "Model.Evaluation.Evaluation",
-        "description": "Model.Evaluation.Evaluation",
-        "peekOfCode": "project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), \"../..\"))\nsys.path.insert(0, project_root)\nfrom Model.Logging.Logger import setup_logger\nEvaluation_logger = setup_logger('Evaluation',r'C:\\Users\\didri\\Desktop\\LearnReflect VideoEnchancer\\AI UNet-Architecture\\Model\\Logging\\Script_logs\\Evaluation_logg.txt')\nEvaluation_logger.info(\"Evaluation started...\")\nGeneral_logger = setup_logger('Evaluation',r'C:\\Users\\didri\\Desktop\\LearnReflect VideoEnchancer\\AI UNet-Architecture\\Model\\Logging\\Script_logs\\General.txt')\nfrom mir_eval.separation import bss_eval_sources\ndef compute_sdr_sir_sar(reference_audio, estimated_audio):\n    #Beregner SDR, SIR og SAR ved hjelp av mir_eval.separation.bss_eval_sources.\n    #reference_audio (np.ndarray): shape (samples,) eller (1, samples)",
-        "detail": "Model.Evaluation.Evaluation",
-        "documentation": {}
-    },
-    {
-        "label": "Evaluation_logger",
-        "kind": 5,
-        "importPath": "Model.Evaluation.Evaluation",
-        "description": "Model.Evaluation.Evaluation",
-        "peekOfCode": "Evaluation_logger = setup_logger('Evaluation',r'C:\\Users\\didri\\Desktop\\LearnReflect VideoEnchancer\\AI UNet-Architecture\\Model\\Logging\\Script_logs\\Evaluation_logg.txt')\nEvaluation_logger.info(\"Evaluation started...\")\nGeneral_logger = setup_logger('Evaluation',r'C:\\Users\\didri\\Desktop\\LearnReflect VideoEnchancer\\AI UNet-Architecture\\Model\\Logging\\Script_logs\\General.txt')\nfrom mir_eval.separation import bss_eval_sources\ndef compute_sdr_sir_sar(reference_audio, estimated_audio):\n    #Beregner SDR, SIR og SAR ved hjelp av mir_eval.separation.bss_eval_sources.\n    #reference_audio (np.ndarray): shape (samples,) eller (1, samples)\n    #estimated_audio (np.ndarray): shape (samples,) eller (1, samples)\n    if reference_audio.ndim == 1:\n        reference_audio = reference_audio[np.newaxis, :]",
-        "detail": "Model.Evaluation.Evaluation",
-        "documentation": {}
-    },
-    {
-        "label": "General_logger",
-        "kind": 5,
-        "importPath": "Model.Evaluation.Evaluation",
-        "description": "Model.Evaluation.Evaluation",
-        "peekOfCode": "General_logger = setup_logger('Evaluation',r'C:\\Users\\didri\\Desktop\\LearnReflect VideoEnchancer\\AI UNet-Architecture\\Model\\Logging\\Script_logs\\General.txt')\nfrom mir_eval.separation import bss_eval_sources\ndef compute_sdr_sir_sar(reference_audio, estimated_audio):\n    #Beregner SDR, SIR og SAR ved hjelp av mir_eval.separation.bss_eval_sources.\n    #reference_audio (np.ndarray): shape (samples,) eller (1, samples)\n    #estimated_audio (np.ndarray): shape (samples,) eller (1, samples)\n    if reference_audio.ndim == 1:\n        reference_audio = reference_audio[np.newaxis, :]\n    if estimated_audio.ndim == 1:\n        estimated_audio = estimated_audio[np.newaxis, :]",
-        "detail": "Model.Evaluation.Evaluation",
-        "documentation": {}
-    },
-    {
-        "label": "HybridLoss",
+        "label": "VCTKSpectrogram",
         "kind": 6,
-        "importPath": "Model.Fine_tuning.Fine_Tuned_model",
-        "description": "Model.Fine_tuning.Fine_Tuned_model",
-        "peekOfCode": "class HybridLoss:\n    def __init__(self, device):\n        self.l1_loss = nn.L1Loss()\n        self.mse_loss = nn.MSELoss()\n        self.device = device\n        fine_tune_logger.info(\"Loading VGGish model...\")\n        self.audio_model = torch.hub.load( 'harritaylor/torchvggish', 'vggish', trust_repo=True ).to(device)\n        self.audio_model.eval()\n        fine_tune_logger.info(\"VGGish model loaded and set to eval mode.\")\n        General_logger.info(f\"finetuning --> VGGish model loaded and set to eval mode.\")",
-        "detail": "Model.Fine_tuning.Fine_Tuned_model",
-        "documentation": {}
-    },
-    {
-        "label": "freeze_encoder",
-        "kind": 2,
-        "importPath": "Model.Fine_tuning.Fine_Tuned_model",
-        "description": "Model.Fine_tuning.Fine_Tuned_model",
-        "peekOfCode": "def freeze_encoder(model):\n    for layer in model.encoder:\n        for param in layer.parameters():\n            param.requires_grad = False\n    model.encoder.eval()\n    fine_tune_logger.info(\"Encoder layers frozen for fine-tuning.\")\nclass HybridLoss:\n    def __init__(self, device):\n        self.l1_loss = nn.L1Loss()\n        self.mse_loss = nn.MSELoss()",
-        "detail": "Model.Fine_tuning.Fine_Tuned_model",
-        "documentation": {}
-    },
-    {
-        "label": "fine_tune_model",
-        "kind": 2,
-        "importPath": "Model.Fine_tuning.Fine_Tuned_model",
-        "description": "Model.Fine_tuning.Fine_Tuned_model",
-        "peekOfCode": "def fine_tune_model(\n    pretrained_model_path,\n    fine_tuned_model_path,\n    root_dir,\n    batch_size=2,\n    learning_rate=1e-5,\n    fine_tune_epochs=20\n):\n    device = torch.device(\"cuda\" if torch.cuda.is_available() else \"cpu\")\n    fine_tune_logger.info(f\"Fine-tuning on device: {device}\")",
-        "detail": "Model.Fine_tuning.Fine_Tuned_model",
+        "importPath": "Model.Data.dataset",
+        "description": "Model.Data.dataset",
+        "peekOfCode": "class VCTKSpectrogram(Dataset):\n    def __init__(self, dataset, n_fft=2048, hop_length=1024, max_length=176400):\n        self.dataset = dataset\n        self.n_fft= n_fft\n        self.hop_length = hop_length\n        self.max_length = max_length\n    def __len__(self):\n        return len(self.dataset)\n    def __getitem__(self,idx):\n        sample = self.dataset[idx]",
+        "detail": "Model.Data.dataset",
         "documentation": {}
     },
     {
         "label": "project_root",
         "kind": 5,
-        "importPath": "Model.Fine_tuning.Fine_Tuned_model",
-        "description": "Model.Fine_tuning.Fine_Tuned_model",
-        "peekOfCode": "project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), \"../..\"))\nsys.path.insert(0, project_root)\nfrom Model.Logging.Logger import setup_logger\nfrom Model.Data.dataset import MUSDB18StemDataset\nfrom Model.Model.model import UNet\nfine_tune_logger = setup_logger('Fine-Tuning',r'C:\\Users\\didri\\Desktop\\LearnReflect VideoEnchancer\\AI UNet-Architecture\\Model\\Logging\\Script_logs\\Fine_tune_logg.txt')\nGeneral_logger = setup_logger('General',r'C:\\Users\\didri\\Desktop\\LearnReflect VideoEnchancer\\AI UNet-Architecture\\Model\\Logging\\Script_logs\\General.txt')\nloss_history_finetuning_epoches = {\n    \"l1\":[],\n    \"mse\": [],",
-        "detail": "Model.Fine_tuning.Fine_Tuned_model",
+        "importPath": "Model.Data.dataset",
+        "description": "Model.Data.dataset",
+        "peekOfCode": "project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), \"../..\"))\nsys.path.insert(0, project_root)\nfrom Model.Logging.Logger import setup_logger\ntrain_logger = setup_logger('train', r'C:\\Users\\didri\\Desktop\\LearnReflect VideoEnchancer\\AI UNet-Architecture\\Model\\Logging\\Model_performance_logg\\Model_Training_logg.txt')\nclass MUSDB18StemDataset(Dataset):\n    def __init__(\n        self,\n        root_dir,\n        subset='train',\n        sr=44100,",
+        "detail": "Model.Data.dataset",
         "documentation": {}
     },
     {
-        "label": "fine_tune_logger",
+        "label": "train_logger",
         "kind": 5,
-        "importPath": "Model.Fine_tuning.Fine_Tuned_model",
-        "description": "Model.Fine_tuning.Fine_Tuned_model",
-        "peekOfCode": "fine_tune_logger = setup_logger('Fine-Tuning',r'C:\\Users\\didri\\Desktop\\LearnReflect VideoEnchancer\\AI UNet-Architecture\\Model\\Logging\\Script_logs\\Fine_tune_logg.txt')\nGeneral_logger = setup_logger('General',r'C:\\Users\\didri\\Desktop\\LearnReflect VideoEnchancer\\AI UNet-Architecture\\Model\\Logging\\Script_logs\\General.txt')\nloss_history_finetuning_epoches = {\n    \"l1\":[],\n    \"mse\": [],\n    \"spectral\": [],\n    \"perceptual\": [],\n    \"multiscale\": [],\n    \"combined\": [],\n}",
-        "detail": "Model.Fine_tuning.Fine_Tuned_model",
-        "documentation": {}
-    },
-    {
-        "label": "General_logger",
-        "kind": 5,
-        "importPath": "Model.Fine_tuning.Fine_Tuned_model",
-        "description": "Model.Fine_tuning.Fine_Tuned_model",
-        "peekOfCode": "General_logger = setup_logger('General',r'C:\\Users\\didri\\Desktop\\LearnReflect VideoEnchancer\\AI UNet-Architecture\\Model\\Logging\\Script_logs\\General.txt')\nloss_history_finetuning_epoches = {\n    \"l1\":[],\n    \"mse\": [],\n    \"spectral\": [],\n    \"perceptual\": [],\n    \"multiscale\": [],\n    \"combined\": [],\n}\ndef freeze_encoder(model):",
-        "detail": "Model.Fine_tuning.Fine_Tuned_model",
-        "documentation": {}
-    },
-    {
-        "label": "loss_history_finetuning_epoches",
-        "kind": 5,
-        "importPath": "Model.Fine_tuning.Fine_Tuned_model",
-        "description": "Model.Fine_tuning.Fine_Tuned_model",
-        "peekOfCode": "loss_history_finetuning_epoches = {\n    \"l1\":[],\n    \"mse\": [],\n    \"spectral\": [],\n    \"perceptual\": [],\n    \"multiscale\": [],\n    \"combined\": [],\n}\ndef freeze_encoder(model):\n    for layer in model.encoder:",
-        "detail": "Model.Fine_tuning.Fine_Tuned_model",
+        "importPath": "Model.Data.dataset",
+        "description": "Model.Data.dataset",
+        "peekOfCode": "train_logger = setup_logger('train', r'C:\\Users\\didri\\Desktop\\LearnReflect VideoEnchancer\\AI UNet-Architecture\\Model\\Logging\\Model_performance_logg\\Model_Training_logg.txt')\nclass MUSDB18StemDataset(Dataset):\n    def __init__(\n        self,\n        root_dir,\n        subset='train',\n        sr=44100,\n        n_fft=2048,\n        hop_length=1024,\n        max_length=176400,",
+        "detail": "Model.Data.dataset",
         "documentation": {}
     },
     {
@@ -544,33 +484,6 @@
         "description": "Model.Logging.Logger",
         "peekOfCode": "def setup_logger(name, log_file, level=logging.INFO):\n    handler = logging.FileHandler(log_file, mode='a') #Append mode\n    handler.setFormatter(logging.Formatter('%(asctime)s - %(levelname)s - %(message)s'))\n    logger = logging.getLogger(name)\n    logger.setLevel(level)\n    logger.addHandler(handler)\n    return logger",
         "detail": "Model.Logging.Logger",
-        "documentation": {}
-    },
-    {
-        "label": "plot_loss_curves_Training_script_epoches",
-        "kind": 2,
-        "importPath": "Model.Logging.Loss_Diagram_Values",
-        "description": "Model.Logging.Loss_Diagram_Values",
-        "peekOfCode": "def plot_loss_curves_Training_script_epoches(loss_history_Epoches, out_path=\"loss_curves_training_epoches.png\"):\n    epochs_count = len(loss_history_Epoches[\"combined\"])\n    epochs = range(1, epochs_count + 1)\n    plt.figure(figsize=(10,6))\n    if len(loss_history_Epoches[\"l1\"]) > 0:\n        plt.plot(epochs, loss_history_Epoches[\"l1\"], label=\"L1-loss\", color=\"blue\")\n    if len(loss_history_Epoches[\"spectral\"]) > 0:\n        plt.plot(epochs, loss_history_Epoches[\"spectral\"], label=\"spectral-loss\", color=\"green\")\n    plt.plot(epochs, loss_history_Epoches[\"combined\"], label=\"combined-loss\", color=\"purple\")\n    plt.xlabel(\"Epoch\")",
-        "detail": "Model.Logging.Loss_Diagram_Values",
-        "documentation": {}
-    },
-    {
-        "label": "plot_loss_curves_Training_script_Batches",
-        "kind": 2,
-        "importPath": "Model.Logging.Loss_Diagram_Values",
-        "description": "Model.Logging.Loss_Diagram_Values",
-        "peekOfCode": "def plot_loss_curves_Training_script_Batches(loss_history_Batches, out_path=\"loss_curves_training_batches.png\"):\n    import matplotlib.ticker as mticker\n    batch_count = len(loss_history_Batches[\"combined\"])\n    batch_range = range(1, batch_count + 1)\n    plt.figure(figsize=(10,6))\n    # Plot L1\n    if len(loss_history_Batches[\"l1\"]) > 0:\n        plt.plot(batch_range, loss_history_Batches[\"l1\"], label=\"L1-loss\", color=\"blue\")\n    # Plot spectral\n    if len(loss_history_Batches[\"spectral\"]) > 0:",
-        "detail": "Model.Logging.Loss_Diagram_Values",
-        "documentation": {}
-    },
-    {
-        "label": "plot_loss_curves_FineTuning_script_",
-        "kind": 2,
-        "importPath": "Model.Logging.Loss_Diagram_Values",
-        "description": "Model.Logging.Loss_Diagram_Values",
-        "peekOfCode": "def plot_loss_curves_FineTuning_script_(loss_history_finetuning_epoches, out_path=\"loss_curves_finetuning_epoches.png\"):\n    epochs_count = len(loss_history_finetuning_epoches[\"combined\"])\n    epochs = range(1, epochs_count + 1)\n    plt.figure(figsize=(10,6))\n    if len(loss_history_finetuning_epoches[\"l1\"]) > 0:\n        plt.plot(epochs, loss_history_finetuning_epoches[\"l1\"], label=\"L1-loss\", color=\"blue\")\n    if len(loss_history_finetuning_epoches[\"spectral\"]) > 0:\n        plt.plot(epochs, loss_history_finetuning_epoches[\"spectral\"], label=\"spectral-loss\", color=\"green\")\n    if len(loss_history_finetuning_epoches[\"perceptual\"]) > 0:\n        plt.plot(epochs, loss_history_finetuning_epoches[\"perceptual\"], label=\"l1-loss\", color=\"red\")",
-        "detail": "Model.Logging.Loss_Diagram_Values",
         "documentation": {}
     },
     {
@@ -587,7 +500,7 @@
         "kind": 5,
         "importPath": "Model.Model.create_model",
         "description": "Model.Model.create_model",
-        "peekOfCode": "os.environ[\"PYTORCH_CUDA_ALLOC_CONF\"] = \"expandable_segments:True\"\nproject_root = os.path.abspath(os.path.join(os.path.dirname(__file__), \"../..\"))\nsys.path.insert(0, project_root)  \nfrom Model.Logging.Logger import setup_logger\nModel_creation_logger = setup_logger('CreateModel',r'C:\\Users\\didri\\Desktop\\LearnReflect VideoEnchancer\\AI UNet-Architecture\\Model\\Logging\\Script_logs\\Create_model.txt')\nfrom Model.Model.model import UNet\ndef create_and_save_model(input_shape, in_channels=1, out_channels=1, save_path=\"unet_vocal_isolation.pth\"):\n    # Select the device (GPU if available, else CPU)\n    device = torch.device(\"cuda\" if torch.cuda.is_available() else \"cpu\")\n    Model_creation_logger.info(f\"Using device: {device}\")",
+        "peekOfCode": "os.environ[\"PYTORCH_CUDA_ALLOC_CONF\"] = \"expandable_segments:True\"\nproject_root = os.path.abspath(os.path.join(os.path.dirname(__file__), \"../..\"))\nsys.path.insert(0, project_root)  \nfrom Model.Logging.Logger import setup_logger\ntrain_logger = setup_logger('train', r'C:\\Users\\didri\\Desktop\\LearnReflect VideoEnchancer\\AI UNet-Architecture\\Model\\Logging\\Model_performance_logg\\Model_Training_logg.txt')\nfrom Model.Model.model import UNet\ndef create_and_save_model(input_shape, in_channels=1, out_channels=1, save_path=\"unet_vocal_isolation.pth\"):\n    # Select the device (GPU if available, else CPU)\n    device = torch.device(\"cuda\" if torch.cuda.is_available() else \"cpu\")\n    Model_creation_logger.info(f\"Using device: {device}\")",
         "detail": "Model.Model.create_model",
         "documentation": {}
     },
@@ -596,16 +509,16 @@
         "kind": 5,
         "importPath": "Model.Model.create_model",
         "description": "Model.Model.create_model",
-        "peekOfCode": "project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), \"../..\"))\nsys.path.insert(0, project_root)  \nfrom Model.Logging.Logger import setup_logger\nModel_creation_logger = setup_logger('CreateModel',r'C:\\Users\\didri\\Desktop\\LearnReflect VideoEnchancer\\AI UNet-Architecture\\Model\\Logging\\Script_logs\\Create_model.txt')\nfrom Model.Model.model import UNet\ndef create_and_save_model(input_shape, in_channels=1, out_channels=1, save_path=\"unet_vocal_isolation.pth\"):\n    # Select the device (GPU if available, else CPU)\n    device = torch.device(\"cuda\" if torch.cuda.is_available() else \"cpu\")\n    Model_creation_logger.info(f\"Using device: {device}\")\n    # Validate input shape",
+        "peekOfCode": "project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), \"../..\"))\nsys.path.insert(0, project_root)  \nfrom Model.Logging.Logger import setup_logger\ntrain_logger = setup_logger('train', r'C:\\Users\\didri\\Desktop\\LearnReflect VideoEnchancer\\AI UNet-Architecture\\Model\\Logging\\Model_performance_logg\\Model_Training_logg.txt')\nfrom Model.Model.model import UNet\ndef create_and_save_model(input_shape, in_channels=1, out_channels=1, save_path=\"unet_vocal_isolation.pth\"):\n    # Select the device (GPU if available, else CPU)\n    device = torch.device(\"cuda\" if torch.cuda.is_available() else \"cpu\")\n    Model_creation_logger.info(f\"Using device: {device}\")\n    # Validate input shape",
         "detail": "Model.Model.create_model",
         "documentation": {}
     },
     {
-        "label": "Model_creation_logger",
+        "label": "train_logger",
         "kind": 5,
         "importPath": "Model.Model.create_model",
         "description": "Model.Model.create_model",
-        "peekOfCode": "Model_creation_logger = setup_logger('CreateModel',r'C:\\Users\\didri\\Desktop\\LearnReflect VideoEnchancer\\AI UNet-Architecture\\Model\\Logging\\Script_logs\\Create_model.txt')\nfrom Model.Model.model import UNet\ndef create_and_save_model(input_shape, in_channels=1, out_channels=1, save_path=\"unet_vocal_isolation.pth\"):\n    # Select the device (GPU if available, else CPU)\n    device = torch.device(\"cuda\" if torch.cuda.is_available() else \"cpu\")\n    Model_creation_logger.info(f\"Using device: {device}\")\n    # Validate input shape\n    if len(input_shape) != 4:\n        raise ValueError(\"Input shape must be a 4-tuple: (batch_size, channels, height, width)\")\n    # Create a random input tensor on the selected device",
+        "peekOfCode": "train_logger = setup_logger('train', r'C:\\Users\\didri\\Desktop\\LearnReflect VideoEnchancer\\AI UNet-Architecture\\Model\\Logging\\Model_performance_logg\\Model_Training_logg.txt')\nfrom Model.Model.model import UNet\ndef create_and_save_model(input_shape, in_channels=1, out_channels=1, save_path=\"unet_vocal_isolation.pth\"):\n    # Select the device (GPU if available, else CPU)\n    device = torch.device(\"cuda\" if torch.cuda.is_available() else \"cpu\")\n    Model_creation_logger.info(f\"Using device: {device}\")\n    # Validate input shape\n    if len(input_shape) != 4:\n        raise ValueError(\"Input shape must be a 4-tuple: (batch_size, channels, height, width)\")\n    # Create a random input tensor on the selected device",
         "detail": "Model.Model.create_model",
         "documentation": {}
     },
@@ -614,7 +527,7 @@
         "kind": 6,
         "importPath": "Model.Model.model",
         "description": "Model.Model.model",
-        "peekOfCode": "class AttentionBlock(nn.Module):\n    \"\"\"\n    Applies an attention mechanism to combine gating and encoder features.\n    \"\"\"\n    def __init__(self, in_channels, gating_channels, inter_channels):\n        super(AttentionBlock, self).__init__()\n        self.W_g = nn.Conv2d(gating_channels, inter_channels, kernel_size=1, stride=1, padding=0, bias=True)\n        self.W_x = nn.Conv2d(in_channels, inter_channels, kernel_size=1, stride=1, padding=0, bias=True)\n        self.psi = nn.Conv2d(inter_channels, 1, kernel_size=1, stride=1, padding=0, bias=True)\n        self.relu = nn.ReLU(inplace=True)",
+        "peekOfCode": "class AttentionBlock(nn.Module):\n    #Applies an attention mechanism to combine gating and encoder features.\n    def __init__(self, in_channels, gating_channels, inter_channels):\n        super(AttentionBlock, self).__init__()\n        self.W_g = nn.Conv2d(gating_channels, inter_channels, kernel_size=1, stride=1, padding=0, bias=True)\n        self.W_x = nn.Conv2d(in_channels, inter_channels, kernel_size=1, stride=1, padding=0, bias=True)\n        self.psi = nn.Conv2d(inter_channels, 1, kernel_size=1, stride=1, padding=0, bias=True)\n        self.relu = nn.ReLU(inplace=True)\n        self.sigmoid = nn.Sigmoid()\n    def forward(self, x, g):",
         "detail": "Model.Model.model",
         "documentation": {}
     },
@@ -623,7 +536,7 @@
         "kind": 6,
         "importPath": "Model.Model.model",
         "description": "Model.Model.model",
-        "peekOfCode": "class MultiScaleDecoderBlock(nn.Module):\n    \"\"\"\n    Decoding block that up-samples and merges with skip connection.\n    \"\"\"\n    def __init__(self, in_channels, out_channels):\n        super(MultiScaleDecoderBlock, self).__init__()\n        self.up = nn.ConvTranspose2d(in_channels, out_channels, kernel_size=2, stride=2)\n        self.conv = nn.Sequential(\n            nn.Conv2d(out_channels * 2, out_channels, kernel_size=3, padding=1),\n            nn.BatchNorm2d(out_channels),",
+        "peekOfCode": "class MultiScaleDecoderBlock(nn.Module):\n    #Decoding block that up-samples and merges with skip connection.\n    def __init__(self, in_channels, out_channels):\n        super(MultiScaleDecoderBlock, self).__init__()\n        self.up = nn.ConvTranspose2d(in_channels, out_channels, kernel_size=2, stride=2)\n        self.conv = nn.Sequential(\n            nn.Conv2d(out_channels * 2, out_channels, kernel_size=3, padding=1),\n            nn.BatchNorm2d(out_channels),\n            nn.ReLU(inplace=True)\n        )",
         "detail": "Model.Model.model",
         "documentation": {}
     },
@@ -632,7 +545,7 @@
         "kind": 6,
         "importPath": "Model.Model.model",
         "description": "Model.Model.model",
-        "peekOfCode": "class UNet(nn.Module):\n    \"\"\"\n    A UNet model with attention and multi-scale decoder blocks.\n    \"\"\"\n    def __init__(self, in_channels=1, out_channels=1, features=[16, 32, 64, 128]):\n        super(UNet, self).__init__()\n        self.encoder = nn.ModuleList()\n        prev_channels = in_channels\n        # Encoder Blocks\n        for feature in features:",
+        "peekOfCode": "class UNet(nn.Module):\n    #A UNet model with attention and multi-scale decoder blocks.\n    def __init__(self, in_channels=1, out_channels=1, features=[16, 32, 64, 128]):\n        super(UNet, self).__init__()\n        self.encoder = nn.ModuleList()\n        prev_channels = in_channels\n        # Encoder Blocks\n        for feature in features:\n            self.encoder.append(self.conv_block(prev_channels, feature))\n            prev_channels = feature",
         "detail": "Model.Model.model",
         "documentation": {}
     },
@@ -641,16 +554,16 @@
         "kind": 5,
         "importPath": "Model.Model.model",
         "description": "Model.Model.model",
-        "peekOfCode": "project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), \"../..\"))\nsys.path.insert(0, project_root)\nfrom Model.Logging.Logger import setup_logger\n# -------------------------------------------------------------------------\n# Logger Setup\n# -------------------------------------------------------------------------\nModel_logger = setup_logger(\n    'ModelLogg',\n    r'C:\\Users\\didri\\Desktop\\LearnReflect VideoEnchancer\\AI UNet-Architecture\\Model\\Logging\\Script_logs\\Model_logg.txt'\n)",
+        "peekOfCode": "project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), \"../..\"))\nsys.path.insert(0, project_root)\nfrom Model.Logging.Logger import setup_logger\ntrain_logger = setup_logger('train', r'C:\\Users\\didri\\Desktop\\LearnReflect VideoEnchancer\\AI UNet-Architecture\\Model\\Logging\\Model_performance_logg\\Model_Training_logg.txt')\nclass AttentionBlock(nn.Module):\n    #Applies an attention mechanism to combine gating and encoder features.\n    def __init__(self, in_channels, gating_channels, inter_channels):\n        super(AttentionBlock, self).__init__()\n        self.W_g = nn.Conv2d(gating_channels, inter_channels, kernel_size=1, stride=1, padding=0, bias=True)\n        self.W_x = nn.Conv2d(in_channels, inter_channels, kernel_size=1, stride=1, padding=0, bias=True)",
         "detail": "Model.Model.model",
         "documentation": {}
     },
     {
-        "label": "Model_logger",
+        "label": "train_logger",
         "kind": 5,
         "importPath": "Model.Model.model",
         "description": "Model.Model.model",
-        "peekOfCode": "Model_logger = setup_logger(\n    'ModelLogg',\n    r'C:\\Users\\didri\\Desktop\\LearnReflect VideoEnchancer\\AI UNet-Architecture\\Model\\Logging\\Script_logs\\Model_logg.txt'\n)\nModel_logger.info(\"Model script started...\")\n# -------------------------------------------------------------------------\n# AttentionBlock\n# -------------------------------------------------------------------------\nclass AttentionBlock(nn.Module):\n    \"\"\"",
+        "peekOfCode": "train_logger = setup_logger('train', r'C:\\Users\\didri\\Desktop\\LearnReflect VideoEnchancer\\AI UNet-Architecture\\Model\\Logging\\Model_performance_logg\\Model_Training_logg.txt')\nclass AttentionBlock(nn.Module):\n    #Applies an attention mechanism to combine gating and encoder features.\n    def __init__(self, in_channels, gating_channels, inter_channels):\n        super(AttentionBlock, self).__init__()\n        self.W_g = nn.Conv2d(gating_channels, inter_channels, kernel_size=1, stride=1, padding=0, bias=True)\n        self.W_x = nn.Conv2d(in_channels, inter_channels, kernel_size=1, stride=1, padding=0, bias=True)\n        self.psi = nn.Conv2d(inter_channels, 1, kernel_size=1, stride=1, padding=0, bias=True)\n        self.relu = nn.ReLU(inplace=True)\n        self.sigmoid = nn.Sigmoid()",
         "detail": "Model.Model.model",
         "documentation": {}
     },
@@ -817,48 +730,174 @@
         "documentation": {}
     },
     {
-        "label": "load_audio",
+        "label": "validate_and_fix_wav",
         "kind": 2,
-        "importPath": "Model.Test_Model_with_audio.test_Model_on_mixed_audio",
-        "description": "Model.Test_Model_with_audio.test_Model_on_mixed_audio",
-        "peekOfCode": "def load_audio(file_path, sr=44100, n_fft=2048, hop_length=512):\n    #Loads the audio file and converts it to STFT\n    audio, _ = librosa.load(file_path, sr=sr, mono=True)\n    audio /= np.max(np.abs(audio)) + 1e-8\n    stft = librosa.stft(audio, n_fft=n_fft, hop_length=hop_length)\n    magnitude = np.abs(stft)\n    phase = np.angle(stft)\n    Model_Test_on_audio_logger.info(f\"[Load_audio]: returning magnitude:  {magnitude.shape}, phase: {phase} \")\n    return magnitude, phase #Returns magnitude for the model too understand the audio & phase to make sound again.\ndef reconstruct_audio(magnitude, phase, n_fft=2048, hop_length=512):",
-        "detail": "Model.Test_Model_with_audio.test_Model_on_mixed_audio",
+        "importPath": "Model.Training.Evaluation",
+        "description": "Model.Training.Evaluation",
+        "peekOfCode": "def validate_and_fix_wav(file_path, output_path, sample_rate=44100):\n    try:\n        data, sr = sf.read(file_path)\n        if sr != sample_rate or data.ndim > 1:\n            data = np.mean(data, axis=1) if data.ndim > 1 else data\n            sf.write(output_path, data, samplerate= sample_rate)\n            train_logger.info(f\"Konverterte {file_path} til {output_path} med riktig format.\")\n            print(f\"Konverterte {file_path} til {output_path} med riktig format.\")\n        else: \n            print(f\"{file_path} er allerede i riktig format\")",
+        "detail": "Model.Training.Evaluation",
         "documentation": {}
     },
     {
-        "label": "reconstruct_audio",
+        "label": "compute_sdr_sir_sar",
         "kind": 2,
-        "importPath": "Model.Test_Model_with_audio.test_Model_on_mixed_audio",
-        "description": "Model.Test_Model_with_audio.test_Model_on_mixed_audio",
-        "peekOfCode": "def reconstruct_audio(magnitude, phase, n_fft=2048, hop_length=512):\n    stft_complex = magnitude * np.exp(1j * phase) #puts  Magntiude & phase together again\n    audio = librosa.istft(stft_complex, hop_length=hop_length) #Make audio from spectrogram\n    Model_Test_on_audio_logger.info(f\"[reconstruct_audio]: {audio}\")\n    return audio #Returns the audio\ndef test_model(model_path, input_file, output_file, sr=44100, n_fft=2048, hop_length=512):\n    device = torch.device(\"cuda\" if torch.cuda.is_available() else 'cpu')\n    model = UNet(in_channels=1, out_channels=1).to(device)\n    state_dict = torch.load(model_path, map_location=device, weights_only=True)\n    model.load_state_dict(state_dict)",
-        "detail": "Model.Test_Model_with_audio.test_Model_on_mixed_audio",
+        "importPath": "Model.Training.Evaluation",
+        "description": "Model.Training.Evaluation",
+        "peekOfCode": "def compute_sdr_sir_sar(reference_audio, estimated_audio):\n    if reference_audio.ndim == 1:\n        reference_audio = reference_audio[np.newaxis, :]\n    if estimated_audio.ndim == 1:\n        estimated_audio = estimated_audio[np.newaxis, :]\n    sdr, sir, sar, _ = bss_eval_sources(reference_audio, estimated_audio)\n    return sdr, sir, sar\n######[Eval]FUNCTION 1#######     #Klassisk MSE-baset evaluering.",
+        "detail": "Model.Training.Evaluation",
         "documentation": {}
     },
     {
-        "label": "test_model",
+        "label": "evaluate_model",
         "kind": 2,
-        "importPath": "Model.Test_Model_with_audio.test_Model_on_mixed_audio",
-        "description": "Model.Test_Model_with_audio.test_Model_on_mixed_audio",
-        "peekOfCode": "def test_model(model_path, input_file, output_file, sr=44100, n_fft=2048, hop_length=512):\n    device = torch.device(\"cuda\" if torch.cuda.is_available() else 'cpu')\n    model = UNet(in_channels=1, out_channels=1).to(device)\n    state_dict = torch.load(model_path, map_location=device, weights_only=True)\n    model.load_state_dict(state_dict)\n    model.eval()\n    input_magnitude, input_phase = load_audio(input_file, sr, n_fft, hop_length) #Converts to spectrogram (visual representation of audio)\n    Model_Test_on_audio_logger.info(f\"Input magnitude shape: {input_magnitude.shape}\")\n    Model_Test_on_audio_logger.info(f\"Input magnitude range: min={input_magnitude.min()}, max={input_magnitude.max()}\")\n    input_magnitude_tensor = torch.tensor(input_magnitude, dtype=torch.float32).unsqueeze(0).unsqueeze(0).to(device) #spectrogram to pytorch tensor that the model can understand",
-        "detail": "Model.Test_Model_with_audio.test_Model_on_mixed_audio",
+        "importPath": "Model.Training.Evaluation",
+        "description": "Model.Training.Evaluation",
+        "peekOfCode": "def evaluate_model(model, val_loader, device, output_dir, sr=44100, n_fft=2048, hop_length=1024):\n    model.eval().to(device)\n    os.makedirs(output_dir, exist_ok=True)\n    criterion = nn.MSELoss()\n    total_loss = 0.0\n    mse_values = []\n    num_batches = 0\n    with torch.no_grad():\n        for idx, (inputs, targets) in enumerate(val_loader, start=1):\n            inputs = inputs.to(device, dtype=torch.float32)",
+        "detail": "Model.Training.Evaluation",
+        "documentation": {}
+    },
+    {
+        "label": "evaluate_model_with_sdr_sir_sar",
+        "kind": 2,
+        "importPath": "Model.Training.Evaluation",
+        "description": "Model.Training.Evaluation",
+        "peekOfCode": "def evaluate_model_with_sdr_sir_sar( model,   dataloader,  output_csv_path,   loss_diagram_func=None,  device='cpu',  sr=44100, n_fft=2048, hop_length=512):\n    model.eval()  \n    sdr_list, sir_list, sar_list = [], [], []\n    results = []\n    for batch_idx, (inputs, targets) in enumerate(dataloader, start=1):\n        # Forbered input og target som numpy-array\n        inputs, targets = inputs.numpy(), targets.numpy()\n        # Modellens prediksjoner\n        predictions = model(torch.tensor(inputs).to(device)).cpu().detach().numpy()\n        predictions = model(torch.tensor(inputs).to(device)).cpu().detach().numpy()",
+        "detail": "Model.Training.Evaluation",
         "documentation": {}
     },
     {
         "label": "project_root",
         "kind": 5,
-        "importPath": "Model.Test_Model_with_audio.test_Model_on_mixed_audio",
-        "description": "Model.Test_Model_with_audio.test_Model_on_mixed_audio",
-        "peekOfCode": "project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), \"../..\"))\nsys.path.insert(0, project_root)  \nfrom Model.Model.model import UNet\nfrom Model.Logging.Logger import setup_logger\nModel_Test_on_audio_logger = setup_logger('ModelLogg',r'C:\\Users\\didri\\Desktop\\LearnReflect VideoEnchancer\\AI AudioEnchancer\\Model\\Logging\\Model_logg.txt')\nModel_Test_on_audio_logger.info(\"ModelTest on audio started...\")\ndef load_audio(file_path, sr=44100, n_fft=2048, hop_length=512):\n    #Loads the audio file and converts it to STFT\n    audio, _ = librosa.load(file_path, sr=sr, mono=True)\n    audio /= np.max(np.abs(audio)) + 1e-8",
-        "detail": "Model.Test_Model_with_audio.test_Model_on_mixed_audio",
+        "importPath": "Model.Training.Evaluation",
+        "description": "Model.Training.Evaluation",
+        "peekOfCode": "project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), \"../..\"))\nsys.path.insert(0, project_root)\nfrom mir_eval.separation import bss_eval_sources\nfrom Model.Logging.Logger import setup_logger\nimport csv\nfrom joblib import Parallel, delayed\ntrain_logger = setup_logger('train', r'C:\\Users\\didri\\Desktop\\LearnReflect VideoEnchancer\\AI UNet-Architecture\\Model\\Logging\\Model_performance_logg\\Model_Training_logg.txt')\n#####EXTERNAL FUNCTIONS#####\ndef validate_and_fix_wav(file_path, output_path, sample_rate=44100):\n    try:",
+        "detail": "Model.Training.Evaluation",
         "documentation": {}
     },
     {
-        "label": "Model_Test_on_audio_logger",
+        "label": "train_logger",
         "kind": 5,
-        "importPath": "Model.Test_Model_with_audio.test_Model_on_mixed_audio",
-        "description": "Model.Test_Model_with_audio.test_Model_on_mixed_audio",
-        "peekOfCode": "Model_Test_on_audio_logger = setup_logger('ModelLogg',r'C:\\Users\\didri\\Desktop\\LearnReflect VideoEnchancer\\AI AudioEnchancer\\Model\\Logging\\Model_logg.txt')\nModel_Test_on_audio_logger.info(\"ModelTest on audio started...\")\ndef load_audio(file_path, sr=44100, n_fft=2048, hop_length=512):\n    #Loads the audio file and converts it to STFT\n    audio, _ = librosa.load(file_path, sr=sr, mono=True)\n    audio /= np.max(np.abs(audio)) + 1e-8\n    stft = librosa.stft(audio, n_fft=n_fft, hop_length=hop_length)\n    magnitude = np.abs(stft)\n    phase = np.angle(stft)\n    Model_Test_on_audio_logger.info(f\"[Load_audio]: returning magnitude:  {magnitude.shape}, phase: {phase} \")",
-        "detail": "Model.Test_Model_with_audio.test_Model_on_mixed_audio",
+        "importPath": "Model.Training.Evaluation",
+        "description": "Model.Training.Evaluation",
+        "peekOfCode": "train_logger = setup_logger('train', r'C:\\Users\\didri\\Desktop\\LearnReflect VideoEnchancer\\AI UNet-Architecture\\Model\\Logging\\Model_performance_logg\\Model_Training_logg.txt')\n#####EXTERNAL FUNCTIONS#####\ndef validate_and_fix_wav(file_path, output_path, sample_rate=44100):\n    try:\n        data, sr = sf.read(file_path)\n        if sr != sample_rate or data.ndim > 1:\n            data = np.mean(data, axis=1) if data.ndim > 1 else data\n            sf.write(output_path, data, samplerate= sample_rate)\n            train_logger.info(f\"Konverterte {file_path} til {output_path} med riktig format.\")\n            print(f\"Konverterte {file_path} til {output_path} med riktig format.\")",
+        "detail": "Model.Training.Evaluation",
+        "documentation": {}
+    },
+    {
+        "label": "HybridLoss",
+        "kind": 6,
+        "importPath": "Model.Training.Fine_Tuned_model",
+        "description": "Model.Training.Fine_Tuned_model",
+        "peekOfCode": "class HybridLoss:\n    def __init__(self, device):\n        self.l1_loss = nn.L1Loss()\n        self.mse_loss = nn.MSELoss()\n        self.device = device\n        train_logger.info(\"Loading VGGish model...\")\n        self.audio_model = torch.hub.load( 'harritaylor/torchvggish', 'vggish', trust_repo=True ).to(device)\n        self.audio_model.eval()\n        train_logger.info(f\"finetuning --> VGGish model loaded and set to eval mode.\")\n        for param in self.audio_model.parameters():",
+        "detail": "Model.Training.Fine_Tuned_model",
+        "documentation": {}
+    },
+    {
+        "label": "freeze_encoder",
+        "kind": 2,
+        "importPath": "Model.Training.Fine_Tuned_model",
+        "description": "Model.Training.Fine_Tuned_model",
+        "peekOfCode": "def freeze_encoder(model):\n    for layer in model.encoder:\n        for param in layer.parameters():\n            param.requires_grad = False\n    model.encoder.eval()\n    train_logger.info(\"Encoder layers frozen for fine-tuning.\")\nclass HybridLoss:\n    def __init__(self, device):\n        self.l1_loss = nn.L1Loss()\n        self.mse_loss = nn.MSELoss()",
+        "detail": "Model.Training.Fine_Tuned_model",
+        "documentation": {}
+    },
+    {
+        "label": "fine_tune_model",
+        "kind": 2,
+        "importPath": "Model.Training.Fine_Tuned_model",
+        "description": "Model.Training.Fine_Tuned_model",
+        "peekOfCode": "def fine_tune_model(\n    pretrained_model_path,\n    fine_tuned_model_path,\n    root_dir,\n    batch_size=6,\n    learning_rate=1e-5,\n    fine_tune_epochs=2\n):\n    device = torch.device(\"cuda\" if torch.cuda.is_available() else \"cpu\")\n    train_logger.info(f\"finetuning --> Fine-tuning on device: {device}\")",
+        "detail": "Model.Training.Fine_Tuned_model",
+        "documentation": {}
+    },
+    {
+        "label": "project_root",
+        "kind": 5,
+        "importPath": "Model.Training.Fine_Tuned_model",
+        "description": "Model.Training.Fine_Tuned_model",
+        "peekOfCode": "project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), \"../..\"))\nsys.path.insert(0, project_root)\nfrom Model.Logging.Logger import setup_logger\nfrom Model.Data.dataset import MUSDB18StemDataset\nfrom Model.Model.model import UNet\nfrom Model.Training.Loss_Diagram_Values import plot_loss_curves_FineTuning_script_\nimport multiprocessing\ntrain_logger = setup_logger('train', r'C:\\Users\\didri\\Desktop\\LearnReflect VideoEnchancer\\AI UNet-Architecture\\Model\\Logging\\Model_performance_logg\\Model_Training_logg.txt')\nnum_workers = multiprocessing.cpu_count() // 2\nloss_history_finetuning_epoches = {",
+        "detail": "Model.Training.Fine_Tuned_model",
+        "documentation": {}
+    },
+    {
+        "label": "train_logger",
+        "kind": 5,
+        "importPath": "Model.Training.Fine_Tuned_model",
+        "description": "Model.Training.Fine_Tuned_model",
+        "peekOfCode": "train_logger = setup_logger('train', r'C:\\Users\\didri\\Desktop\\LearnReflect VideoEnchancer\\AI UNet-Architecture\\Model\\Logging\\Model_performance_logg\\Model_Training_logg.txt')\nnum_workers = multiprocessing.cpu_count() // 2\nloss_history_finetuning_epoches = {\n    \"l1\":[],\n    \"mse\": [],\n    \"spectral\": [],\n    \"perceptual\": [],\n    \"multiscale\": [],\n    \"combined\": [],\n}",
+        "detail": "Model.Training.Fine_Tuned_model",
+        "documentation": {}
+    },
+    {
+        "label": "num_workers",
+        "kind": 5,
+        "importPath": "Model.Training.Fine_Tuned_model",
+        "description": "Model.Training.Fine_Tuned_model",
+        "peekOfCode": "num_workers = multiprocessing.cpu_count() // 2\nloss_history_finetuning_epoches = {\n    \"l1\":[],\n    \"mse\": [],\n    \"spectral\": [],\n    \"perceptual\": [],\n    \"multiscale\": [],\n    \"combined\": [],\n}\ndef freeze_encoder(model):",
+        "detail": "Model.Training.Fine_Tuned_model",
+        "documentation": {}
+    },
+    {
+        "label": "loss_history_finetuning_epoches",
+        "kind": 5,
+        "importPath": "Model.Training.Fine_Tuned_model",
+        "description": "Model.Training.Fine_Tuned_model",
+        "peekOfCode": "loss_history_finetuning_epoches = {\n    \"l1\":[],\n    \"mse\": [],\n    \"spectral\": [],\n    \"perceptual\": [],\n    \"multiscale\": [],\n    \"combined\": [],\n}\ndef freeze_encoder(model):\n    for layer in model.encoder:",
+        "detail": "Model.Training.Fine_Tuned_model",
+        "documentation": {}
+    },
+    {
+        "label": "plot_loss_curves_Training_script_epoches",
+        "kind": 2,
+        "importPath": "Model.Training.Loss_Diagram_Values",
+        "description": "Model.Training.Loss_Diagram_Values",
+        "peekOfCode": "def plot_loss_curves_Training_script_epoches(loss_history_Epoches, out_path=\"loss_curves_training_epoches.png\"):\n    epochs_count = len(loss_history_Epoches[\"combined\"])\n    epochs = range(1, epochs_count + 1)\n    plt.figure(figsize=(10,6))\n    if len(loss_history_Epoches[\"l1\"]) > 0:\n        plt.plot(epochs, loss_history_Epoches[\"l1\"], label=\"L1-loss\", color=\"blue\")\n    if len(loss_history_Epoches[\"spectral\"]) > 0:\n        plt.plot(epochs, loss_history_Epoches[\"spectral\"], label=\"spectral-loss\", color=\"green\")\n    if len(loss_history_Epoches[\"combined\"]) > 0:\n        plt.plot(epochs, loss_history_Epoches[\"combined\"], label=\"combined\", color=\"yellow\")",
+        "detail": "Model.Training.Loss_Diagram_Values",
+        "documentation": {}
+    },
+    {
+        "label": "plot_loss_curves_Training_script_Batches",
+        "kind": 2,
+        "importPath": "Model.Training.Loss_Diagram_Values",
+        "description": "Model.Training.Loss_Diagram_Values",
+        "peekOfCode": "def plot_loss_curves_Training_script_Batches(loss_history_Batches, out_path=\"loss_curves_training_batches.png\"):\n    import matplotlib.ticker as mticker\n    batch_count = len(loss_history_Batches[\"combined\"])\n    batch_range = range(1, batch_count + 1)\n    plt.figure(figsize=(10,6))\n    if len(loss_history_Batches[\"l1\"]) > 0:\n        plt.plot(batch_range, loss_history_Batches[\"l1\"], label=\"L1-loss\", color=\"blue\")\n    if len(loss_history_Batches[\"spectral\"]) > 0:\n        plt.plot(batch_range, loss_history_Batches[\"spectral\"], label=\"spectral-loss\", color=\"green\")\n    plt.plot(batch_range, loss_history_Batches[\"combined\"], label=\"combined-loss\", color=\"purple\")",
+        "detail": "Model.Training.Loss_Diagram_Values",
+        "documentation": {}
+    },
+    {
+        "label": "plot_loss_curves_FineTuning_script_",
+        "kind": 2,
+        "importPath": "Model.Training.Loss_Diagram_Values",
+        "description": "Model.Training.Loss_Diagram_Values",
+        "peekOfCode": "def plot_loss_curves_FineTuning_script_(loss_history_finetuning_epoches, out_path=\"loss_curves_finetuning_epoches.png\"):\n    epochs_count = len(loss_history_finetuning_epoches[\"combined\"])\n    epochs = range(1, epochs_count + 1)\n    plt.figure(figsize=(10,6))\n    if len(loss_history_finetuning_epoches[\"l1\"]) > 0:\n        plt.plot(epochs, loss_history_finetuning_epoches[\"l1\"], label=\"L1-loss\", color=\"blue\")\n    if len(loss_history_finetuning_epoches[\"spectral\"]) > 0:\n        plt.plot(epochs, loss_history_finetuning_epoches[\"spectral\"], label=\"spectral-loss\", color=\"green\")\n    if len(loss_history_finetuning_epoches[\"perceptual\"]) > 0:\n        plt.plot(epochs, loss_history_finetuning_epoches[\"perceptual\"], label=\"l1-loss\", color=\"red\")",
+        "detail": "Model.Training.Loss_Diagram_Values",
+        "documentation": {}
+    },
+    {
+        "label": "plot_loss_curves_evaluation",
+        "kind": 2,
+        "importPath": "Model.Training.Loss_Diagram_Values",
+        "description": "Model.Training.Loss_Diagram_Values",
+        "peekOfCode": "def plot_loss_curves_evaluation(sdr_list, sir_list, sar_list, out_path=\"loss_curves_evaluation.png\"):\n    epochs = range(1, len(sdr_list) + 1)\n    plt.figure(figsize=(10, 6))\n    plt.plot(epochs, sdr_list, label=\"SDR\", color=\"blue\")\n    plt.plot(epochs, sir_list, label=\"SIR\", color=\"green\")\n    plt.plot(epochs, sar_list, label=\"SAR\", color=\"purple\")\n    plt.xlabel(\"Batch\")\n    plt.ylabel(\"Value\")\n    plt.title(\"SDR, SIR, and SAR Over Evaluation\")\n    plt.legend()",
+        "detail": "Model.Training.Loss_Diagram_Values",
+        "documentation": {}
+    },
+    {
+        "label": "project_root",
+        "kind": 5,
+        "importPath": "Model.Training.Loss_Diagram_Values",
+        "description": "Model.Training.Loss_Diagram_Values",
+        "peekOfCode": "project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), \"../..\"))\nsys.path.insert(0, project_root)\nfrom Model.Logging.Logger import setup_logger\ntrain_logger = setup_logger('train', r'C:\\Users\\didri\\Desktop\\LearnReflect VideoEnchancer\\AI UNet-Architecture\\Model\\Logging\\Model_performance_logg\\Model_Training_logg.txt')\n##TRAINING####\ndef plot_loss_curves_Training_script_epoches(loss_history_Epoches, out_path=\"loss_curves_training_epoches.png\"):\n    epochs_count = len(loss_history_Epoches[\"combined\"])\n    epochs = range(1, epochs_count + 1)\n    plt.figure(figsize=(10,6))\n    if len(loss_history_Epoches[\"l1\"]) > 0:",
+        "detail": "Model.Training.Loss_Diagram_Values",
+        "documentation": {}
+    },
+    {
+        "label": "train_logger",
+        "kind": 5,
+        "importPath": "Model.Training.Loss_Diagram_Values",
+        "description": "Model.Training.Loss_Diagram_Values",
+        "peekOfCode": "train_logger = setup_logger('train', r'C:\\Users\\didri\\Desktop\\LearnReflect VideoEnchancer\\AI UNet-Architecture\\Model\\Logging\\Model_performance_logg\\Model_Training_logg.txt')\n##TRAINING####\ndef plot_loss_curves_Training_script_epoches(loss_history_Epoches, out_path=\"loss_curves_training_epoches.png\"):\n    epochs_count = len(loss_history_Epoches[\"combined\"])\n    epochs = range(1, epochs_count + 1)\n    plt.figure(figsize=(10,6))\n    if len(loss_history_Epoches[\"l1\"]) > 0:\n        plt.plot(epochs, loss_history_Epoches[\"l1\"], label=\"L1-loss\", color=\"blue\")\n    if len(loss_history_Epoches[\"spectral\"]) > 0:\n        plt.plot(epochs, loss_history_Epoches[\"spectral\"], label=\"spectral-loss\", color=\"green\")",
+        "detail": "Model.Training.Loss_Diagram_Values",
         "documentation": {}
     },
     {
@@ -871,11 +910,20 @@
         "documentation": {}
     },
     {
+        "label": "print_gpu_memory",
+        "kind": 2,
+        "importPath": "Model.Training.train",
+        "description": "Model.Training.train",
+        "peekOfCode": "def print_gpu_memory():\n    if torch.cuda.is_available():\n        print(f\"Total GPU Memory: {torch.cuda.get_device_properties(0).total_memory / 1e9:.2f} GB\")\n        print(f\"Allocated GPU Memory: {torch.cuda.memory_allocated() / 1e9:.2f} GB\")\n        print(f\"Cached GPU Memory: {torch.cuda.memory_reserved() / 1e9:.2f} GB\")\n    else:\n        print(\"CUDA is not available.\")\nnum_workers = multiprocessing.cpu_count() // 2\nloss_history_Epoches = {\n    \"l1\": [],",
+        "detail": "Model.Training.train",
+        "documentation": {}
+    },
+    {
         "label": "train",
         "kind": 2,
         "importPath": "Model.Training.train",
         "description": "Model.Training.train",
-        "peekOfCode": "def train(load_model_path=r\"C:\\Users\\didri\\Desktop\\LearnReflect VideoEnchancer\\AI UNet-Architecture\\UNet_Model\\Final_model\\Final_model.pth\"):\n    device = torch.device(\"cuda\" if torch.cuda.is_available() else \"cpu\")\n    train_logger.info(f\"[Train] Using device: {device}\")\n    print(f\"Device: {device}\")\n    batch_size = 2\n    learning_rate = 1e-5\n    epochs = 10\n    root_dir = r'C:\\mappe1\\musdb18'\n    diagramdirectory = r\"C:\\Users\\didri\\Desktop\\LearnReflect VideoEnchancer\\AI UNet-Architecture\\Model\\Logging\\Diagram_Resultater\"\n    os.makedirs(diagramdirectory, exist_ok=True)",
+        "peekOfCode": "def train(load_model_path=r\"C:\\Users\\didri\\Desktop\\LearnReflect VideoEnchancer\\AI UNet-Architecture\\UNet_Model\\Fine_tuned_model\\Fine_tuned_model.pth\"):\n    device = torch.device(\"cuda\" if torch.cuda.is_available() else \"cpu\")\n    train_logger.info(f\"[Train] Using device: {device}\")\n    print(f\"Device: {device}\")\n    batch_size = 8\n    learning_rate = 1e-5\n    epochs = 5\n    root_dir = r'C:\\mappe1\\musdb18'\n    diagramdirectory = r\"C:\\Users\\didri\\Desktop\\LearnReflect VideoEnchancer\\AI UNet-Architecture\\Model\\Logging\\Diagram_Resultater\"\n    os.makedirs(diagramdirectory, exist_ok=True)",
         "detail": "Model.Training.train",
         "documentation": {}
     },
@@ -884,16 +932,7 @@
         "kind": 5,
         "importPath": "Model.Training.train",
         "description": "Model.Training.train",
-        "peekOfCode": "project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), \"../..\"))\nsys.path.insert(0, project_root)\nfrom Model.Logging.Logger import setup_logger\nfrom Model.Data.dataset import MUSDB18StemDataset\nfrom Model.Model.model import UNet\nfrom Model.Evaluation.Evaluation import evaluate_model, evaluate_model_with_sdr_sir_sar\nfrom Model.Fine_tuning.Fine_Tuned_model import fine_tune_model\n# Viktig: Oppdatert import av plot-funksjoner\nfrom Model.Logging.Loss_Diagram_Values import (\n    plot_loss_curves_Training_script_epoches,",
-        "detail": "Model.Training.train",
-        "documentation": {}
-    },
-    {
-        "label": "Evaluation_logger",
-        "kind": 5,
-        "importPath": "Model.Training.train",
-        "description": "Model.Training.train",
-        "peekOfCode": "Evaluation_logger = setup_logger('Evaluation',r'C:\\Users\\didri\\Desktop\\LearnReflect VideoEnchancer\\AI UNet-Architecture\\Model\\Logging\\Script_logs\\Evaluation_logg.txt')\ntrain_logger = setup_logger('train', r'C:\\Users\\didri\\Desktop\\LearnReflect VideoEnchancer\\AI UNet-Architecture\\Model\\Logging\\Script_logs\\Train_Logg.txt')\nGeneral_logger = setup_logger('train',r'C:\\Users\\didri\\Desktop\\LearnReflect VideoEnchancer\\AI UNet-Architecture\\Model\\Logging\\Script_logs\\General.txt')\nloss_history_Epoches = {\n    \"l1\": [],\n    \"spectral\": [],\n    \"combined\": [],\n    \"Runningloss\": [],\n}\nloss_history_Batches = {",
+        "peekOfCode": "project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), \"../..\"))\nsys.path.insert(0, project_root)\nimport multiprocessing\nfrom Model.Logging.Logger import setup_logger\nfrom Model.Data.dataset import MUSDB18StemDataset\nfrom Model.Model.model import UNet\nfrom Model.Training.Evaluation import evaluate_model, evaluate_model_with_sdr_sir_sar\nfrom Model.Training.Fine_Tuned_model import fine_tune_model\n# Viktig: Oppdatert import av plot-funksjoner\nfrom Model.Training.Loss_Diagram_Values import (",
         "detail": "Model.Training.train",
         "documentation": {}
     },
@@ -902,16 +941,16 @@
         "kind": 5,
         "importPath": "Model.Training.train",
         "description": "Model.Training.train",
-        "peekOfCode": "train_logger = setup_logger('train', r'C:\\Users\\didri\\Desktop\\LearnReflect VideoEnchancer\\AI UNet-Architecture\\Model\\Logging\\Script_logs\\Train_Logg.txt')\nGeneral_logger = setup_logger('train',r'C:\\Users\\didri\\Desktop\\LearnReflect VideoEnchancer\\AI UNet-Architecture\\Model\\Logging\\Script_logs\\General.txt')\nloss_history_Epoches = {\n    \"l1\": [],\n    \"spectral\": [],\n    \"combined\": [],\n    \"Runningloss\": [],\n}\nloss_history_Batches = {\n    \"l1\": [],",
+        "peekOfCode": "train_logger = setup_logger('train', r'C:\\Users\\didri\\Desktop\\LearnReflect VideoEnchancer\\AI UNet-Architecture\\Model\\Logging\\Model_performance_logg\\Model_Training_logg.txt')\ndef print_gpu_memory():\n    if torch.cuda.is_available():\n        print(f\"Total GPU Memory: {torch.cuda.get_device_properties(0).total_memory / 1e9:.2f} GB\")\n        print(f\"Allocated GPU Memory: {torch.cuda.memory_allocated() / 1e9:.2f} GB\")\n        print(f\"Cached GPU Memory: {torch.cuda.memory_reserved() / 1e9:.2f} GB\")\n    else:\n        print(\"CUDA is not available.\")\nnum_workers = multiprocessing.cpu_count() // 2\nloss_history_Epoches = {",
         "detail": "Model.Training.train",
         "documentation": {}
     },
     {
-        "label": "General_logger",
+        "label": "num_workers",
         "kind": 5,
         "importPath": "Model.Training.train",
         "description": "Model.Training.train",
-        "peekOfCode": "General_logger = setup_logger('train',r'C:\\Users\\didri\\Desktop\\LearnReflect VideoEnchancer\\AI UNet-Architecture\\Model\\Logging\\Script_logs\\General.txt')\nloss_history_Epoches = {\n    \"l1\": [],\n    \"spectral\": [],\n    \"combined\": [],\n    \"Runningloss\": [],\n}\nloss_history_Batches = {\n    \"l1\": [],\n    \"spectral\": [],",
+        "peekOfCode": "num_workers = multiprocessing.cpu_count() // 2\nloss_history_Epoches = {\n    \"l1\": [],\n    \"spectral\": [],\n    \"combined\": [],\n    \"Total_loss_per_epoch\": [],\n    \"avg_trainloss\":[],\n}\nloss_history_Batches = {\n    \"l1\": [],",
         "detail": "Model.Training.train",
         "documentation": {}
     },
@@ -920,7 +959,7 @@
         "kind": 5,
         "importPath": "Model.Training.train",
         "description": "Model.Training.train",
-        "peekOfCode": "loss_history_Epoches = {\n    \"l1\": [],\n    \"spectral\": [],\n    \"combined\": [],\n    \"Runningloss\": [],\n}\nloss_history_Batches = {\n    \"l1\": [],\n    \"spectral\": [],\n    \"mse\": [],",
+        "peekOfCode": "loss_history_Epoches = {\n    \"l1\": [],\n    \"spectral\": [],\n    \"combined\": [],\n    \"Total_loss_per_epoch\": [],\n    \"avg_trainloss\":[],\n}\nloss_history_Batches = {\n    \"l1\": [],\n    \"spectral\": [],",
         "detail": "Model.Training.train",
         "documentation": {}
     },
@@ -929,7 +968,7 @@
         "kind": 5,
         "importPath": "Model.Training.train",
         "description": "Model.Training.train",
-        "peekOfCode": "loss_history_Batches = {\n    \"l1\": [],\n    \"spectral\": [],\n    \"mse\": [],\n    \"combined\": [],\n}\navg_trainloss = [],\nclass HybridLoss(nn.Module):\n    def __init__(self):\n        super(HybridLoss, self).__init__()",
+        "peekOfCode": "loss_history_Batches = {\n    \"l1\": [],\n    \"spectral\": [],\n    \"mse\": [],\n    \"combined\": [],\n}\navg_trainloss = {\"epoch_loss\":[],}\nclass HybridLoss(nn.Module):\n    def __init__(self):\n        super(HybridLoss, self).__init__()",
         "detail": "Model.Training.train",
         "documentation": {}
     },
@@ -938,7 +977,7 @@
         "kind": 5,
         "importPath": "Model.Training.train",
         "description": "Model.Training.train",
-        "peekOfCode": "avg_trainloss = [],\nclass HybridLoss(nn.Module):\n    def __init__(self):\n        super(HybridLoss, self).__init__()\n        self.l1_loss = nn.L1Loss()\n        self.mse_loss = nn.MSELoss()\n    def forward(self, pred, target):\n        pred = pred.float()\n        target = target.float()\n        l1 = self.l1_loss(pred, target)",
+        "peekOfCode": "avg_trainloss = {\"epoch_loss\":[],}\nclass HybridLoss(nn.Module):\n    def __init__(self):\n        super(HybridLoss, self).__init__()\n        self.l1_loss = nn.L1Loss()\n        self.mse_loss = nn.MSELoss()\n    def forward(self, pred, target):\n        pred = pred.float()\n        target = target.float()\n        l1 = self.l1_loss(pred, target)",
         "detail": "Model.Training.train",
         "documentation": {}
     }

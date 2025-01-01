@@ -5,17 +5,10 @@ import librosa
 import numpy as np
 import torch
 from torch.utils.data import Dataset
-
 project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), "../.."))
 sys.path.insert(0, project_root)
-
 from Model.Logging.Logger import setup_logger
-
-Dataset_logger = setup_logger('Dataset',r'C:\Users\didri\Desktop\LearnReflect VideoEnchancer\AI UNet-Architecture\Model\Logging\Script_logs\Dataset_logg.txt')
-General_logger = setup_logger('Dataset',r'C:\Users\didri\Desktop\LearnReflect VideoEnchancer\AI UNet-Architecture\Model\Logging\Script_logs\General.txt')
-
-Dataset_logger.info("Dataset logging started...")
-
+train_logger = setup_logger('train', r'C:\Users\didri\Desktop\LearnReflect VideoEnchancer\AI UNet-Architecture\Model\Logging\Model_performance_logg\Model_Training_logg.txt')
 
 class MUSDB18StemDataset(Dataset):
     def __init__(
@@ -24,9 +17,9 @@ class MUSDB18StemDataset(Dataset):
         subset='train',
         sr=44100,
         n_fft=2048,
-        hop_length=512,
-        max_length=10000,
-        max_files=None
+        hop_length=1024,
+        max_length=176400,
+        max_files=100
     ):
         self.root_dir = os.path.join(root_dir, subset)
         self.sr = sr
@@ -43,7 +36,7 @@ class MUSDB18StemDataset(Dataset):
         if max_files is not None:
             self.file_paths = self.file_paths[:max_files]
 
-        Dataset_logger.info(f"Initialized dataset with {len(self.file_paths)} files from '{self.root_dir}', subset='{subset}'")
+        train_logger.info(f"Initialized dataset with {len(self.file_paths)} files from '{self.root_dir}', subset='{subset}'")
      
 
     def __len__(self):
@@ -51,15 +44,13 @@ class MUSDB18StemDataset(Dataset):
 
     def __getitem__(self, idx):
         file_path = self.file_paths[idx]
-        Dataset_logger.info(f"Processing file: {file_path}")
 
 
-        # Read stems
+      
         try:
             stems, rate = stempeg.read_stems(file_path, sample_rate=self.sr)
         except Exception as e:
-            Dataset_logger.error(f"Error reading file '{file_path}': {str(e)}")
-            General_logger.error(f"Error reading file '{file_path}': {str(e)}")
+            train_logger.error(f"Error reading file '{file_path}': {str(e)}")
             raise
 
         # stems shape: (stem_index, samples, channels)
@@ -68,8 +59,7 @@ class MUSDB18StemDataset(Dataset):
         vocals = stems[4]
 
         # Combine logging of shapes and sample rate
-        Dataset_logger.debug( f"[Before Mono] File: {os.path.basename(file_path)}, " f"Sample Rate: {rate}, Mixture Shape: {mixture.shape}, Vocals Shape: {vocals.shape}" )
-        General_logger.debug( f"[Before Mono] File: {os.path.basename(file_path)}, " f"Sample Rate: {rate}, Mixture Shape: {mixture.shape}, Vocals Shape: {vocals.shape}" )
+        train_logger.debug( f"[Before Mono] File: {os.path.basename(file_path)}, " f"Sample Rate: {rate}, Mixture Shape: {mixture.shape}, Vocals Shape: {vocals.shape}" )
 
         # Convert to mono if needed
         mixture = np.mean(mixture, axis=1) if mixture.ndim == 2 else mixture
@@ -77,8 +67,7 @@ class MUSDB18StemDataset(Dataset):
 
         # Check for silent vocals
         if np.max(np.abs(vocals)) == 0:
-            Dataset_logger.info(f"Skipping file with zero-target data: {file_path}")
-            General_logger.info(f"Skipping file with zero-target data: {file_path}")
+            train_logger.info(f"Skipping file with zero-target data: {file_path}")
             return None
 
         # Normalize to [-1, 1] range
@@ -87,15 +76,13 @@ class MUSDB18StemDataset(Dataset):
         mixture /= mixture_max
         vocals /= vocals_max
 
-        Dataset_logger.debug(f"[Normalized] mixture min={mixture.min():.4f}, max={mixture.max():.4f} | " f"vocals min={vocals.min():.4f}, max={vocals.max():.4f}")
-        General_logger.debug(f"[Normalized] mixture min={mixture.min():.4f}, max={mixture.max():.4f} | " f"vocals min={vocals.min():.4f}, max={vocals.max():.4f}")
+        train_logger.debug(f"[Normalized] mixture min={mixture.min():.4f}, max={mixture.max():.4f} | " f"vocals min={vocals.min():.4f}, max={vocals.max():.4f}")
 
         # Pad or trim waveforms
         mixture = self._pad_or_trim(mixture)
         vocals = self._pad_or_trim(vocals)
 
-        Dataset_logger.debug(f"[Padded/Trimmed] mixture length={len(mixture)}, vocals length={len(vocals)}")
-        General_logger.debug(f"[Padded/Trimmed] mixture length={len(mixture)}, vocals length={len(vocals)}")
+        train_logger.debug(f"[Padded/Trimmed] mixture length={len(mixture)}, vocals length={len(vocals)}")
 
         # STFT
         mixture_stft = librosa.stft(mixture, n_fft=self.n_fft, hop_length=self.hop_length)
@@ -105,8 +92,7 @@ class MUSDB18StemDataset(Dataset):
         mixture_mag = np.abs(mixture_stft)
         vocals_mag = np.abs(vocals_stft)
 
-        Dataset_logger.debug(f"[STFT Mag] mixture min={mixture_mag.min():.4f}, max={mixture_mag.max():.4f} | " f"vocals min={vocals_mag.min():.4f}, max={vocals_mag.max():.4f}")
-        General_logger.debug(f"[STFT Mag] mixture min={mixture_mag.min():.4f}, max={mixture_mag.max():.4f} | " f"vocals min={vocals_mag.min():.4f}, max={vocals_mag.max():.4f}")
+        train_logger.debug(f"[STFT Mag] mixture min={mixture_mag.min():.4f}, max={mixture_mag.max():.4f} | " f"vocals min={vocals_mag.min():.4f}, max={vocals_mag.max():.4f}")
 
         # Adjust spectrogram time dimension
         mixture_mag = self._adjust_length(mixture_mag)
@@ -136,4 +122,30 @@ class MUSDB18StemDataset(Dataset):
             return spectrogram[:, :self.max_length]
         else:
             pad_width = self.max_length - time_dim
-            return np.pad( spectrogram, ((0, 0), (0, pad_width)), mode='constant')
+            return np.pad( spectrogram, ((0, 0), (0, pad_width)), mode='reflect')
+
+
+
+class VCTKSpectrogram(Dataset):
+    def __init__(self, dataset, n_fft=2048, hop_length=1024, max_length=176400):
+        self.dataset = dataset
+        self.n_fft= n_fft
+        self.hop_length = hop_length
+        self.max_length = max_length
+
+    def __len__(self):
+        return len(self.dataset)
+
+    def __getitem__(self,idx):
+        sample = self.dataset[idx]
+
+        audio, _ = librosa.load(sample["path"], sr=self.sr, mono=True)
+        audio = audio / (np.max(np.abs(audio)) + 1e-8) #normalizing sound        
+        if len(audio) > self.max_length:
+            audio = audio[:self.max_length]
+        else: 
+            audio = np.pad(audio, (0, self.max_length - len(audio)), mode='reflect')
+        stft = librosa.stft(audio, n_fft=self.n_fft, hop_length=self.hop_length)
+        magnitude = np.abs(stft)
+        #phase = np.angle(stft)
+        return torch.tensor(magnitude, dtype=torch.float32).unsqeeze(0), torch.tensor(magnitude, dtype=torch.float32).unsqueeze(0)

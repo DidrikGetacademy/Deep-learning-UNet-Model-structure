@@ -7,8 +7,7 @@ os.environ["PYTORCH_CUDA_ALLOC_CONF"] = "expandable_segments:True"
 project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), "../.."))
 sys.path.insert(0, project_root)  
 from Model.Logging.Logger import setup_logger
-Model_creation_logger = setup_logger('CreateModel',r'C:\Users\didri\Desktop\LearnReflect VideoEnchancer\AI UNet-Architecture\Model\Logging\Script_logs\Create_model.txt')
-
+train_logger = setup_logger('train', r'C:\Users\didri\Desktop\LearnReflect VideoEnchancer\AI UNet-Architecture\Model\Logging\Model_performance_logg\Model_Training_logg.txt')
 from Model.Model.model import UNet
 
 def create_and_save_model(input_shape, in_channels=1, out_channels=1, save_path="unet_vocal_isolation.pth"):
