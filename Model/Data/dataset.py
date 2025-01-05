@@ -9,6 +9,11 @@ project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), "../.."))
 sys.path.insert(0, project_root)
 from Model.Logging.Logger import setup_logger
 train_logger = setup_logger('train', r'C:\Users\didri\Desktop\LearnReflect VideoEnchancer\AI UNet-Architecture\Model\Logging\Model_performance_logg\Model_Training_logg.txt')
+import math
+sampling_rate = 44100
+max_length_seconds = 5
+max_length_samples = sampling_rate * max_length_seconds
+
 
 class MUSDB18StemDataset(Dataset):
     def __init__(
@@ -18,14 +23,14 @@ class MUSDB18StemDataset(Dataset):
         sr=44100,
         n_fft=2048,
         hop_length=1024,
-        max_length=176400,
+        max_length=max_length_samples,
         max_files=100
     ):
         self.root_dir = os.path.join(root_dir, subset)
-        self.sr = sr
         self.n_fft = n_fft
         self.hop_length = hop_length
         self.max_length = max_length
+        self.sr = sr 
 
         # Collect file paths
         self.file_paths = [
@@ -98,6 +103,7 @@ class MUSDB18StemDataset(Dataset):
         mixture_mag = self._adjust_length(mixture_mag)
         vocals_mag = self._adjust_length(vocals_mag)
 
+
         return (
             torch.tensor(mixture_mag, dtype=torch.float32).unsqueeze(0),
             torch.tensor(vocals_mag, dtype=torch.float32).unsqueeze(0)
@@ -115,37 +121,72 @@ class MUSDB18StemDataset(Dataset):
 
 
     def _adjust_length(self, spectrogram):
-        #Pad or trim the 2D spectrogram in time dimension (axis=1) to self.max_length.
-       
+        # Pad or trim the 2D spectrogram in time dimension (axis=1) to self.max_length
         time_dim = spectrogram.shape[1]
-        if time_dim > self.max_length:
-            return spectrogram[:, :self.max_length]
+        desired_time_dim = math.ceil((self.max_length - self.n_fft) / self.hop_length) + 1
+        if time_dim > desired_time_dim:
+            return spectrogram[:, :desired_time_dim]
         else:
-            pad_width = self.max_length - time_dim
-            return np.pad( spectrogram, ((0, 0), (0, pad_width)), mode='reflect')
-
-
+            pad_width = desired_time_dim - time_dim
+            return np.pad(spectrogram, ((0, 0), (0, pad_width)), mode='reflect')
 
 class VCTKSpectrogram(Dataset):
-    def __init__(self, dataset, n_fft=2048, hop_length=1024, max_length=176400):
+    def __init__(self, dataset, n_fft=2048, hop_length=1024, sr=44100, max_length_seconds=5, max_files=100):
         self.dataset = dataset
-        self.n_fft= n_fft
+        self.n_fft = n_fft
         self.hop_length = hop_length
-        self.max_length = max_length
+        self.sr = sr
+        self.max_files = max_files
+
+        # Calculate max_length_samples based on max_length_seconds
+        self.max_length_seconds = max_length_seconds
+        self.max_length_samples = sr * self.max_length_seconds  # 220500 samples for 5 seconds
+
+        # Calculate expected time dimension for STFT
+        self.expected_time_dim = math.ceil((self.max_length_samples - self.n_fft) / self.hop_length) + 1  # ~215
 
     def __len__(self):
-        return len(self.dataset)
+        return min(len(self.dataset), self.max_files)
 
-    def __getitem__(self,idx):
+    def __getitem__(self, idx):
         sample = self.dataset[idx]
+        if "audio" not in sample or "path" not in sample["audio"]:
+            return None
+        audio, _ = librosa.load(sample["audio"]["path"], sr=self.sr, mono=True)
+        audio = audio / (np.max(np.abs(audio)) + 1e-8)  # Normalize
+        audio = self._pad_or_trim(audio)  # Ensure consistent audio length
 
-        audio, _ = librosa.load(sample["path"], sr=self.sr, mono=True)
-        audio = audio / (np.max(np.abs(audio)) + 1e-8) #normalizing sound        
-        if len(audio) > self.max_length:
-            audio = audio[:self.max_length]
-        else: 
-            audio = np.pad(audio, (0, self.max_length - len(audio)), mode='reflect')
-        stft = librosa.stft(audio, n_fft=self.n_fft, hop_length=self.hop_length)
+        # Ensure audio length is sufficient for STFT
+        if len(audio) < self.n_fft:
+            return None
+
+        # Convert to STFT and compute magnitude
+        stft = librosa.stft(audio, n_fft=self.n_fft, hop_length=self.hop_length, center=False)
         magnitude = np.abs(stft)
-        #phase = np.angle(stft)
-        return torch.tensor(magnitude, dtype=torch.float32).unsqeeze(0), torch.tensor(magnitude, dtype=torch.float32).unsqueeze(0)
+
+        # Adjust spectrogram to the expected time dimension
+        magnitude = self._adjust_length(magnitude)
+
+        # Convert to tensor and return
+        return torch.tensor(magnitude, dtype=torch.float32).unsqueeze(0), torch.tensor(magnitude, dtype=torch.float32).unsqueeze(0)
+
+    def _pad_or_trim(self, audio):
+        # Ensure audio is at least n_fft in length
+        if len(audio) < self.n_fft:
+            padding = self.n_fft - len(audio)
+            audio = np.pad(audio, (0, padding), mode='constant')
+        # Now pad or trim to max_length_samples
+        length = len(audio)
+        if length < self.max_length_samples:
+            padding = self.max_length_samples - length
+            return np.pad(audio, (0, padding), mode='constant')
+        return audio[:self.max_length_samples]
+
+    def _adjust_length(self, spectrogram):
+        # Pad or trim the 2D spectrogram in time dimension (axis=1) to self.expected_time_dim
+        time_dim = spectrogram.shape[1]
+        if time_dim > self.expected_time_dim:
+            return spectrogram[:, :self.expected_time_dim]
+        else:
+            pad_width = self.expected_time_dim - time_dim
+            return np.pad(spectrogram, ((0, 0), (0, pad_width)), mode='reflect')

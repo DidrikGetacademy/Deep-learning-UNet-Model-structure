@@ -1,0 +1,243 @@
+[
+    {
+        "label": "sys",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "sys",
+        "description": "sys",
+        "detail": "sys",
+        "documentation": {}
+    },
+    {
+        "label": "os",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "os",
+        "description": "os",
+        "detail": "os",
+        "documentation": {}
+    },
+    {
+        "label": "torch",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "torch",
+        "description": "torch",
+        "detail": "torch",
+        "documentation": {}
+    },
+    {
+        "label": "MUSDB18StemDataset",
+        "importPath": "Model.Data.dataset",
+        "description": "Model.Data.dataset",
+        "isExtraImport": true,
+        "detail": "Model.Data.dataset",
+        "documentation": {}
+    },
+    {
+        "label": "UNet",
+        "importPath": "Model.Model.model",
+        "description": "Model.Model.model",
+        "isExtraImport": true,
+        "detail": "Model.Model.model",
+        "documentation": {}
+    },
+    {
+        "label": "matplotlib.pyplot",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "matplotlib.pyplot",
+        "description": "matplotlib.pyplot",
+        "detail": "matplotlib.pyplot",
+        "documentation": {}
+    },
+    {
+        "label": "onnxruntime",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "onnxruntime",
+        "description": "onnxruntime",
+        "detail": "onnxruntime",
+        "documentation": {}
+    },
+    {
+        "label": "numpy",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "numpy",
+        "description": "numpy",
+        "detail": "numpy",
+        "documentation": {}
+    },
+    {
+        "label": "librosa",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "librosa",
+        "description": "librosa",
+        "detail": "librosa",
+        "documentation": {}
+    },
+    {
+        "label": "project_root",
+        "kind": 5,
+        "importPath": "Convert_to_ONNX",
+        "description": "Convert_to_ONNX",
+        "peekOfCode": "project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), \"../..\"))\nsys.path.insert(0, project_root)  # Use insert(0) to prioritize this path\nfrom Model.Data.dataset import MUSDB18StemDataset\nfrom Model.Model.model import UNet\nimport matplotlib.pyplot as plt\n# Load the dataset\nroot_dir = r\"C:\\mappe1\\musdb18\"\ndataset = MUSDB18StemDataset(root_dir=root_dir,subset=\"train\")\n# Convert tensor to NumPy for visualization\n# Get one sample from the dataset",
+        "detail": "Convert_to_ONNX",
+        "documentation": {}
+    },
+    {
+        "label": "root_dir",
+        "kind": 5,
+        "importPath": "Convert_to_ONNX",
+        "description": "Convert_to_ONNX",
+        "peekOfCode": "root_dir = r\"C:\\mappe1\\musdb18\"\ndataset = MUSDB18StemDataset(root_dir=root_dir,subset=\"train\")\n# Convert tensor to NumPy for visualization\n# Get one sample from the dataset\nmixture_tensor, vocals_tensor = dataset[0]\nmixture_np = mixture_tensor.squeeze().numpy()\nplt.imshow(mixture_np, aspect=\"auto\", origin=\"lower\")\nplt.title(\"Mixture Spectrogram\")\nplt.colorbar()\nplt.show()",
+        "detail": "Convert_to_ONNX",
+        "documentation": {}
+    },
+    {
+        "label": "dataset",
+        "kind": 5,
+        "importPath": "Convert_to_ONNX",
+        "description": "Convert_to_ONNX",
+        "peekOfCode": "dataset = MUSDB18StemDataset(root_dir=root_dir,subset=\"train\")\n# Convert tensor to NumPy for visualization\n# Get one sample from the dataset\nmixture_tensor, vocals_tensor = dataset[0]\nmixture_np = mixture_tensor.squeeze().numpy()\nplt.imshow(mixture_np, aspect=\"auto\", origin=\"lower\")\nplt.title(\"Mixture Spectrogram\")\nplt.colorbar()\nplt.show()\nprint(f\"Shape of mixture tensor: {mixture_tensor.shape}\")",
+        "detail": "Convert_to_ONNX",
+        "documentation": {}
+    },
+    {
+        "label": "mixture_np",
+        "kind": 5,
+        "importPath": "Convert_to_ONNX",
+        "description": "Convert_to_ONNX",
+        "peekOfCode": "mixture_np = mixture_tensor.squeeze().numpy()\nplt.imshow(mixture_np, aspect=\"auto\", origin=\"lower\")\nplt.title(\"Mixture Spectrogram\")\nplt.colorbar()\nplt.show()\nprint(f\"Shape of mixture tensor: {mixture_tensor.shape}\")\nprint(f\"Shape of vocals tensor: {vocals_tensor.shape}\")\n# Reshape the tensor for batch dimension\ninput_tensor = mixture_tensor.unsqueeze(0)\n#Initialize the model",
+        "detail": "Convert_to_ONNX",
+        "documentation": {}
+    },
+    {
+        "label": "input_tensor",
+        "kind": 5,
+        "importPath": "Convert_to_ONNX",
+        "description": "Convert_to_ONNX",
+        "peekOfCode": "input_tensor = mixture_tensor.unsqueeze(0)\n#Initialize the model\nmodel = UNet(in_channels=1,out_channels=1)\nmodel.load_state_dict(torch.load(r\"C:\\Users\\didri\\Desktop\\AI AudioEnchancer\\UNet_Model\\CheckPoints\\unet_checkpoint_epoch30.pth\",weights_only=True))\nmodel.eval()\n#Save to ONNX\nonnx_path = r\"C:\\Users\\didri\\Desktop\\AI AudioEnchancer\\UNet_Model\\ONNX_model\\ONNX.onnx\"\ntorch.onnx.export(\n    model,\n    input_tensor,",
+        "detail": "Convert_to_ONNX",
+        "documentation": {}
+    },
+    {
+        "label": "model",
+        "kind": 5,
+        "importPath": "Convert_to_ONNX",
+        "description": "Convert_to_ONNX",
+        "peekOfCode": "model = UNet(in_channels=1,out_channels=1)\nmodel.load_state_dict(torch.load(r\"C:\\Users\\didri\\Desktop\\AI AudioEnchancer\\UNet_Model\\CheckPoints\\unet_checkpoint_epoch30.pth\",weights_only=True))\nmodel.eval()\n#Save to ONNX\nonnx_path = r\"C:\\Users\\didri\\Desktop\\AI AudioEnchancer\\UNet_Model\\ONNX_model\\ONNX.onnx\"\ntorch.onnx.export(\n    model,\n    input_tensor,\n    onnx_path,\n    export_params=True,",
+        "detail": "Convert_to_ONNX",
+        "documentation": {}
+    },
+    {
+        "label": "onnx_path",
+        "kind": 5,
+        "importPath": "Convert_to_ONNX",
+        "description": "Convert_to_ONNX",
+        "peekOfCode": "onnx_path = r\"C:\\Users\\didri\\Desktop\\AI AudioEnchancer\\UNet_Model\\ONNX_model\\ONNX.onnx\"\ntorch.onnx.export(\n    model,\n    input_tensor,\n    onnx_path,\n    export_params=True,\n    opset_version=11,\n    do_constant_folding=True,\n    input_names=[\"input\"], \n    output_names=[\"output\"],",
+        "detail": "Convert_to_ONNX",
+        "documentation": {}
+    },
+    {
+        "label": "onnx_model_path",
+        "kind": 5,
+        "importPath": "Test_Converted_ONNX",
+        "description": "Test_Converted_ONNX",
+        "peekOfCode": "onnx_model_path = r\"C:\\Users\\didri\\Desktop\\AI AudioEnchancer\\UNet_Model\\ONNX_model\\ONNX.onnx\"\nif not os.path.exists(onnx_model_path):\n    raise FileNotFoundError(f\"ONNX model not found at {onnx_model_path}\")\nsession = ort.InferenceSession(onnx_model_path)\nsession.set_providers(['CUDAExecutionProvider'])\n# Print information about the model's input nodes\nprint(\"\\n--- Model Input Nodes ---\")\ninput_nodes = session.get_inputs()\nfor input_node in input_nodes:\n    print(f\"Name: {input_node.name}, Shape: {input_node.shape}, Type: {input_node.type}\")",
+        "detail": "Test_Converted_ONNX",
+        "documentation": {}
+    },
+    {
+        "label": "session",
+        "kind": 5,
+        "importPath": "Test_Converted_ONNX",
+        "description": "Test_Converted_ONNX",
+        "peekOfCode": "session = ort.InferenceSession(onnx_model_path)\nsession.set_providers(['CUDAExecutionProvider'])\n# Print information about the model's input nodes\nprint(\"\\n--- Model Input Nodes ---\")\ninput_nodes = session.get_inputs()\nfor input_node in input_nodes:\n    print(f\"Name: {input_node.name}, Shape: {input_node.shape}, Type: {input_node.type}\")\n# Print information about the model's output nodes\nprint(\"\\n--- Model Output Nodes ---\")\noutput_nodes = session.get_outputs()",
+        "detail": "Test_Converted_ONNX",
+        "documentation": {}
+    },
+    {
+        "label": "input_nodes",
+        "kind": 5,
+        "importPath": "Test_Converted_ONNX",
+        "description": "Test_Converted_ONNX",
+        "peekOfCode": "input_nodes = session.get_inputs()\nfor input_node in input_nodes:\n    print(f\"Name: {input_node.name}, Shape: {input_node.shape}, Type: {input_node.type}\")\n# Print information about the model's output nodes\nprint(\"\\n--- Model Output Nodes ---\")\noutput_nodes = session.get_outputs()\nfor output_node in output_nodes:\n    print(f\"Name: {output_node.name}, Shape: {output_node.shape}, Type: {output_node.type}\")\n# Show available execution providers\nprint(\"\\n--- Available Providers ---\")",
+        "detail": "Test_Converted_ONNX",
+        "documentation": {}
+    },
+    {
+        "label": "output_nodes",
+        "kind": 5,
+        "importPath": "Test_Converted_ONNX",
+        "description": "Test_Converted_ONNX",
+        "peekOfCode": "output_nodes = session.get_outputs()\nfor output_node in output_nodes:\n    print(f\"Name: {output_node.name}, Shape: {output_node.shape}, Type: {output_node.type}\")\n# Show available execution providers\nprint(\"\\n--- Available Providers ---\")\nprint(f\"Devices supported: {session.get_providers()}\")\n# Uncomment to set CUDA provider if available\n#if 'CUDAExecutionProvider' in session.get_providers():\n#    session.set_providers(['CUDAExecutionProvider'])\n# Get input and output node names",
+        "detail": "Test_Converted_ONNX",
+        "documentation": {}
+    },
+    {
+        "label": "input_name",
+        "kind": 5,
+        "importPath": "Test_Converted_ONNX",
+        "description": "Test_Converted_ONNX",
+        "peekOfCode": "input_name = session.get_inputs()[0].name\noutput_name = session.get_outputs()[0].name\nprint(f\"\\nInput Name: {input_name}, Shape: {session.get_inputs()[0].shape}\")\nprint(f\"Output Name: {output_name}, Shape: {session.get_outputs()[0].shape}\")\n# Load an audio file and dynamically compute its spectrogram\naudio_path = r\"C:\\Users\\didri\\Desktop\\AI AudioEnchancer\\Model\\Data\\WAV_files_for_model\\Capcut_mixed\\withsound(1).WAV\"\nif not os.path.exists(audio_path):\n    raise FileNotFoundError(f\"Audio file not found at {audio_path}\")\nprint(\"\\nLoading audio and generating spectrogram...\")\ny, sr = librosa.load(audio_path, sr=44100)  # Load audio at 44.1kHz",
+        "detail": "Test_Converted_ONNX",
+        "documentation": {}
+    },
+    {
+        "label": "output_name",
+        "kind": 5,
+        "importPath": "Test_Converted_ONNX",
+        "description": "Test_Converted_ONNX",
+        "peekOfCode": "output_name = session.get_outputs()[0].name\nprint(f\"\\nInput Name: {input_name}, Shape: {session.get_inputs()[0].shape}\")\nprint(f\"Output Name: {output_name}, Shape: {session.get_outputs()[0].shape}\")\n# Load an audio file and dynamically compute its spectrogram\naudio_path = r\"C:\\Users\\didri\\Desktop\\AI AudioEnchancer\\Model\\Data\\WAV_files_for_model\\Capcut_mixed\\withsound(1).WAV\"\nif not os.path.exists(audio_path):\n    raise FileNotFoundError(f\"Audio file not found at {audio_path}\")\nprint(\"\\nLoading audio and generating spectrogram...\")\ny, sr = librosa.load(audio_path, sr=44100)  # Load audio at 44.1kHz\nspectrogram = np.abs(librosa.stft(y, n_fft=2048, hop_length=512))",
+        "detail": "Test_Converted_ONNX",
+        "documentation": {}
+    },
+    {
+        "label": "audio_path",
+        "kind": 5,
+        "importPath": "Test_Converted_ONNX",
+        "description": "Test_Converted_ONNX",
+        "peekOfCode": "audio_path = r\"C:\\Users\\didri\\Desktop\\AI AudioEnchancer\\Model\\Data\\WAV_files_for_model\\Capcut_mixed\\withsound(1).WAV\"\nif not os.path.exists(audio_path):\n    raise FileNotFoundError(f\"Audio file not found at {audio_path}\")\nprint(\"\\nLoading audio and generating spectrogram...\")\ny, sr = librosa.load(audio_path, sr=44100)  # Load audio at 44.1kHz\nspectrogram = np.abs(librosa.stft(y, n_fft=2048, hop_length=512))\nprint(f\"Original Spectrogram Shape: {spectrogram.shape}\")\n# Prepare input tensor\nspectrogram = spectrogram.astype(np.float32)\nspectrogram = np.expand_dims(spectrogram, axis=(0, 1))  # Add batch and channel dimensions",
+        "detail": "Test_Converted_ONNX",
+        "documentation": {}
+    },
+    {
+        "label": "spectrogram",
+        "kind": 5,
+        "importPath": "Test_Converted_ONNX",
+        "description": "Test_Converted_ONNX",
+        "peekOfCode": "spectrogram = np.abs(librosa.stft(y, n_fft=2048, hop_length=512))\nprint(f\"Original Spectrogram Shape: {spectrogram.shape}\")\n# Prepare input tensor\nspectrogram = spectrogram.astype(np.float32)\nspectrogram = np.expand_dims(spectrogram, axis=(0, 1))  # Add batch and channel dimensions\nprint(f\"Prepared Input Tensor Shape: {spectrogram.shape}\")\n# Run inference\ntry:\n    print(\"\\nRunning ONNX inference...\")\n    result = session.run([output_name], {input_name: spectrogram})",
+        "detail": "Test_Converted_ONNX",
+        "documentation": {}
+    },
+    {
+        "label": "spectrogram",
+        "kind": 5,
+        "importPath": "Test_Converted_ONNX",
+        "description": "Test_Converted_ONNX",
+        "peekOfCode": "spectrogram = spectrogram.astype(np.float32)\nspectrogram = np.expand_dims(spectrogram, axis=(0, 1))  # Add batch and channel dimensions\nprint(f\"Prepared Input Tensor Shape: {spectrogram.shape}\")\n# Run inference\ntry:\n    print(\"\\nRunning ONNX inference...\")\n    result = session.run([output_name], {input_name: spectrogram})\n    print(\"ONNX Inference Successful\")\nexcept Exception as e:\n    print(f\"Error during ONNX inference: {e}\")",
+        "detail": "Test_Converted_ONNX",
+        "documentation": {}
+    },
+    {
+        "label": "spectrogram",
+        "kind": 5,
+        "importPath": "Test_Converted_ONNX",
+        "description": "Test_Converted_ONNX",
+        "peekOfCode": "spectrogram = np.expand_dims(spectrogram, axis=(0, 1))  # Add batch and channel dimensions\nprint(f\"Prepared Input Tensor Shape: {spectrogram.shape}\")\n# Run inference\ntry:\n    print(\"\\nRunning ONNX inference...\")\n    result = session.run([output_name], {input_name: spectrogram})\n    print(\"ONNX Inference Successful\")\nexcept Exception as e:\n    print(f\"Error during ONNX inference: {e}\")\n    raise",
+        "detail": "Test_Converted_ONNX",
+        "documentation": {}
+    },
+    {
+        "label": "output_spectrogram",
+        "kind": 5,
+        "importPath": "Test_Converted_ONNX",
+        "description": "Test_Converted_ONNX",
+        "peekOfCode": "output_spectrogram = np.squeeze(result[0])  # Remove batch and channel dimensions\nprint(f\"Output Spectrogram Shape: {output_spectrogram.shape}\")\nplt.figure(figsize=(10, 5))\nplt.imshow(output_spectrogram, aspect=\"auto\", origin=\"lower\")\nplt.title(\"Vocal Isolation Output Spectrogram\")\nplt.colorbar()\nplt.xlabel(\"Time\")\nplt.ylabel(\"Frequency\")\nplt.show()",
+        "detail": "Test_Converted_ONNX",
+        "documentation": {}
+    }
+]

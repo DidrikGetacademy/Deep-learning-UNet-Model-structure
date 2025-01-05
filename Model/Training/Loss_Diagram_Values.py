@@ -14,7 +14,12 @@ def plot_loss_curves_Training_script_epoches(loss_history_Epoches, out_path="los
     epochs_count = len(loss_history_Epoches["combined"])
     epochs = range(1, epochs_count + 1)
 
-    plt.figure(figsize=(10,6))
+    # Validate Total_loss_per_epoch data
+    if len(loss_history_Epoches["Total_loss_per_epoch"]) != epochs_count:
+        print(f"Error: Mismatch between epochs ({epochs_count}) and Total_loss_per_epoch ({len(loss_history_Epoches['Total_loss_per_epoch'])}).")
+        return  # Skip plotting
+
+    plt.figure(figsize=(10, 6))
 
     if len(loss_history_Epoches["l1"]) > 0:
         plt.plot(epochs, loss_history_Epoches["l1"], label="L1-loss", color="blue")
@@ -28,7 +33,6 @@ def plot_loss_curves_Training_script_epoches(loss_history_Epoches, out_path="los
     if len(loss_history_Epoches["avg_trainloss"]) > 0:
         plt.plot(epochs, loss_history_Epoches["avg_trainloss"], label="avg_trainloss", color="black")
 
- 
     plt.plot(epochs, loss_history_Epoches["Total_loss_per_epoch"], label="Total_loss_per_epoch", color="purple")
     plt.xlabel("Epoch")
     plt.ylabel("Loss")
@@ -36,8 +40,7 @@ def plot_loss_curves_Training_script_epoches(loss_history_Epoches, out_path="los
     plt.legend()
 
     if epochs_count > 1:
-        plt.xticks(range(1, epochs_count+1, max(1, epochs_count // 10)))
-
+        plt.xticks(range(1, epochs_count + 1, max(1, epochs_count // 10)))
 
     plt.xlim([1, epochs_count])
     plt.gca().yaxis.set_major_formatter(mticker.FormatStrFormatter('%.2f'))
@@ -60,14 +63,12 @@ def plot_loss_curves_Training_script_epoches(loss_history_Epoches, out_path="los
     plt.text(0.5, 0.5, status_text, fontsize=12, transform=plt.gca().transAxes,
              bbox=dict(facecolor='white', alpha=0.7))
 
-
     base, ext = os.path.splitext(out_path)
     if ext.lower() not in [".png", ".jpg", ".jpeg", ".svg", ".pdf"]:
         out_path = base + ".png"
 
     plt.savefig(out_path, bbox_inches="tight")
     plt.close()
-
 
 
 

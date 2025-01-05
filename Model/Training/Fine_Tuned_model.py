@@ -303,4 +303,3 @@ def fine_tune_model(
 
     torch.save(model.state_dict(), fine_tuned_model_path)
     train_logger.info(f"finetuning -->Fine-tuned model saved to: {fine_tuned_model_path}")
-    print("Fine-tuning complete.")
