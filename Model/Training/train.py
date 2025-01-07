@@ -8,7 +8,6 @@ import gc
 from torch import autocast, GradScaler
 project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), "../.."))
 sys.path.insert(0, project_root)
-import multiprocessing
 from Model.Logging.Logger import setup_logger
 from Model.Data.dataset import MUSDB18StemDataset
 from Model.Model.model import UNet
@@ -192,9 +191,9 @@ def train(load_model_path=None):
     print(f"Device: {device}")
 
 
-    batch_size = 2
+    batch_size = 4
     learning_rate = 1e-5
-    epochs = 2
+    epochs = 15
     root_dir = r'C:\mappe1\musdb18'
     
 
@@ -212,7 +211,7 @@ def train(load_model_path=None):
         n_fft=2048,
         hop_length=1024,
         max_length=max_length_samples,
-        max_files=50,
+        max_files=100,
     )
 
     dataloader = DataLoader(musdb18_dataset, batch_size=batch_size, shuffle=True, num_workers=num_workers, pin_memory=True)
@@ -256,7 +255,7 @@ def train(load_model_path=None):
             running_loss = 0.0
             scaler = GradScaler()
             print(f"[train] Epoch {epoch + 1} / {epochs}")
-            train_logger.info(f"[Train] Epoch {epoch+1}/{epochs} started.")
+            train_logger.info(f"[Train] Epoch {epoch + 1}/{epochs} started.")
 
             for batch_idx, (inputs, targets) in enumerate(dataloader, start=1):
                 if inputs is None or targets is None:
@@ -266,7 +265,7 @@ def train(load_model_path=None):
                 inputs, targets = inputs.to(device, non_blocking=True), targets.to(device,non_blocking=True)
                 print(f"inputs: {inputs.shape}, targets: {targets.shape}")
 
-                if batch_idx < 2:
+                if batch_idx <= 1:
                     train_logger.debug(f"[Train] Epoch {epoch+1}, Batch {batch_idx} -> "f"inputs.shape={inputs.shape}, inputs.min={inputs.min():.4f}, inputs.max={inputs.max():.4f}; "f"targets.shape={targets.shape}, targets.min={targets.min():.4f}, targets.max={targets.max():.4f}")
 
                 accumulation_steps = 4  
@@ -303,8 +302,11 @@ def train(load_model_path=None):
      
             epoch_loss = running_loss / len(dataloader)
             
-            avg_trainloss["epoch_loss"].append(epoch_loss)
-            loss_history_Epoches["Total_loss_per_epoch"].append(running_loss)  
+            loss_history_Epoches["Total_loss_per_epoch"].append(running_loss)
+            avg_trainloss["epoch_loss"].append(running_loss / len(dataloader))
+            train_logger.info(f"[Epoch {epoch + 1}] Total Loss: {running_loss:.6f}")
+            train_logger.info(f"[Epoch {epoch + 1}] Loss History: {loss_history_Epoches['Total_loss_per_epoch']}")
+
             log_memory_usage(tag=f"After Epoch {epoch + 1}")
 
             

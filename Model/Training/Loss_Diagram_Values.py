@@ -18,6 +18,7 @@ def plot_loss_curves_Training_script_epoches(loss_history_Epoches, out_path="los
 
     if len(loss_history_Epoches["Total_loss_per_epoch"]) != epochs_count:
         print(f"Error: Mismatch between epochs ({epochs_count}) and Total_loss_per_epoch ({len(loss_history_Epoches['Total_loss_per_epoch'])}).")
+        train_logger.error(f"Epoch Loss Mismatch: Expected {epochs_count}, Found {len(loss_history_Epoches['Total_loss_per_epoch'])}.")
         return  
 
     plt.figure(figsize=(12, 6))

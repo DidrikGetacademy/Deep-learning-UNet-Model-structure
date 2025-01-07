@@ -400,15 +400,6 @@
         "documentation": {}
     },
     {
-        "label": "multiprocessing",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "multiprocessing",
-        "description": "multiprocessing",
-        "detail": "multiprocessing",
-        "documentation": {}
-    },
-    {
         "label": "matplotlib.ticker",
         "kind": 6,
         "isExtraImport": true,
@@ -775,11 +766,20 @@
         "documentation": {}
     },
     {
+        "label": "save_reconstructed_audio",
+        "kind": 2,
+        "importPath": "Model.Training.Evaluation",
+        "description": "Model.Training.Evaluation",
+        "peekOfCode": "def save_reconstructed_audio(output_magnitude, output_dir, batch_idx, n_fft=2048, hop_length=1024, sr=44100):\n    try:\n        # Normaliser output_magnitude\n        if np.max(np.abs(output_magnitude)) == 0:\n            raise ValueError(f\"Batch {batch_idx}: Output magnitude has all zero values.\")\n        output_magnitude = output_magnitude / (np.max(np.abs(output_magnitude)) + 1e-8)\n        # Griffin-Lim rekonstruksjon\n        reconstructed_audio = librosa.griffinlim(\n            output_magnitude,\n            n_iter=32,",
+        "detail": "Model.Training.Evaluation",
+        "documentation": {}
+    },
+    {
         "label": "compute_sdr_sir_sar",
         "kind": 2,
         "importPath": "Model.Training.Evaluation",
         "description": "Model.Training.Evaluation",
-        "peekOfCode": "def compute_sdr_sir_sar(reference_audio, estimated_audio):\n    if reference_audio.ndim == 1:\n        reference_audio = reference_audio[np.newaxis, :]\n    if estimated_audio.ndim == 1:\n        estimated_audio = estimated_audio[np.newaxis, :]\n    sdr, sir, sar, _ = bss_eval_sources(reference_audio, estimated_audio)\n    return sdr, sir, sar\n######[Eval]FUNCTION 1#######     #Klassisk MSE-baset evaluering.",
+        "peekOfCode": "def compute_sdr_sir_sar(reference_audio, estimated_audio):\n    if reference_audio.ndim == 1:\n        reference_audio = reference_audio[np.newaxis, :]\n    if estimated_audio.ndim == 1:\n        estimated_audio = estimated_audio[np.newaxis, :]\n    sdr, sir, sar, _ = bss_eval_sources(reference_audio, estimated_audio)\n    return sdr, sir, sar\n######[Eval]FUNCTION 1#######     ",
         "detail": "Model.Training.Evaluation",
         "documentation": {}
     },
@@ -788,7 +788,7 @@
         "kind": 2,
         "importPath": "Model.Training.Evaluation",
         "description": "Model.Training.Evaluation",
-        "peekOfCode": "def evaluate_model(model, val_loader, device, output_dir, sr=44100, n_fft=2048, hop_length=1024):\n    model.eval().to(device)\n    os.makedirs(output_dir, exist_ok=True)\n    criterion = nn.MSELoss()\n    total_loss = 0.0\n    mse_values = []\n    num_batches = 0\n    with torch.no_grad():\n        for idx, (inputs, targets) in enumerate(val_loader, start=1):\n            inputs = inputs.to(device, dtype=torch.float32)",
+        "peekOfCode": "def evaluate_model(model, val_loader, device, output_dir, sr=44100, n_fft=2048, hop_length=1024):\n    model.eval().to(device)\n    os.makedirs(output_dir, exist_ok=True)\n    criterion = nn.MSELoss()\n    total_loss = 0.0\n    mse_values = []\n    num_batches = 0\n    # Generer testlydfil (sine wave) én gang for testing\n    test_audio = np.sin(2 * np.pi * 440 * np.linspace(0, 1, sr))\n    sf.write(\"test_sine_wave.wav\", test_audio.astype(np.float32), samplerate=sr, subtype='PCM_16')",
         "detail": "Model.Training.Evaluation",
         "documentation": {}
     },
@@ -806,7 +806,7 @@
         "kind": 5,
         "importPath": "Model.Training.Evaluation",
         "description": "Model.Training.Evaluation",
-        "peekOfCode": "project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), \"../..\"))\nsys.path.insert(0, project_root)\nfrom mir_eval.separation import bss_eval_sources\nfrom Model.Logging.Logger import setup_logger\nimport csv\nfrom joblib import Parallel, delayed\ntrain_logger = setup_logger('train', r'C:\\Users\\didri\\Desktop\\LearnReflect VideoEnchancer\\AI UNet-Architecture\\Model\\Logging\\Model_performance_logg\\Model_Training_logg.txt')\n#####EXTERNAL FUNCTIONS#####\ndef validate_and_fix_wav(file_path, output_path, sample_rate=44100):\n    try:",
+        "peekOfCode": "project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), \"../..\"))\nsys.path.insert(0, project_root)\nfrom mir_eval.separation import bss_eval_sources\nfrom Model.Logging.Logger import setup_logger\nimport csv\ntrain_logger = setup_logger('train', r'C:\\Users\\didri\\Desktop\\LearnReflect VideoEnchancer\\AI UNet-Architecture\\Model\\Logging\\Model_performance_logg\\Model_Training_logg.txt')\nfrom joblib import Parallel, delayed\nimport librosa\nimport os\n#####EXTERNAL FUNCTIONS#####",
         "detail": "Model.Training.Evaluation",
         "documentation": {}
     },
@@ -815,7 +815,7 @@
         "kind": 5,
         "importPath": "Model.Training.Evaluation",
         "description": "Model.Training.Evaluation",
-        "peekOfCode": "train_logger = setup_logger('train', r'C:\\Users\\didri\\Desktop\\LearnReflect VideoEnchancer\\AI UNet-Architecture\\Model\\Logging\\Model_performance_logg\\Model_Training_logg.txt')\n#####EXTERNAL FUNCTIONS#####\ndef validate_and_fix_wav(file_path, output_path, sample_rate=44100):\n    try:\n        data, sr = sf.read(file_path)\n        if sr != sample_rate or data.ndim > 1:\n            data = np.mean(data, axis=1) if data.ndim > 1 else data\n            sf.write(output_path, data, samplerate= sample_rate)\n            train_logger.info(f\"Konverterte {file_path} til {output_path} med riktig format.\")\n            print(f\"Konverterte {file_path} til {output_path} med riktig format.\")",
+        "peekOfCode": "train_logger = setup_logger('train', r'C:\\Users\\didri\\Desktop\\LearnReflect VideoEnchancer\\AI UNet-Architecture\\Model\\Logging\\Model_performance_logg\\Model_Training_logg.txt')\nfrom joblib import Parallel, delayed\nimport librosa\nimport os\n#####EXTERNAL FUNCTIONS#####\ndef validate_and_fix_wav(file_path, output_path, sample_rate=44100):\n    try:\n        data, sr = sf.read(file_path)\n        if sr != sample_rate or data.ndim > 1:\n            data = np.mean(data, axis=1) if data.ndim > 1 else data",
         "detail": "Model.Training.Evaluation",
         "documentation": {}
     },
@@ -824,7 +824,16 @@
         "kind": 6,
         "importPath": "Model.Training.Fine_Tuned_model",
         "description": "Model.Training.Fine_Tuned_model",
-        "peekOfCode": "class HybridLoss:\n    def __init__(self, device):\n        self.l1_loss = nn.L1Loss()\n        self.mse_loss = nn.MSELoss()\n        self.device = device\n        train_logger.info(\"Loading VGGish model...\")\n        self.audio_model = torch.hub.load( 'harritaylor/torchvggish', 'vggish', trust_repo=True ).to(device)\n        self.audio_model.eval()\n        train_logger.info(f\"finetuning --> VGGish model loaded and set to eval mode.\")\n        for param in self.audio_model.parameters():",
+        "peekOfCode": "class HybridLoss:\n    def __init__(self, device):\n        self.l1_loss = nn.L1Loss()\n        self.mse_loss = nn.MSELoss()\n        self.device = device\n        Fine_tune_logger.info(\"Loading VGGish model...\")\n        self.audio_model = torch.hub.load( 'harritaylor/torchvggish', 'vggish', trust_repo=True ).to(device)\n        self.audio_model.eval()\n        Fine_tune_logger.info(f\"finetuning --> VGGish model loaded and set to eval mode.\")\n        for param in self.audio_model.parameters():",
+        "detail": "Model.Training.Fine_Tuned_model",
+        "documentation": {}
+    },
+    {
+        "label": "Append_loss_values",
+        "kind": 2,
+        "importPath": "Model.Training.Fine_Tuned_model",
+        "description": "Model.Training.Fine_Tuned_model",
+        "peekOfCode": "def Append_loss_values(loss_history_finetuning_epoches, total_loss, l1_val, multi_scale_val, perceptual_val, spectral_val, mse_val, epoch):\n    #Append for batch\n    loss_history_finetuning_epoches[\"l1\"].append(l1_val.item())\n    loss_history_finetuning_epoches[\"combined\"].append(total_loss.item())\n    loss_history_finetuning_epoches[\"spectral\"].append(spectral_val.item())\n    loss_history_finetuning_epoches[\"perceptual\"].append(perceptual_val.item())\n    loss_history_finetuning_epoches[\"multiscale\"].append(multi_scale_val.item())\n    loss_history_finetuning_epoches[\"mse\"].append(mse_val.item())\n    #Logging\n    Fine_tune_logger.info(  f\"[Train] Epoch {epoch+1}\"  f\"L1 Loss={l1_val.item():.6f}, mse_val={mse_val.item():.6f} , spectral loss={spectral_val.item():.6f}, perceptual_val={perceptual_val.item():.6f} ,multi_scale_val={multi_scale_val.item():.6f}, Combined Loss={total_loss.item():.6f}\" )",
         "detail": "Model.Training.Fine_Tuned_model",
         "documentation": {}
     },
@@ -833,7 +842,7 @@
         "kind": 2,
         "importPath": "Model.Training.Fine_Tuned_model",
         "description": "Model.Training.Fine_Tuned_model",
-        "peekOfCode": "def freeze_encoder(model):\n    for layer in model.encoder:\n        for param in layer.parameters():\n            param.requires_grad = False\n    model.encoder.eval()\n    train_logger.info(\"Encoder layers frozen for fine-tuning.\")\nclass HybridLoss:\n    def __init__(self, device):\n        self.l1_loss = nn.L1Loss()\n        self.mse_loss = nn.MSELoss()",
+        "peekOfCode": "def freeze_encoder(model):\n    for layer in model.encoder:\n        for param in layer.parameters():\n            param.requires_grad = False\n    model.encoder.eval()\n    Fine_tune_logger.info(\"Encoder layers frozen for fine-tuning.\")\nclass HybridLoss:\n    def __init__(self, device):\n        self.l1_loss = nn.L1Loss()\n        self.mse_loss = nn.MSELoss()",
         "detail": "Model.Training.Fine_Tuned_model",
         "documentation": {}
     },
@@ -842,7 +851,7 @@
         "kind": 2,
         "importPath": "Model.Training.Fine_Tuned_model",
         "description": "Model.Training.Fine_Tuned_model",
-        "peekOfCode": "def fine_tune_model(\n    pretrained_model_path,\n    fine_tuned_model_path,\n    root_dir,\n    batch_size=6,\n    learning_rate=1e-5,\n    fine_tune_epochs=2\n):\n    device = torch.device(\"cuda\" if torch.cuda.is_available() else \"cpu\")\n    train_logger.info(f\"finetuning --> Fine-tuning on device: {device}\")",
+        "peekOfCode": "def fine_tune_model(\n    pretrained_model_path,\n    fine_tuned_model_path,\n    root_dir,\n    batch_size=4,\n    learning_rate=1e-5,\n    fine_tune_epochs=4\n):\n    device = torch.device(\"cuda\" if torch.cuda.is_available() else \"cpu\")\n    Fine_tune_logger.info(f\"finetuning --> Fine-tuning on device: {device}\")",
         "detail": "Model.Training.Fine_Tuned_model",
         "documentation": {}
     },
@@ -851,16 +860,16 @@
         "kind": 5,
         "importPath": "Model.Training.Fine_Tuned_model",
         "description": "Model.Training.Fine_Tuned_model",
-        "peekOfCode": "project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), \"../..\"))\nsys.path.insert(0, project_root)\nfrom Model.Logging.Logger import setup_logger\nfrom Model.Data.dataset import MUSDB18StemDataset\nfrom Model.Model.model import UNet\nfrom Model.Training.Loss_Diagram_Values import plot_loss_curves_FineTuning_script_\nimport multiprocessing\ntrain_logger = setup_logger('train', r'C:\\Users\\didri\\Desktop\\LearnReflect VideoEnchancer\\AI UNet-Architecture\\Model\\Logging\\Model_performance_logg\\Model_Training_logg.txt')\nnum_workers = multiprocessing.cpu_count() // 2\nloss_history_finetuning_epoches = {",
+        "peekOfCode": "project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), \"../..\"))\nsys.path.insert(0, project_root)\nfrom Model.Logging.Logger import setup_logger\nfrom Model.Data.dataset import MUSDB18StemDataset\nfrom Model.Model.model import UNet\nfrom Model.Training.Loss_Diagram_Values import plot_loss_curves_FineTuning_script_\nFine_tune_logger = setup_logger('Fine-Tuning', r'C:\\Users\\didri\\Desktop\\LearnReflect VideoEnchancer\\AI UNet-Architecture\\Model\\Logging\\Model_performance_logg\\Model_fine_tuning_logg.txt')\nglobal loss_history_finetuning_epoches\nnum_workers = 8\nloss_history_finetuning_epoches = {",
         "detail": "Model.Training.Fine_Tuned_model",
         "documentation": {}
     },
     {
-        "label": "train_logger",
+        "label": "Fine_tune_logger",
         "kind": 5,
         "importPath": "Model.Training.Fine_Tuned_model",
         "description": "Model.Training.Fine_Tuned_model",
-        "peekOfCode": "train_logger = setup_logger('train', r'C:\\Users\\didri\\Desktop\\LearnReflect VideoEnchancer\\AI UNet-Architecture\\Model\\Logging\\Model_performance_logg\\Model_Training_logg.txt')\nnum_workers = multiprocessing.cpu_count() // 2\nloss_history_finetuning_epoches = {\n    \"l1\":[],\n    \"mse\": [],\n    \"spectral\": [],\n    \"perceptual\": [],\n    \"multiscale\": [],\n    \"combined\": [],\n}",
+        "peekOfCode": "Fine_tune_logger = setup_logger('Fine-Tuning', r'C:\\Users\\didri\\Desktop\\LearnReflect VideoEnchancer\\AI UNet-Architecture\\Model\\Logging\\Model_performance_logg\\Model_fine_tuning_logg.txt')\nglobal loss_history_finetuning_epoches\nnum_workers = 8\nloss_history_finetuning_epoches = {\n    \"l1\":[],\n    \"mse\": [],\n    \"spectral\": [],\n    \"perceptual\": [],\n    \"multiscale\": [],\n    \"combined\": [],",
         "detail": "Model.Training.Fine_Tuned_model",
         "documentation": {}
     },
@@ -869,7 +878,7 @@
         "kind": 5,
         "importPath": "Model.Training.Fine_Tuned_model",
         "description": "Model.Training.Fine_Tuned_model",
-        "peekOfCode": "num_workers = multiprocessing.cpu_count() // 2\nloss_history_finetuning_epoches = {\n    \"l1\":[],\n    \"mse\": [],\n    \"spectral\": [],\n    \"perceptual\": [],\n    \"multiscale\": [],\n    \"combined\": [],\n}\ndef freeze_encoder(model):",
+        "peekOfCode": "num_workers = 8\nloss_history_finetuning_epoches = {\n    \"l1\":[],\n    \"mse\": [],\n    \"spectral\": [],\n    \"perceptual\": [],\n    \"multiscale\": [],\n    \"combined\": [],\n}\ndef Append_loss_values(loss_history_finetuning_epoches, total_loss, l1_val, multi_scale_val, perceptual_val, spectral_val, mse_val, epoch):",
         "detail": "Model.Training.Fine_Tuned_model",
         "documentation": {}
     },
@@ -878,7 +887,7 @@
         "kind": 5,
         "importPath": "Model.Training.Fine_Tuned_model",
         "description": "Model.Training.Fine_Tuned_model",
-        "peekOfCode": "loss_history_finetuning_epoches = {\n    \"l1\":[],\n    \"mse\": [],\n    \"spectral\": [],\n    \"perceptual\": [],\n    \"multiscale\": [],\n    \"combined\": [],\n}\ndef freeze_encoder(model):\n    for layer in model.encoder:",
+        "peekOfCode": "loss_history_finetuning_epoches = {\n    \"l1\":[],\n    \"mse\": [],\n    \"spectral\": [],\n    \"perceptual\": [],\n    \"multiscale\": [],\n    \"combined\": [],\n}\ndef Append_loss_values(loss_history_finetuning_epoches, total_loss, l1_val, multi_scale_val, perceptual_val, spectral_val, mse_val, epoch):\n    #Append for batch",
         "detail": "Model.Training.Fine_Tuned_model",
         "documentation": {}
     },
@@ -887,7 +896,7 @@
         "kind": 2,
         "importPath": "Model.Training.Loss_Diagram_Values",
         "description": "Model.Training.Loss_Diagram_Values",
-        "peekOfCode": "def plot_loss_curves_Training_script_epoches(loss_history_Epoches, out_path=\"loss_curves_training_epoches.png\"):\n    epochs_count = len(loss_history_Epoches[\"combined\"])\n    epochs = range(1, epochs_count + 1)\n    print(f\"Epochs Count: {epochs_count}, Total Loss Entries: {len(loss_history_Epoches['Total_loss_per_epoch'])}\")\n    if len(loss_history_Epoches[\"Total_loss_per_epoch\"]) != epochs_count:\n        print(f\"Error: Mismatch between epochs ({epochs_count}) and Total_loss_per_epoch ({len(loss_history_Epoches['Total_loss_per_epoch'])}).\")\n        return  \n    plt.figure(figsize=(12, 6))\n    if len(loss_history_Epoches[\"l1\"]) > 0:\n        plt.plot(epochs, loss_history_Epoches[\"l1\"], label=\"L1-loss\", color=\"blue\",linewidth=2)",
+        "peekOfCode": "def plot_loss_curves_Training_script_epoches(loss_history_Epoches, out_path=\"loss_curves_training_epoches.png\"):\n    epochs_count = len(loss_history_Epoches[\"combined\"])\n    epochs = range(1, epochs_count + 1)\n    print(f\"Epochs Count: {epochs_count}, Total Loss Entries: {len(loss_history_Epoches['Total_loss_per_epoch'])}\")\n    if len(loss_history_Epoches[\"Total_loss_per_epoch\"]) != epochs_count:\n        print(f\"Error: Mismatch between epochs ({epochs_count}) and Total_loss_per_epoch ({len(loss_history_Epoches['Total_loss_per_epoch'])}).\")\n        train_logger.error(f\"Epoch Loss Mismatch: Expected {epochs_count}, Found {len(loss_history_Epoches['Total_loss_per_epoch'])}.\")\n        return  \n    plt.figure(figsize=(12, 6))\n    if len(loss_history_Epoches[\"l1\"]) > 0:",
         "detail": "Model.Training.Loss_Diagram_Values",
         "documentation": {}
     },
@@ -932,7 +941,7 @@
         "kind": 5,
         "importPath": "Model.Training.Loss_Diagram_Values",
         "description": "Model.Training.Loss_Diagram_Values",
-        "peekOfCode": "train_logger = setup_logger('train', r'C:\\Users\\didri\\Desktop\\LearnReflect VideoEnchancer\\AI UNet-Architecture\\Model\\Logging\\Model_performance_logg\\Model_Training_logg.txt')\n##TRAINING####\ndef plot_loss_curves_Training_script_epoches(loss_history_Epoches, out_path=\"loss_curves_training_epoches.png\"):\n    epochs_count = len(loss_history_Epoches[\"combined\"])\n    epochs = range(1, epochs_count + 1)\n    print(f\"Epochs Count: {epochs_count}, Total Loss Entries: {len(loss_history_Epoches['Total_loss_per_epoch'])}\")\n    if len(loss_history_Epoches[\"Total_loss_per_epoch\"]) != epochs_count:\n        print(f\"Error: Mismatch between epochs ({epochs_count}) and Total_loss_per_epoch ({len(loss_history_Epoches['Total_loss_per_epoch'])}).\")\n        return  \n    plt.figure(figsize=(12, 6))",
+        "peekOfCode": "train_logger = setup_logger('train', r'C:\\Users\\didri\\Desktop\\LearnReflect VideoEnchancer\\AI UNet-Architecture\\Model\\Logging\\Model_performance_logg\\Model_Training_logg.txt')\n##TRAINING####\ndef plot_loss_curves_Training_script_epoches(loss_history_Epoches, out_path=\"loss_curves_training_epoches.png\"):\n    epochs_count = len(loss_history_Epoches[\"combined\"])\n    epochs = range(1, epochs_count + 1)\n    print(f\"Epochs Count: {epochs_count}, Total Loss Entries: {len(loss_history_Epoches['Total_loss_per_epoch'])}\")\n    if len(loss_history_Epoches[\"Total_loss_per_epoch\"]) != epochs_count:\n        print(f\"Error: Mismatch between epochs ({epochs_count}) and Total_loss_per_epoch ({len(loss_history_Epoches['Total_loss_per_epoch'])}).\")\n        train_logger.error(f\"Epoch Loss Mismatch: Expected {epochs_count}, Found {len(loss_history_Epoches['Total_loss_per_epoch'])}.\")\n        return  ",
         "detail": "Model.Training.Loss_Diagram_Values",
         "documentation": {}
     },
@@ -1022,7 +1031,7 @@
         "kind": 2,
         "importPath": "Model.Training.train",
         "description": "Model.Training.train",
-        "peekOfCode": "def train(load_model_path=None):\n    device = torch.device(\"cuda\" if torch.cuda.is_available() else \"cpu\")\n    train_logger.info(f\"[Train] Using device: {device}\")\n    print(f\"Device: {device}\")\n    batch_size = 2\n    learning_rate = 1e-5\n    epochs = 2\n    root_dir = r'C:\\mappe1\\musdb18'\n    sampling_rate = 44100\n    max_length_seconds = 5",
+        "peekOfCode": "def train(load_model_path=None):\n    device = torch.device(\"cuda\" if torch.cuda.is_available() else \"cpu\")\n    train_logger.info(f\"[Train] Using device: {device}\")\n    print(f\"Device: {device}\")\n    batch_size = 4\n    learning_rate = 1e-5\n    epochs = 15\n    root_dir = r'C:\\mappe1\\musdb18'\n    sampling_rate = 44100\n    max_length_seconds = 5",
         "detail": "Model.Training.train",
         "documentation": {}
     },
@@ -1031,7 +1040,7 @@
         "kind": 5,
         "importPath": "Model.Training.train",
         "description": "Model.Training.train",
-        "peekOfCode": "project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), \"../..\"))\nsys.path.insert(0, project_root)\nimport multiprocessing\nfrom Model.Logging.Logger import setup_logger\nfrom Model.Data.dataset import MUSDB18StemDataset\nfrom Model.Model.model import UNet\nfrom Model.Training.Evaluation import evaluate_model, evaluate_model_with_sdr_sir_sar\nfrom Model.Training.Memory_debugging import log_memory_usage\nfrom Model.Training.Loss_Diagram_Values import (\n    plot_loss_curves_Training_script_epoches,",
+        "peekOfCode": "project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), \"../..\"))\nsys.path.insert(0, project_root)\nfrom Model.Logging.Logger import setup_logger\nfrom Model.Data.dataset import MUSDB18StemDataset\nfrom Model.Model.model import UNet\nfrom Model.Training.Evaluation import evaluate_model, evaluate_model_with_sdr_sir_sar\nfrom Model.Training.Memory_debugging import log_memory_usage\nfrom Model.Training.Loss_Diagram_Values import (\n    plot_loss_curves_Training_script_epoches,\n    plot_loss_curves_Training_script_Batches,",
         "detail": "Model.Training.train",
         "documentation": {}
     },
