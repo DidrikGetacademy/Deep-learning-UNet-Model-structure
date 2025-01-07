@@ -1,20 +1,19 @@
 import torch
 import torch.optim as optim
 import torch.nn as nn
-from torch.utils.data import DataLoader, ConcatDataset,Subset
+from torch.utils.data import DataLoader
 import os
 import sys
 import gc
 from torch import autocast, GradScaler
-from datasets import load_dataset
 project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), "../.."))
 sys.path.insert(0, project_root)
 import multiprocessing
 from Model.Logging.Logger import setup_logger
 from Model.Data.dataset import MUSDB18StemDataset
-from Model.Data.dataset import VCTKSpectrogram
 from Model.Model.model import UNet
 from Model.Training.Evaluation import evaluate_model, evaluate_model_with_sdr_sir_sar
+from Model.Training.Memory_debugging import log_memory_usage
 from Model.Training.Loss_Diagram_Values import (
     plot_loss_curves_Training_script_epoches,
     plot_loss_curves_Training_script_Batches,
@@ -27,9 +26,13 @@ from Model.Training.Loss_Diagram_Values import (
 
 train_logger = setup_logger('train', r'C:\Users\didri\Desktop\LearnReflect VideoEnchancer\AI UNet-Architecture\Model\Logging\Model_performance_logg\Model_Training_logg.txt')
 diagramdirectory = r"C:\Users\didri\Desktop\LearnReflect VideoEnchancer\AI UNet-Architecture\Model\Logging\Diagram_Resultater"
+output_dir_eval = r"C:\Users\didri\Desktop\LearnReflect VideoEnchancer\AI UNet-Architecture\Model\Logging\Evaluation"
 output_dir = r"C:\Users\didri\Desktop\LearnReflect VideoEnchancer\AI UNet-Architecture\Model\Logging\Evaluation"
+checkpoint_dir = r"C:\Users\didri\Desktop\LearnReflect VideoEnchancer\AI UNet-Architecture\UNet_Model_Weights\CheckPoints"
 os.makedirs(diagramdirectory, exist_ok=True)
 os.makedirs(output_dir, exist_ok=True)
+os.makedirs(checkpoint_dir, exist_ok=True)
+os.makedirs(output_dir_eval, exist_ok=True)
 
 
 global avg_trainloss
@@ -56,8 +59,65 @@ loss_history_Batches = {
 }
 
 
+##External Functions for training####
+def Append_loss_values(batch_losses, epoch_losses, combined_loss, l1_val, stft_val, batch_idx, epoch):
+    #Append for batch
+    batch_losses["l1"].append(l1_val.item())
+    batch_losses["spectral"].append(stft_val.item())
+    batch_losses["combined"].append(combined_loss.item())
 
-num_workers = multiprocessing.cpu_count() // 2
+    # Append for epoch
+    epoch_losses["l1"].append(l1_val.item())
+    epoch_losses["spectral"].append(stft_val.item())
+    epoch_losses["combined"].append(combined_loss.item())
+
+    #Logging
+    train_logger.info(  f"[Train] Epoch {epoch+1}, Batch {batch_idx}: "  f"L1 Loss={l1_val.item():.6f}, STFT Loss={stft_val.item():.6f}, Combined Loss={combined_loss.item():.6f}" )
+    print(  f"[Train] Epoch {epoch+1}, Batch {batch_idx}: "  f"L1 Loss={l1_val.item():.6f}, STFT Loss={stft_val.item():.6f}, Combined Loss={combined_loss.item():.6f}" )
+
+
+
+
+def create_loss_diagrams():
+    print("Creating Diagrams now")
+    batches_figpath = os.path.join(diagramdirectory, "loss_curves_training_batches.png")
+    epoch_figpath = os.path.join(diagramdirectory, "loss_curves_training_epoches.png")
+    print("creating Training plot Curves..")
+    plot_loss_curves_Training_script_Batches(loss_history_Batches, out_path=batches_figpath)
+    plot_loss_curves_Training_script_epoches(loss_history_Epoches, out_path=epoch_figpath)
+    
+
+
+
+def clear_memory_before_training():
+    print("Memory before clearing...")
+    log_memory_usage(tag="Clearing memory before training")
+    torch.cuda.empty_cache()
+    gc.collect()
+    print("Cleared memory Cache...")
+    log_memory_usage(tag="Memory after clearing it...")
+    print("Done.. Training Starts now...")
+
+
+
+def training_completed():
+    train_logger.info("[Train] Training completed. Clearing memory cache now...")
+    print("[Train] Training completed, Clearing memory...")
+    torch.cuda.empty_cache()
+    gc.collect()
+    log_memory_usage(tag="Memory After Training")
+
+
+def save_final_model(model):
+     #Saving the final model after Completed training.
+    Final_model_path = r"C:\Users\didri\Desktop\LearnReflect VideoEnchancer\AI UNet-Architecture\UNet_Model_Weights\Final_model\Final_model.pth"
+    os.makedirs(os.path.dirname(Final_model_path), exist_ok=True)
+    torch.save(model.state_dict(), Final_model_path)
+    train_logger.info("[Train] Final model saved at {Final_model_path}")
+    print(f"[Train] Final model saved at {Final_model_path}")
+
+
+num_workers = 8
 
 class HybridLoss(nn.Module):
     def __init__(self):
@@ -122,34 +182,26 @@ class HybridLoss(nn.Module):
 
 
 
-def print_gpu_memory():
-    if torch.cuda.is_available():
-        print(f"Total GPU Memory: {torch.cuda.get_device_properties(0).total_memory / 1e9:.2f} GB")
-        print(f"Allocated GPU Memory: {torch.cuda.memory_allocated() / 1e9:.2f} GB")
-        print(f"Cached GPU Memory: {torch.cuda.memory_reserved() / 1e9:.2f} GB")
-    else:
-        print("CUDA is not available.")
 
 
 
-def train(load_model_path=r"C:\Users\didri\Desktop\LearnReflect VideoEnchancer\AI UNet-Architecture\UNet_Model\Fine_tuned_model\Fine_tuned_model.pth"):
+def train(load_model_path=None):
     
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     train_logger.info(f"[Train] Using device: {device}")
     print(f"Device: {device}")
 
 
-    batch_size = 8
+    batch_size = 2
     learning_rate = 1e-5
-    epochs = 5
+    epochs = 2
     root_dir = r'C:\mappe1\musdb18'
     
 
 
     sampling_rate = 44100
-    max_length_seconds = 2
+    max_length_seconds = 5
     max_length_samples = sampling_rate * max_length_seconds
-
 
 
 
@@ -160,27 +212,10 @@ def train(load_model_path=r"C:\Users\didri\Desktop\LearnReflect VideoEnchancer\A
         n_fft=2048,
         hop_length=1024,
         max_length=max_length_samples,
-        max_files=100,
+        max_files=50,
     )
 
-    vctk_dataset = load_dataset("vctk", trust_remote_code=True)["train"]
-    reduced_vctk_dataset = Subset(vctk_dataset, range(100))
-
-    frames_per_second = sampling_rate / 1024
-    max_length_frames = int(max_length_seconds * frames_per_second)
-
-    vctk_spectrogram_dataset = VCTKSpectrogram(
-        dataset=reduced_vctk_dataset,
-        n_fft=2048,
-        hop_length=1024,
-        sr=sampling_rate,
-        max_length_seconds=5,
-        max_files=100
-    )
-
-    combined_dataset = ConcatDataset([musdb18_dataset, vctk_spectrogram_dataset])
-
-    dataloader = DataLoader(combined_dataset, batch_size=batch_size, shuffle=True, num_workers=6, pin_memory=True)
+    dataloader = DataLoader(musdb18_dataset, batch_size=batch_size, shuffle=True, num_workers=num_workers, pin_memory=True)
 
     val_dataset = MUSDB18StemDataset(
         root_dir=root_dir,
@@ -191,11 +226,13 @@ def train(load_model_path=r"C:\Users\didri\Desktop\LearnReflect VideoEnchancer\A
         max_length=max_length_samples,
         max_files=40,
     )
-    val_loader = DataLoader(val_dataset, batch_size=batch_size, shuffle=False, num_workers=4, pin_memory=True)
+    val_loader = DataLoader(val_dataset, batch_size=batch_size, shuffle=False, num_workers=num_workers, pin_memory=True)
 
 
 
     model = UNet(in_channels=1, out_channels=1).to(device)
+
+
 
     if load_model_path is not None:
         if os.path.exists(load_model_path):
@@ -203,17 +240,10 @@ def train(load_model_path=r"C:\Users\didri\Desktop\LearnReflect VideoEnchancer\A
             print(f"Loaded model from {load_model_path}")
         else:
             print(f"[Train] Model path {load_model_path} does not exist. Starting from scratch.")
-        print("Memory before clearing...")
-        print_gpu_memory()
-        print("Clearing GPU memory and CPU memory...")
-        torch.cuda.empty_cache()
-        gc.collect()
-        print("Printing memory.....")
-        print("Cleared memory Cache...")
-        print_gpu_memory()
-        print("Done.. Training Starts now...")
-
+        clear_memory_before_training()
  
+
+
 
     criterion = HybridLoss()
     optimizer = optim.Adam(model.parameters(), lr=learning_rate, weight_decay=1e-4)
@@ -235,52 +265,50 @@ def train(load_model_path=r"C:\Users\didri\Desktop\LearnReflect VideoEnchancer\A
 
                 inputs, targets = inputs.to(device, non_blocking=True), targets.to(device,non_blocking=True)
                 print(f"inputs: {inputs.shape}, targets: {targets.shape}")
-        
-                train_logger.debug(f"[Train] Epoch {epoch+1}, Batch {batch_idx} -> "f"inputs.shape={inputs.shape}, inputs.min={inputs.min():.4f}, inputs.max={inputs.max():.4f}; "f"targets.shape={targets.shape}, targets.min={targets.min():.4f}, targets.max={targets.max():.4f}")
+
+                if batch_idx < 2:
+                    train_logger.debug(f"[Train] Epoch {epoch+1}, Batch {batch_idx} -> "f"inputs.shape={inputs.shape}, inputs.min={inputs.min():.4f}, inputs.max={inputs.max():.4f}; "f"targets.shape={targets.shape}, targets.min={targets.min():.4f}, targets.max={targets.max():.4f}")
 
                 accumulation_steps = 4  
                 optimizer.zero_grad()
                 with autocast(device_type='cuda', enabled=(device.type == 'cuda')):
                     outputs = model(inputs)
-                    train_logger.debug(f"[Train] outputs.shape={outputs.shape}, " f"outputs.min={outputs.min():.4f}, outputs.max={outputs.max():.4f}")
-
                     combined_loss, l1_val, stft_val = criterion(outputs, targets)
+                    train_logger.debug(f"[Train] outputs.shape={outputs.shape}, " f"outputs.min={outputs.min():.4f}, outputs.max={outputs.max():.4f}")
 
        
                 scaler.scale(combined_loss).backward()
-                if (batch_idx + 1) % accumulation_steps == 0:
+                if (batch_idx + 1) % accumulation_steps == 0 or batch_idx == len(dataloader):
                    scaler.step(optimizer)
-                   optimizer.zero_grad()
                    scaler.update()
-                   torch.cuda.empty_cache()
-                   gc.collect() 
+                   optimizer.zero_grad()
+                
+                if batch_idx % 10 == 0:
+                    log_memory_usage(tag=f"After batch {batch_idx}")
                  
 
-                #Appending loss for Batches
-                loss_history_Batches["l1"].append(l1_val.item())
-                loss_history_Batches["spectral"].append(stft_val.item())
-                loss_history_Batches["combined"].append(combined_loss.item())
+                Append_loss_values(
+                  batch_losses=loss_history_Batches,
+                  epoch_losses=loss_history_Epoches,
+                  combined_loss=combined_loss,
+                  l1_val=l1_val,
+                  stft_val=stft_val,
+                  batch_idx=batch_idx,
+                  epoch=epoch
+                 )
 
-                #Appending loss for Epoches
-                loss_history_Epoches["l1"].append(l1_val.item())
-                loss_history_Epoches["spectral"].append(stft_val.item())
-                loss_history_Epoches["combined"].append(combined_loss.item())
-
-     
                 running_loss += combined_loss.item()
                 train_logger.info(f"[Train] Epoch {epoch+1}, Batch {batch_idx}: "f"Loss={combined_loss.item():.6f}")
-
+                log_memory_usage(tag=f"After Batch {batch_idx}")
      
             epoch_loss = running_loss / len(dataloader)
             
-            
-            loss_history_Epoches["Total_loss_per_epoch"].append(running_loss)  
-  
             avg_trainloss["epoch_loss"].append(epoch_loss)
+            loss_history_Epoches["Total_loss_per_epoch"].append(running_loss)  
+            log_memory_usage(tag=f"After Epoch {epoch + 1}")
 
-
-            # Lagre checkpoint for hver epoke
-            epoch_model_path = os.path.join(r"C:\Users\didri\Desktop\LearnReflect VideoEnchancer\AI UNet-Architecture\UNet_Model\CheckPoints",f"model_epoch_{epoch + 1}.pth")
+            
+            epoch_model_path = os.path.join(checkpoint_dir,f"model_epoch_{epoch + 1}.pth")
             torch.save(model.state_dict(), epoch_model_path)
             train_logger.info(f"[Train] Epoch {epoch+1} completed -> Avg Loss: {epoch_loss:.6f}")
             train_logger.info(f"[Train] Saved checkpoint: {epoch_model_path}")
@@ -290,13 +318,7 @@ def train(load_model_path=r"C:\Users\didri\Desktop\LearnReflect VideoEnchancer\A
         train_logger.error(f"[Train] Error during training: {str(e)}")
 
 
-    print("Creating Diagrams now")
-    batches_figpath = os.path.join(diagramdirectory, "loss_curves_training_batches.png")
-    epoch_figpath = os.path.join(diagramdirectory, "loss_curves_training_epoches.png")
-    print("creating Training plot Curves..")
-    plot_loss_curves_Training_script_Batches(loss_history_Batches, out_path=batches_figpath)
-    plot_loss_curves_Training_script_epoches(loss_history_Epoches, out_path=epoch_figpath)
-
+    create_loss_diagrams()
 
     try:
         train_logger.info("[Eval] Starting evaluate_model")
@@ -307,12 +329,8 @@ def train(load_model_path=r"C:\Users\didri\Desktop\LearnReflect VideoEnchancer\A
         
  
 
-
-        output_dir_eval = r"C:\Users\didri\Desktop\LearnReflect VideoEnchancer\AI UNet-Architecture\Model\Logging\Evaluation"
-
         train_logger.info("[EVAL] starting evaluation with SDR, SIR, SAR....")
         print("[EVAL] starting evaluation with SDR, SIR, SAR....")
-        #Evaluation With sdr,sir,sar
         avg_sdr, avg_sir, avg_sar = evaluate_model_with_sdr_sir_sar(model=model, dataloader=val_loader, output_csv_path=os.path.join(output_dir_eval, "Evaluation_results.csv"),loss_diagram_func=plot_loss_curves_evaluation ,  device=device,  output_dir=output_dir_eval,  sr=44100, n_fft=2048, hop_length=1024)
 
 
@@ -339,26 +357,14 @@ def train(load_model_path=r"C:\Users\didri\Desktop\LearnReflect VideoEnchancer\A
         print(f"[Eval] Error during evaluation: {str(e)}")
 
 
+    training_completed()
 
-    #Finnishing Training logs and clearing cache & printing memory.
-    train_logger.info("[Train] Training completed. Clearing memory cache now...")
-    print("[Train] Training completed, Clearing memory...")
-    torch.cuda.empty_cache()
-    gc.collect()
-    print_gpu_memory()
+    save_final_model(model)
 
     
 
-    #Saving the final model after Completed training.
-    Final_model_path = r"C:\Users\didri\Desktop\LearnReflect VideoEnchancer\AI UNet-Architecture\UNet_Model\Final_model\Final_model.pth"
-    os.makedirs(os.path.dirname(Final_model_path), exist_ok=True)
-    torch.save(model.state_dict(), Final_model_path)
-    train_logger.info("[Train] Final model saved at {Final_model_path}")
-    print(f"[Train] Final model saved at {Final_model_path}")
-
-
-
-
+   
 
 if __name__ == "__main__":
     train(load_model_path=None)
+
